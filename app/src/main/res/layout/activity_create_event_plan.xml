@@ -10,6 +10,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:isScrollContainer="true"
         android:orientation="vertical">
 
         <EditText
@@ -33,15 +34,6 @@
             android:layout_marginRight="50dp"
             android:layout_marginTop="20dp" />
 
-        <TimePicker
-            android:id="@+id/create_event_plan_time_picker"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="10dp"
-            android:layout_marginLeft="50dp"
-            android:layout_marginRight="50dp"
-            android:layout_marginTop="10dp" />
-
         <DatePicker
             android:id="@+id/create_event_plan_date_picker"
             android:layout_width="match_parent"
@@ -51,17 +43,14 @@
             android:headerBackground="@color/colorPrimary"
             android:startYear="2018" />
 
-        <ToggleButton
-            android:id="@+id/toggleButton"
+        <TimePicker
+            android:id="@+id/create_event_plan_time_picker"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="20dp"
+            android:layout_marginBottom="10dp"
             android:layout_marginLeft="50dp"
             android:layout_marginRight="50dp"
-            android:layout_marginTop="20dp"
-            android:text="Alcohol"
-            android:textOff="No"
-            android:textOn="Yes" />
+            android:layout_marginTop="10dp" />
 
     </LinearLayout>
 
