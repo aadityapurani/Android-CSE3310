@@ -56,7 +56,7 @@
                 android:calendarTextColor="#ffffffff"
                 android:dayOfWeekBackground="#3a7ce8"
                 android:headerBackground="#3a7ce8"
-                android:outlineProvider="#3a7ce8" />
+                 />
 
             <TimePicker
                 android:id="@+id/timePicker"
