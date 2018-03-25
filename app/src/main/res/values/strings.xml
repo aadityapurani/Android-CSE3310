@@ -2,6 +2,7 @@
     <string name="app_name">Mavevent</string>
     <string name="app_splash">UTA Event App</string>
     <string name="title_activity_register">RegisterActivity</string>
+    <string name="title_caterer">CatererActivity</string>
     <array name="event_list">
         <item>Event 1</item>
         <item>Event 2</item>
