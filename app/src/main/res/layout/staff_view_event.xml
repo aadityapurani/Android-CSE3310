@@ -72,15 +72,6 @@
                             android:layout_width="match_parent"
                             android:layout_height="match_parent">
 
-                            <Button
-                                android:id="@+id/button31"
-                                android:layout_width="wrap_content"
-                                android:layout_height="110dp"
-                                android:layout_margin="10dp"
-                                android:layout_weight="50"
-                                android:background="#3a7ce8"
-                                android:text="View Reserved Events" />
-
                         </TableRow>
 
                         <TableRow
