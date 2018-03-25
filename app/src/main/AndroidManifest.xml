@@ -25,6 +25,13 @@
             android:name=".CatererActivity"
             android:label="@string/title_caterer"
             android:theme="@style/AppTheme"></activity>
+        <activity
+            android:name=".AddResourcesActivity"
+            android:theme="@style/AppTheme"></activity>
+        <activity
+            android:name=".CreateEventPlan"
+            android:theme="@style/AppTheme"></activity>
     </application>
+
 
 </manifest>

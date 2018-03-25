@@ -17,12 +17,22 @@ public class CatererActivity extends AppCompatActivity {
         setContentView(R.layout.activity_caterer);
 
         // Just Testing the stuff out
-        final Button add_resources_Button = (Button) findViewById(R.id.button30);
+        final Button add_resources_Button = (Button) findViewById(R.id.add_resources_id);
         add_resources_Button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent add_resource_Intent = new Intent(CatererActivity.this, AddResourcesActivity.class);
                 CatererActivity.this.startActivity(add_resource_Intent);
+            }
+        });
+
+        // Just Testing the stuff out
+        final Button create_event_plan_Button = (Button) findViewById(R.id.button26);
+        create_event_plan_Button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent create_event_plan_Intent = new Intent(CatererActivity.this, CreateEventPlan.class);
+                CatererActivity.this.startActivity(create_event_plan_Intent);
             }
         });
 
