@@ -48,7 +48,7 @@
                                 android:layout_height="wrap_content"
                                 android:ems="10"
                                 android:inputType="textMultiLine"
-                                android:text="[Place Holder]" />
+                                android:text="Event 1" />
                         </TableRow>
 
                         <TableRow
@@ -61,7 +61,7 @@
                                 android:layout_height="wrap_content"
                                 android:ems="10"
                                 android:inputType="textMultiLine"
-                                android:text="[Place Holder]" />
+                                android:text="Event 2" />
 
                         </TableRow>
 
@@ -75,7 +75,7 @@
                                 android:layout_height="wrap_content"
                                 android:ems="10"
                                 android:inputType="textMultiLine"
-                                android:text="[Place Holder]" />
+                                android:text="Event 3" />
 
                         </TableRow>
 
