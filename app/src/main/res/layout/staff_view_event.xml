@@ -51,7 +51,15 @@
                                 android:layout_height="wrap_content"
                                 android:ems="10"
                                 android:inputType="textMultiLine"
-                                android:text="[Place Holder]" />
+                                android:text="Event #" />
+
+                            <EditText
+                                android:id="@+id/editText17"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:ems="10"
+                                android:inputType="textMultiLine"
+                                android:text="Date - Earliest" />
                         </TableRow>
 
                         <TableRow
@@ -64,7 +72,15 @@
                                 android:layout_height="wrap_content"
                                 android:ems="10"
                                 android:inputType="textMultiLine"
-                                android:text="[Place Holder]" />
+                                android:text="Event #" />
+
+                            <EditText
+                                android:id="@+id/editText18"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:ems="10"
+                                android:inputType="textPersonName"
+                                android:text="Date" />
 
                         </TableRow>
 
@@ -84,10 +100,25 @@
                                 android:layout_height="wrap_content"
                                 android:ems="10"
                                 android:inputType="textMultiLine"
-                                android:text="[Place Holder]" />
+                                android:text="Event #" />
+
+                            <EditText
+                                android:id="@+id/editText19"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:ems="10"
+                                android:inputType="textPersonName"
+                                android:text="Date - Latest" />
 
                         </TableRow>
                     </TableLayout>
+
+                    <Button
+                        android:id="@+id/button6"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="#3a7ce8"
+                        android:text="Done" />
                 </LinearLayout>
 
             </android.support.design.widget.CoordinatorLayout>

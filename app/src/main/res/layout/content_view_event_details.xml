@@ -8,19 +8,37 @@
     tools:context="com.team7.cse.mavevent.ViewEventDetails"
     tools:showIn="@layout/activity_view_event_details">
 
-    <TextView
-        android:id="@+id/textView8"
-        android:layout_width="203dp"
-        android:layout_height="49dp"
-        android:text="Event Details"
-        android:textAppearance="@style/TextAppearance.AppCompat.Display1"
-        tools:layout_editor_absoluteX="16dp"
-        tools:layout_editor_absoluteY="16dp" />
+    <ImageView
+        android:id="@+id/imageView5"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:scaleType="fitCenter"
+        android:scaleX=".6"
+        android:scaleY=".6"
+        app:srcCompat="@drawable/uta1" />
 
-    <MultiAutoCompleteTextView
-        android:id="@+id/multiAutoCompleteTextView"
+    <android.support.design.widget.CoordinatorLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        tools:layout_editor_absoluteX="16dp"
-        tools:layout_editor_absoluteY="91dp" />
+        android:layout_marginBottom="50dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        tools:layout_editor_absoluteX="8dp">
+
+        <TextView
+            android:id="@+id/textView8"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Event Details"
+            android:textAppearance="@style/TextAppearance.AppCompat.Display1"
+            tools:layout_editor_absoluteX="16dp"
+            tools:layout_editor_absoluteY="16dp" />
+
+        <MultiAutoCompleteTextView
+            android:id="@+id/multiAutoCompleteTextView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            tools:layout_editor_absoluteX="16dp"
+            tools:layout_editor_absoluteY="91dp" />
+    </android.support.design.widget.CoordinatorLayout>
+
 </android.support.constraint.ConstraintLayout>
