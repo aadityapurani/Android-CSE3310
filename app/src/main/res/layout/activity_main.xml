@@ -28,7 +28,8 @@
         android:ems="10"
         android:hint="Username"
         android:inputType="textPersonName"
-        android:textColor="#fff"
+        android:textColor="#ffffffff"
+        android:textColorHint="#ffffffff"
         android:textSize="16sp" />
 
     <EditText
@@ -46,7 +47,8 @@
         android:ems="10"
         android:hint="Password"
         android:inputType="textPassword"
-        android:textColor="#fff"
+        android:textColor="#ffffffff"
+        android:textColorHint="#ffffffff"
         android:textSize="16sp" />
 
     <Button
@@ -59,6 +61,7 @@
         android:layout_alignStart="@+id/editText3"
         android:layout_below="@+id/editText3"
         android:layout_marginTop="50dp"
+        android:background="#3a7ce8"
         android:text="Login" />
 
     <TextView
