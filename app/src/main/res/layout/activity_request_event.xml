@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/gradient"
-
+    tools:context="com.example.jonki.catering_cse3310.RequestEvent">
 
     <EditText
         android:id="@+id/editText"
@@ -14,9 +14,7 @@
         android:ems="10"
         android:inputType="textPersonName"
         android:text="Type of Event"
-    =======
         android:textColor="#FFFFFFFF"
->>>>>>> 1b7cb98908e67bb90724238de3192591592767f3
         app:layout_constraintBottom_toTopOf="@+id/editText3"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
@@ -28,9 +26,7 @@
         android:layout_width="217dp"
         android:layout_height="29dp"
         android:text="Request Event"
-    =======
         android:textColor="#FFFFFFFF"
->>>>>>> 1b7cb98908e67bb90724238de3192591592767f3
         android:textSize="24sp"
         app:layout_constraintBottom_toTopOf="@+id/editText5"
         app:layout_constraintEnd_toEndOf="parent"
@@ -45,6 +41,20 @@
         android:ems="10"
         android:inputType="time"
         android:text="Time (HH:MM)"
+        android:textColor="#FFFFFFFF"
+        app:layout_constraintBottom_toTopOf="@+id/editText6"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editText3" />
+
+    <android.support.constraint.Guideline
+        android:id="@+id/guideline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_begin="20dp" />
+
 
     <EditText
         android:id="@+id/editText3"
@@ -53,9 +63,7 @@
         android:ems="10"
         android:inputType="date"
         android:text="Date (MM/DD/YY)"
-    =======
         android:textColor="#FFFFFFFF"
->>>>>>> 1b7cb98908e67bb90724238de3192591592767f3
         app:layout_constraintBottom_toTopOf="@+id/editText4"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
@@ -90,11 +98,7 @@
         android:ems="10"
         android:inputType="time"
         android:text="Duration (HH:MM)"
-<<<<<<< HEAD
-        android:textColor="#ffffffff"
-=======
         android:textColor="#FFFFFFFF"
->>>>>>> 1b7cb98908e67bb90724238de3192591592767f3
         app:layout_constraintBottom_toTopOf="@+id/editText2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.432"
@@ -108,11 +112,7 @@
         android:ems="10"
         android:inputType="textPersonName"
         android:text="Name"
-<<<<<<< HEAD
-        android:textColor="#ffffffff"
-=======
         android:textColor="#FFFFFFFF"
->>>>>>> 1b7cb98908e67bb90724238de3192591592767f3
         app:layout_constraintBottom_toTopOf="@+id/editText"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.432"
@@ -167,8 +167,7 @@
         android:id="@+id/switch1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Al
-hololic"
+        android:text="Alchololic"
         android:textColor="#FFFFFFFF"
         app:layout_constraintBottom_toTopOf="@+id/button"
         app:layout_constraintEnd_toEndOf="parent"
@@ -176,17 +175,6 @@ hololic"
         app:layout_constraintStart_toEndOf="@+id/guideline3"
         app:layout_constraintTop_toBottomOf="@+id/editText7" />
 
-    Al
 
-</android.support.constraint.ConstraintLayout><![CDATA[=======
-        android:textColor="#FFFFFFFF"
->>>>>>> 1b7cb98908e67bb90724238de3192591592767f3
-        app:layout_constraintBottom_toTopOf="@+id/editText6"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editText3" />
 
-    MM
-
-    ]]>
+</android.support.constraint.ConstraintLayout>
