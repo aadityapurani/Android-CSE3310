@@ -55,7 +55,6 @@
         android:orientation="horizontal"
         app:layout_constraintGuide_begin="20dp" />
 
-    MM
 
     <EditText
         android:id="@+id/editText3"
@@ -176,6 +175,6 @@
         app:layout_constraintStart_toEndOf="@+id/guideline3"
         app:layout_constraintTop_toBottomOf="@+id/editText7" />
 
-    Al
+
 
 </android.support.constraint.ConstraintLayout>
