@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/gradient"
-    tools:context="com.example.jonki.catering_cse3310.RequestEvent">
+
 
     <EditText
         android:id="@+id/editText"
@@ -14,9 +14,7 @@
         android:ems="10"
         android:inputType="textPersonName"
         android:text="Type of Event"
-<<<<<<< HEAD
-        android:textColor="#ffffffff"
-=======
+    =======
         android:textColor="#FFFFFFFF"
 >>>>>>> 1b7cb98908e67bb90724238de3192591592767f3
         app:layout_constraintBottom_toTopOf="@+id/editText3"
@@ -30,9 +28,7 @@
         android:layout_width="217dp"
         android:layout_height="29dp"
         android:text="Request Event"
-<<<<<<< HEAD
-        android:textColor="#ffffffff"
-=======
+    =======
         android:textColor="#FFFFFFFF"
 >>>>>>> 1b7cb98908e67bb90724238de3192591592767f3
         android:textSize="24sp"
@@ -49,25 +45,6 @@
         android:ems="10"
         android:inputType="time"
         android:text="Time (HH:MM)"
-<<<<<<< HEAD
-        android:textColor="#ffffffff"
-=======
-        android:textColor="#FFFFFFFF"
->>>>>>> 1b7cb98908e67bb90724238de3192591592767f3
-        app:layout_constraintBottom_toTopOf="@+id/editText6"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editText3" />
-
-    <android.support.constraint.Guideline
-        android:id="@+id/guideline"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_begin="20dp" />
-
-    MM
 
     <EditText
         android:id="@+id/editText3"
@@ -76,9 +53,7 @@
         android:ems="10"
         android:inputType="date"
         android:text="Date (MM/DD/YY)"
-<<<<<<< HEAD
-        android:textColor="#ffffffff"
-=======
+    =======
         android:textColor="#FFFFFFFF"
 >>>>>>> 1b7cb98908e67bb90724238de3192591592767f3
         app:layout_constraintBottom_toTopOf="@+id/editText4"
@@ -192,7 +167,8 @@
         android:id="@+id/switch1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Alchololic"
+        android:text="Al
+hololic"
         android:textColor="#FFFFFFFF"
         app:layout_constraintBottom_toTopOf="@+id/button"
         app:layout_constraintEnd_toEndOf="parent"
@@ -202,4 +178,15 @@
 
     Al
 
-</android.support.constraint.ConstraintLayout>
+</android.support.constraint.ConstraintLayout><![CDATA[=======
+        android:textColor="#FFFFFFFF"
+>>>>>>> 1b7cb98908e67bb90724238de3192591592767f3
+        app:layout_constraintBottom_toTopOf="@+id/editText6"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editText3" />
+
+    MM
+
+    ]]>
