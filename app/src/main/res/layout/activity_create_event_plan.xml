@@ -36,7 +36,8 @@
                 android:ems="10"
                 android:inputType="number"
                 android:text="Number of Attendees"
-                android:textColor="#ffffffff" />
+                android:textColor="#ffffffff"
+                android:imeOptions="actionDone"/>
 
             <Spinner
                 android:id="@+id/spinner3"
@@ -45,7 +46,8 @@
                 android:layout_marginBottom="20dp"
                 android:layout_marginLeft="50dp"
                 android:layout_marginRight="50dp"
-                android:layout_marginTop="20dp" />
+                android:layout_marginTop="20dp"
+                android:imeOptions="actionDone"/>
 
             <DatePicker
                 android:id="@+id/datePicker"
@@ -56,7 +58,9 @@
                 android:calendarTextColor="#ffffffff"
                 android:dayOfWeekBackground="#3a7ce8"
                 android:headerBackground="#3a7ce8"
-                 />
+                android:isScrollContainer="false"
+                android:nestedScrollingEnabled="true"
+                android:imeOptions="actionDone"/>
 
             <TimePicker
                 android:id="@+id/timePicker"
@@ -65,7 +69,8 @@
                 android:layout_marginLeft="50dp"
                 android:layout_marginRight="50dp"
                 android:headerBackground="#3a7ce8"
-                android:numbersSelectorColor="#3a7ce8" />
+                android:numbersSelectorColor="#3a7ce8"
+                android:imeOptions="actionDone"/>
 
             <EditText
                 android:id="@+id/editText10"
@@ -76,7 +81,8 @@
                 android:ems="10"
                 android:inputType="number"
                 android:text="Duration"
-                android:textColor="#ffffffff" />
+                android:textColor="#ffffffff"
+                android:imeOptions="actionDone"/>
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -97,7 +103,8 @@
                     android:textColor="#ffffffff"
                     android:textSize="18sp"
                     android:thumbTint="#3a7ce8"
-                    android:trackTint="#ffffffff" />
+                    android:trackTint="#ffffffff"
+                    android:imeOptions="actionDone"/>
 
             </LinearLayout>
 
@@ -120,7 +127,8 @@
                     android:textColor="#ffffffff"
                     android:textSize="18sp"
                     android:thumbTint="#3a7ce8"
-                    android:trackTint="#ffffffff" />
+                    android:trackTint="#ffffffff"
+                    android:imeOptions="actionDone"/>
 
             </LinearLayout>
 
@@ -133,7 +141,8 @@
                 android:layout_marginRight="50dp"
                 android:layout_weight="1"
                 android:background="#3a7ce8"
-                android:text="Submit" />
+                android:text="Submit"
+                android:imeOptions="actionDone"/>
 
         </LinearLayout>
     </ScrollView>
