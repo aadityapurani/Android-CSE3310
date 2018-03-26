@@ -52,7 +52,7 @@
                                 android:layout_height="wrap_content"
                                 android:ems="10"
                                 android:inputType="textMultiLine"
-                                android:text="Event 1" />
+                                android:text="Bob, J " />
 
                             <EditText
                                 android:id="@+id/editText17"
@@ -73,7 +73,7 @@
                                 android:layout_height="wrap_content"
                                 android:ems="10"
                                 android:inputType="textMultiLine"
-                                android:text="Event 2" />
+                                android:text="James, T" />
 
                             <EditText
                                 android:id="@+id/editText18"
@@ -101,7 +101,7 @@
                                 android:layout_height="wrap_content"
                                 android:ems="10"
                                 android:inputType="textMultiLine"
-                                android:text="Event 3" />
+                                android:text="Larry, B" />
 
                             <EditText
                                 android:id="@+id/editText19"
