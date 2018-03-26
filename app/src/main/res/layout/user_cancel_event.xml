@@ -48,7 +48,7 @@
                         android:layout_height="wrap_content"
                         android:ems="10"
                         android:inputType="textPersonName"
-                        android:text="Event #" />
+                        android:text="Event 1" />
 
                     <EditText
                         android:id="@+id/editText15"
@@ -56,7 +56,7 @@
                         android:layout_height="wrap_content"
                         android:ems="10"
                         android:inputType="textPersonName"
-                        android:text="Event #" />
+                        android:text="Event 2" />
 
                     <EditText
                         android:id="@+id/editText16"
@@ -64,7 +64,7 @@
                         android:layout_height="wrap_content"
                         android:ems="10"
                         android:inputType="textPersonName"
-                        android:text="Event #" />
+                        android:text="Event 3" />
 
                     <TableLayout
                         android:layout_width="match_parent"

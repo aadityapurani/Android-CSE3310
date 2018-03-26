@@ -52,7 +52,7 @@
                                 android:layout_height="wrap_content"
                                 android:ems="10"
                                 android:inputType="textMultiLine"
-                                android:text="Event #" />
+                                android:text="Event 1" />
 
                             <EditText
                                 android:id="@+id/editText17"
@@ -60,7 +60,7 @@
                                 android:layout_height="wrap_content"
                                 android:ems="10"
                                 android:inputType="textMultiLine"
-                                android:text="Date - Earliest" />
+                                android:text="3/25/2018" />
                         </TableRow>
 
                         <TableRow
@@ -73,7 +73,7 @@
                                 android:layout_height="wrap_content"
                                 android:ems="10"
                                 android:inputType="textMultiLine"
-                                android:text="Event #" />
+                                android:text="Event 2" />
 
                             <EditText
                                 android:id="@+id/editText18"
@@ -81,7 +81,7 @@
                                 android:layout_height="wrap_content"
                                 android:ems="10"
                                 android:inputType="textPersonName"
-                                android:text="Date" />
+                                android:text="3/26/2018" />
 
                         </TableRow>
 
@@ -101,7 +101,7 @@
                                 android:layout_height="wrap_content"
                                 android:ems="10"
                                 android:inputType="textMultiLine"
-                                android:text="Event #" />
+                                android:text="Event 3" />
 
                             <EditText
                                 android:id="@+id/editText19"
@@ -109,7 +109,7 @@
                                 android:layout_height="wrap_content"
                                 android:ems="10"
                                 android:inputType="textPersonName"
-                                android:text="Date - Latest" />
+                                android:text="3/27/2018" />
 
                         </TableRow>
                     </TableLayout>
