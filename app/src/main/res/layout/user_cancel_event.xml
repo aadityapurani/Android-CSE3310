@@ -11,7 +11,7 @@
         android:layout_height="match_parent">
 
         <android.support.constraint.ConstraintLayout
-            android:layout_width="395dp"
+            android:layout_width="wrap_content"
             android:layout_height="643dp"
             android:background="@drawable/gradient"
             tools:layout_editor_absoluteX="8dp"
@@ -21,14 +21,15 @@
                 android:layout_width="395dp"
                 android:layout_height="643dp"
                 android:layout_marginBottom="52dp"
+                android:layout_marginStart="8dp"
                 app:layout_constraintBottom_toBottomOf="parent"
-                tools:layout_editor_absoluteX="8dp">
+                app:layout_constraintStart_toStartOf="parent">
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="50dp"
-                    android:layout_marginRight="50dp"
+                    android:layout_marginRight="75dp"
                     android:layout_marginTop="50dp"
                     android:orientation="vertical">
 
@@ -47,7 +48,7 @@
                         android:layout_height="wrap_content"
                         android:ems="10"
                         android:inputType="textPersonName"
-                        android:text="Event #" />
+                        android:text="Event 1" />
 
                     <EditText
                         android:id="@+id/editText15"
@@ -55,7 +56,7 @@
                         android:layout_height="wrap_content"
                         android:ems="10"
                         android:inputType="textPersonName"
-                        android:text="Event #" />
+                        android:text="Event 2" />
 
                     <EditText
                         android:id="@+id/editText16"
@@ -63,7 +64,7 @@
                         android:layout_height="wrap_content"
                         android:ems="10"
                         android:inputType="textPersonName"
-                        android:text="Event #" />
+                        android:text="Event 3" />
 
                     <TableLayout
                         android:layout_width="match_parent"
