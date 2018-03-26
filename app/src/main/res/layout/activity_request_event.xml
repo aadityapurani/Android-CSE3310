@@ -14,7 +14,11 @@
         android:ems="10"
         android:inputType="textPersonName"
         android:text="Type of Event"
+<<<<<<< HEAD
+        android:textColor="#ffffffff"
+=======
         android:textColor="#FFFFFFFF"
+>>>>>>> 1b7cb98908e67bb90724238de3192591592767f3
         app:layout_constraintBottom_toTopOf="@+id/editText3"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
@@ -26,7 +30,11 @@
         android:layout_width="217dp"
         android:layout_height="29dp"
         android:text="Request Event"
+<<<<<<< HEAD
+        android:textColor="#ffffffff"
+=======
         android:textColor="#FFFFFFFF"
+>>>>>>> 1b7cb98908e67bb90724238de3192591592767f3
         android:textSize="24sp"
         app:layout_constraintBottom_toTopOf="@+id/editText5"
         app:layout_constraintEnd_toEndOf="parent"
@@ -41,7 +49,11 @@
         android:ems="10"
         android:inputType="time"
         android:text="Time (HH:MM)"
+<<<<<<< HEAD
+        android:textColor="#ffffffff"
+=======
         android:textColor="#FFFFFFFF"
+>>>>>>> 1b7cb98908e67bb90724238de3192591592767f3
         app:layout_constraintBottom_toTopOf="@+id/editText6"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
@@ -63,7 +75,11 @@
         android:ems="10"
         android:inputType="date"
         android:text="Date (MM/DD/YY)"
+<<<<<<< HEAD
+        android:textColor="#ffffffff"
+=======
         android:textColor="#FFFFFFFF"
+>>>>>>> 1b7cb98908e67bb90724238de3192591592767f3
         app:layout_constraintBottom_toTopOf="@+id/editText4"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
@@ -98,7 +114,11 @@
         android:ems="10"
         android:inputType="time"
         android:text="Duration (HH:MM)"
+<<<<<<< HEAD
+        android:textColor="#ffffffff"
+=======
         android:textColor="#FFFFFFFF"
+>>>>>>> 1b7cb98908e67bb90724238de3192591592767f3
         app:layout_constraintBottom_toTopOf="@+id/editText2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.432"
@@ -112,7 +132,11 @@
         android:ems="10"
         android:inputType="textPersonName"
         android:text="Name"
+<<<<<<< HEAD
+        android:textColor="#ffffffff"
+=======
         android:textColor="#FFFFFFFF"
+>>>>>>> 1b7cb98908e67bb90724238de3192591592767f3
         app:layout_constraintBottom_toTopOf="@+id/editText"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.432"
