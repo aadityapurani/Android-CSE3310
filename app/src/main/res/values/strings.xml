@@ -9,4 +9,5 @@
         <item>Event 3</item>
         <item>Event 4</item>
     </array>
+    <string name="title_activity_delete_event">deleteEvent</string>
 </resources>
