@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
 
+
 import org.w3c.dom.Text;
 
 public class MainActivity extends AppCompatActivity {
@@ -14,8 +15,8 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
         // It's just a workaround UI Demo to link the hyperlink to Register Page
+
         final TextView registerLink = (TextView) findViewById(R.id.tvRegisterHere);
         registerLink.setOnClickListener(new View.OnClickListener(){
             @Override
@@ -26,4 +27,5 @@ public class MainActivity extends AppCompatActivity {
 
         });
     }
+
 }
