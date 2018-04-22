@@ -27,10 +27,12 @@
             android:theme="@style/AppTheme"></activity>
         <activity
             android:name=".AddResourcesActivity"
-            android:theme="@style/AppTheme"></activity>
+            android:theme="@style/AppTheme"
+            android:windowSoftInputMode="stateAlwaysHidden"></activity>
         <activity
             android:name=".CreateEventPlan"
-            android:theme="@style/AppTheme"></activity>
+            android:theme="@style/AppTheme"
+            android:windowSoftInputMode="stateAlwaysHidden"></activity>
     </application>
 
 

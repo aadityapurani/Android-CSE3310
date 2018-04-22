@@ -72,6 +72,7 @@
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="61dp"
         android:text="Register"
+        android:textColor="#ffffffff"
         android:textSize="18sp" />
 
 </RelativeLayout>
