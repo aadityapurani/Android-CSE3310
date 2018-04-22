@@ -64,7 +64,7 @@
                         android:text="Add Resources" />
 
                     <Button
-                        android:id="@+id/button27"
+                        android:id="@+id/schedule_venue_id"
                         android:layout_width="170dp"
                         android:layout_height="130dp"
                         android:layout_margin="10dp"

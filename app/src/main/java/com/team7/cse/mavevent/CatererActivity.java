@@ -36,13 +36,23 @@ public class CatererActivity extends AppCompatActivity {
             }
         });
 
-        // Just Testing the stuff out
+        // Cater Homepage - > Assign Staff Page
         final Button assign_staff_Button = (Button) findViewById(R.id.assign_staff_id);
         assign_staff_Button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent assign_staff_Intent = new Intent(CatererActivity.this, AssignStaffActivity.class);
                 CatererActivity.this.startActivity(assign_staff_Intent);
+            }
+        });
+
+        // Cater Homepage - > Schedule Venue/Location Page
+        final Button schedule_venue_Button = (Button) findViewById(R.id.schedule_venue_id);
+        schedule_venue_Button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent schedule_venue_Intent = new Intent(CatererActivity.this, ScheduleVenueActivity.class);
+                CatererActivity.this.startActivity(schedule_venue_Intent);
             }
         });
 
