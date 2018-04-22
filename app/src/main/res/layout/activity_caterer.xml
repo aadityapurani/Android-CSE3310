@@ -101,7 +101,7 @@
                     android:layout_height="match_parent">
 
                     <Button
-                        android:id="@+id/button32"
+                        android:id="@+id/view_event_details_id"
                         android:layout_width="wrap_content"
                         android:layout_height="100dp"
                         android:layout_margin="10dp"
@@ -110,7 +110,7 @@
                         android:text="View Event" />
 
                     <Button
-                        android:id="@+id/button29"
+                        android:id="@+id/delete_event_id"
                         android:layout_width="wrap_content"
                         android:layout_height="100dp"
                         android:layout_margin="10dp"
