@@ -36,5 +36,15 @@ public class CatererActivity extends AppCompatActivity {
             }
         });
 
+        // Just Testing the stuff out
+        final Button assign_staff_Button = (Button) findViewById(R.id.assign_staff_id);
+        assign_staff_Button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent assign_staff_Intent = new Intent(CatererActivity.this, AssignStaffActivity.class);
+                CatererActivity.this.startActivity(assign_staff_Intent);
+            }
+        });
+
     }
 }

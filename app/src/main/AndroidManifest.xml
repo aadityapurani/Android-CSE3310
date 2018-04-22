@@ -33,7 +33,12 @@
             android:name=".CreateEventPlan"
             android:theme="@style/AppTheme"
             android:windowSoftInputMode="stateAlwaysHidden"></activity>
+        <activity
+            android:name=".AssignStaffActivity"
+            android:theme="@style/AppTheme"
+            android:windowSoftInputMode="stateAlwaysHidden"></activity>
     </application>
+
 
 
 </manifest>
