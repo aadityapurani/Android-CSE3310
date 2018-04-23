@@ -21,7 +21,7 @@ public class RegisterActivity extends AppCompatActivity {
         regButton.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){
-                Intent catereractIntent = new Intent(RegisterActivity.this, CatererActivity.class);
+                Intent catereractIntent = new Intent(RegisterActivity.this, UserActivity.class);
                 RegisterActivity.this.startActivity(catereractIntent);
             }
 

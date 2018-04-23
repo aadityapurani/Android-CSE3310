@@ -16,7 +16,7 @@ public class StaffActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_staff);
 
-        // Just Testing the stuff out
+        // Staff Homepage - > View Events
         final Button view_events_Button = (Button) findViewById(R.id.view_events_id);
         view_events_Button.setOnClickListener(new View.OnClickListener() {
             @Override

@@ -30,6 +30,10 @@
             android:label="@string/title_caterer"
             android:theme="@style/AppTheme"></activity>
         <activity
+            android:name=".UserActivity"
+            android:label="@string/title_caterer"
+            android:theme="@style/AppTheme"></activity>
+        <activity
             android:name=".AddResourcesActivity"
             android:theme="@style/AppTheme"
             android:windowSoftInputMode="stateAlwaysHidden"></activity>
@@ -55,6 +59,10 @@
             android:windowSoftInputMode="stateAlwaysHidden"></activity>
         <activity
             android:name=".ViewEventsActivity"
+            android:theme="@style/AppTheme"
+            android:windowSoftInputMode="stateAlwaysHidden"></activity>
+        <activity
+            android:name=".RequestEventActivity"
             android:theme="@style/AppTheme"
             android:windowSoftInputMode="stateAlwaysHidden"></activity>
     </application>
