@@ -1,5 +1,6 @@
 -- TODO 
 -- Add Database creation automation
+-- Assign Staff 
 
 CREATE TABLE Users_tbl (
 	id INTeger PRIMARY KEY AUTOINCREMENT NOT NULL,
@@ -14,6 +15,7 @@ CREATE TABLE Users_tbl (
   	user_type INT
 );
 
+INSERT INTO Users_tbl VALUES(1, "wolf", "password123", "hi street", "James", "james@yahoo.com", "6388823299", "Farshow", 1004544300, 1);
 INSERT INTO Users_tbl VALUES(2, "minnie", "king123", "nice street", "Jordan", "jkmao@yahoo.com", "6388822299", "Clarke", 1004542300, 2);
 INSERT INTO Users_tbl VALUES(3, "gordon", "cook123", "chef street", "Gordon", "gramsay@yahoo.com", "6388821299", "Ramsay", 1002542300, 3);
 INSERT INTO Users_tbl VALUES(4, "foodie", "eat123", "lol street", "Jason", "jasonoo@yahoo.com", "6388722299", "Kasprowicz", 1004542303, 1);
