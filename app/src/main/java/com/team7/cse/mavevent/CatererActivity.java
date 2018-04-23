@@ -17,8 +17,8 @@ public class CatererActivity extends AppCompatActivity {
         setContentView(R.layout.activity_caterer);
 
         // Just Testing the stuff out
-        final Button add_resources_Button = (Button) findViewById(R.id.add_resources_id);
-        add_resources_Button.setOnClickListener(new View.OnClickListener() {
+        final Button caterer_add_resources_Button = (Button) findViewById(R.id.caterer_add_resources_id);
+        caterer_add_resources_Button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent add_resource_Intent = new Intent(CatererActivity.this, AddResourcesActivity.class);

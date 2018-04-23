@@ -55,7 +55,7 @@
                     android:layout_height="match_parent">
 
                     <Button
-                        android:id="@+id/add_resources_id"
+                        android:id="@+id/caterer_add_resources_id"
                         android:layout_width="150dp"
                         android:layout_height="130dp"
                         android:layout_margin="10dp"
