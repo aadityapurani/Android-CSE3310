@@ -26,6 +26,14 @@
             android:label="@string/title_caterer"
             android:theme="@style/AppTheme"></activity>
         <activity
+            android:name=".StaffActivity"
+            android:label="@string/title_caterer"
+            android:theme="@style/AppTheme"></activity>
+        <activity
+            android:name=".UserActivity"
+            android:label="@string/title_caterer"
+            android:theme="@style/AppTheme"></activity>
+        <activity
             android:name=".AddResourcesActivity"
             android:theme="@style/AppTheme"
             android:windowSoftInputMode="stateAlwaysHidden"></activity>
@@ -33,7 +41,32 @@
             android:name=".CreateEventPlan"
             android:theme="@style/AppTheme"
             android:windowSoftInputMode="stateAlwaysHidden"></activity>
+        <activity
+            android:name=".AssignStaffActivity"
+            android:theme="@style/AppTheme"
+            android:windowSoftInputMode="stateAlwaysHidden"></activity>
+        <activity
+            android:name=".ScheduleVenueActivity"
+            android:theme="@style/AppTheme"
+            android:windowSoftInputMode="stateAlwaysHidden"></activity>
+        <activity
+            android:name=".ViewEventDetailsActivity"
+            android:theme="@style/AppTheme"
+            android:windowSoftInputMode="stateAlwaysHidden"></activity>
+        <activity
+            android:name=".DeleteEventActivity"
+            android:theme="@style/AppTheme"
+            android:windowSoftInputMode="stateAlwaysHidden"></activity>
+        <activity
+            android:name=".ViewEventsActivity"
+            android:theme="@style/AppTheme"
+            android:windowSoftInputMode="stateAlwaysHidden"></activity>
+        <activity
+            android:name=".RequestEventActivity"
+            android:theme="@style/AppTheme"
+            android:windowSoftInputMode="stateAlwaysHidden"></activity>
     </application>
+
 
 
 </manifest>
