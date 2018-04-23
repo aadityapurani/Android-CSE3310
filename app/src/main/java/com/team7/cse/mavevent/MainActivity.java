@@ -26,6 +26,16 @@ public class MainActivity extends AppCompatActivity {
             }
 
         });
+
+        final TextView loginLink = (TextView) findViewById(R.id.login_login_id);
+        loginLink.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v){
+                Intent loginIntent = new Intent(MainActivity.this, CatererActivity.class);
+                MainActivity.this.startActivity(loginIntent);
+            }
+
+        });
     }
 
 }
