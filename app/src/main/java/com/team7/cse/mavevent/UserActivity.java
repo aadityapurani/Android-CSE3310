@@ -26,15 +26,25 @@ public class UserActivity extends AppCompatActivity {
             }
         });
 
-        /*// User Homepage - > View Reserved Event Page
-        final Button view_reserved_event_Button = (Button) findViewById(R.id.request_event_id);
-        view_events_Button.setOnClickListener(new View.OnClickListener() {
+        // User Homepage - > View Reserved Event Page
+        final Button view_reserved_event_Button = (Button) findViewById(R.id.view_reserved_event_id);
+        view_reserved_event_Button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent request_event_Intent = new Intent(UserActivity.this, RequestEventActivity.class);
-                UserActivity.this.startActivity(request_event_Intent);
+                Intent view_reserved_event_Intent = new Intent(UserActivity.this, ViewReservedEventsActivity.class);
+                UserActivity.this.startActivity(view_reserved_event_Intent);
             }
-        });*/
+        });
+
+        // User Homepage - > Cancel Events Page
+        final Button cancel_events_Button = (Button) findViewById(R.id.cancel_event_id);
+        cancel_events_Button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent cancel_events_Intent = new Intent(UserActivity.this, CancelEventActivity.class);
+                UserActivity.this.startActivity(cancel_events_Intent);
+            }
+        });
 
     }
 }

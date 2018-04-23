@@ -65,6 +65,14 @@
             android:name=".RequestEventActivity"
             android:theme="@style/AppTheme"
             android:windowSoftInputMode="stateAlwaysHidden"></activity>
+        <activity
+            android:name=".ViewReservedEventsActivity"
+            android:theme="@style/AppTheme"
+            android:windowSoftInputMode="stateAlwaysHidden"></activity>
+        <activity
+            android:name=".CancelEventActivity"
+            android:theme="@style/AppTheme"
+            android:windowSoftInputMode="stateAlwaysHidden"></activity>
     </application>
 
 
