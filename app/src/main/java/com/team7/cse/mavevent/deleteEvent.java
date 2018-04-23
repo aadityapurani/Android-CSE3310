@@ -11,6 +11,7 @@ public class deleteEvent extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        /*
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_delete_event);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
@@ -24,6 +25,7 @@ public class deleteEvent extends AppCompatActivity {
                         .setAction("Action", null).show();
             }
         });
+        */
     }
 
 }

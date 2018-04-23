@@ -11,6 +11,7 @@ public class ViewEventDetails extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        /*
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_view_event_details);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
@@ -24,6 +25,7 @@ public class ViewEventDetails extends AppCompatActivity {
                         .setAction("Action", null).show();
             }
         });
+        */
     }
 
 }
