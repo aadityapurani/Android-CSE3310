@@ -23,20 +23,24 @@ public class Event implements Serializable{
 	private Hall hall;
 	public boolean isFormal;
 	private int duration;
-	private ArrayList <EventRecourse> eventRecourses;
+	private ArrayList <Drink> drinks;
+	private ArrayList <EntertainmentItem> entertainmentItems;
+	private Food food;
 	private ArrayList <Staff> staffMembers;
-	public boolean isAccepted;
-	//private boolean accepted;
+	//public boolean isAccepted;
+	private boolean accepted;
 	
 	Event(){
-		eventRecourses = new ArrayList<EventRecourse>();
+		drinks = new ArrayList<Drink>();
+		entertainmentItems = new ArrayList<EntertainmentItem>();
+		food = new Food();
 		staffMembers = new ArrayList<Staff>();
 		isFormal = true;
 		time = -1;
 		date = "";
 		duration = -1;
 		capacity = 0;
-		isAccepted = false;
+		accepted = false;
 	}
 	
 	public ArrayList getStaffMembers(){
@@ -44,8 +48,13 @@ public class Event implements Serializable{
 		return x;
 	}
 	
-	public void setStaffMembers(ArrayList staffMembers){
-		this.staffMembers = new ArrayList<Staff>(staffMembers);
+	public void setStaffMembers(ArrayList staffMembers){this.staffMembers = new ArrayList<Staff>(staffMembers);}
+
+	public boolean getAccepted(){return accepted;}
+
+	public void setAccepted(boolean accepted){
+		if(accepted == false){staffMembers.clear();}
+		this.accepted = accepted;
 	}
 
 	public int getId(){
@@ -93,7 +102,7 @@ public class Event implements Serializable{
 	}
 	
 	public boolean setCapacity(int capacity){
-		if(capacity>0){
+		if(capacity>=0){
 			this.capacity = capacity;
 			return true;
 		}
@@ -127,7 +136,7 @@ public class Event implements Serializable{
 		return false;
 	}
 	
-	public ArrayList getEventRecourses(){
+	/*public ArrayList getEventRecourses(){
 		ArrayList X = new ArrayList(eventRecourses);
 		return X;
 	}
@@ -135,11 +144,12 @@ public class Event implements Serializable{
 	public void setEventRecourses(ArrayList eventRecourses){
 		this.eventRecourses = new ArrayList(eventRecourses);
 	}
-	
+
 	public void addEventRecourse(EventRecourse e){
 		eventRecourses.add(e);
 	}
 
+	*/
 	//actual functions
 	/*
 	checks to see if staff is already assigned and removes them
@@ -175,6 +185,8 @@ public class Event implements Serializable{
 		//MM/DD/YY
 		//01234567
 		// checks MM then DD then YY
+		if(date.length()!=8)
+			return false;
 		for(int i=0;i<8;i+=3){
 			this.date.substring(0);
 			if(date.substring(i)!=this.date.substring(i) || date.substring(i+1)!=this.date.substring(i+1))

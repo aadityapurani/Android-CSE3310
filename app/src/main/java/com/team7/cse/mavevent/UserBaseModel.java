@@ -2,7 +2,7 @@ package com.team7.cse.mavevent;
 
 //import java.util.ArrayList;
 import java.io.Serializable;
-
+import java.util.ArrayList;
 /**
  * Created by mayur on 4/11/2018.
  * Edited by Jonathon Kirkpatrick on 4/22/2018.
@@ -19,9 +19,12 @@ public class UserBaseModel implements Serializable {
 	private String phone;
 	private String address;
 	private int id;
-
+	protected ArrayList<Event> events;
 	
 	//private ArrayList reservedEvents = new ArrayList();
+	public ArrayList<Event> getEvents(){return new ArrayList<Event>(events);}
+
+/* public void setEvents(ArrayList events){this.events= new ArrayList<Event>(events);} */
 
     public String getPassword() {
         return password;
@@ -88,7 +91,19 @@ public class UserBaseModel implements Serializable {
 	}
 	
 	// actual functions
-	
+
+	/*
+	checks too see if the event has any time interference with other classes
+	 */
+
+	public boolean isAvailable(Event event){
+		for(Event e : events){
+			if(e.timeOverlap(event))
+				return false;
+		}
+		return true;
+	}
+
 	/*
 		checks too see if they are the same people
 	*/
