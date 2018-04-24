@@ -13,16 +13,12 @@ public class User extends UserBaseModel implements Serializable {
 	private String utaId;
 	
 	User(){
-		reservedEvents = new ArrayList();
+		reservedEvents = new ArrayList<Event>();
 	}
 	
 	public ArrayList getReservedEvents(){
-		ArrayList x = new ArrayList(reservedEvents);
+		ArrayList x = new ArrayList<Event>(reservedEvents);
 		return x;
-	}
-	
-	public void setReservedEvents(ArrayList reservedEvents){
-		this.reservedEvents = new ArrayList(reservedEvents);
 	}
 	
 	public String getUtaId(){

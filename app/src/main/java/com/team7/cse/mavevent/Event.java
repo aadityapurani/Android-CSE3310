@@ -20,14 +20,17 @@ public class Event implements Serializable{
 	private int time;
 	private String date;
 	private int capacity;
-	//private Hall hall;
+	private Hall hall;
 	public boolean isFormal;
 	private int duration;
-	private ArrayList eventRecourses;
+	private ArrayList <EventRecourse> eventRecourses;
 	private ArrayList <Staff> staffMembers;
 	public boolean isAccepted;
+	//private boolean accepted;
 	
 	Event(){
+		eventRecourses = new ArrayList<EventRecourse>();
+		staffMembers = new ArrayList<Staff>();
 		isFormal = true;
 		time = -1;
 		date = "";
@@ -37,34 +40,14 @@ public class Event implements Serializable{
 	}
 	
 	public ArrayList getStaffMembers(){
-		ArrayList x = new ArrayList(staffMembers);
+		ArrayList x = new ArrayList<Staff>(staffMembers);
 		return x;
 	}
 	
 	public void setStaffMembers(ArrayList staffMembers){
-		this.staffMembers = new ArrayList(staffMembers);
+		this.staffMembers = new ArrayList<Staff>(staffMembers);
 	}
-	
-	public boolean addStaffMember(Staff staff){
-		if(this.alreadyAssigned(staff)){
-			return false;
-		}
-		this.staffMembers.add(staff);
-		return true;
-	}
-	
-	public void removeStaffMember(Staff staff){
-		staffMembers.remove(staff);
-	}
-	
-	public boolean alreadyAssigned(Staff staff){
-		for( Staff s : staffMembers){
-			if(staff.sameAs(s))
-				return true;
-		}
-		return false;
-	}
-	
+
 	public int getId(){
 		return id;
 	}
@@ -117,11 +100,11 @@ public class Event implements Serializable{
 		return false;
 	}
 	
-	/*public Hall getHall(){
+	public Hall getHall(){
 		return hall;
-	}*/
+	}
 	
-	/*public boolean setHall(Hall hall){
+	public boolean setHall(Hall hall){
 		if(time==-1 || date.length()==0 || duration == -1){
 			return false;
 		}
@@ -130,7 +113,7 @@ public class Event implements Serializable{
 			return true;
 		}
 		return false;
-	}*/
+	}
 	
 	public int getDuration(){
 		return duration;
@@ -153,10 +136,37 @@ public class Event implements Serializable{
 		this.eventRecourses = new ArrayList(eventRecourses);
 	}
 	
-	/*public void addEventRecourse(EventRecourse e){
+	public void addEventRecourse(EventRecourse e){
 		eventRecourses.add(e);
-	}*/
-	
+	}
+
+	//actual functions
+	/*
+	checks to see if staff is already assigned and removes them
+	*/
+
+	public boolean addStaffMember(Staff staff){
+		if(this.alreadyAssigned(staff)){
+			return false;
+		}
+		this.staffMembers.add(staff);
+		return true;
+	}
+
+	public void removeStaffMember(Staff staff){
+		staffMembers.remove(staff);
+	}
+
+	public boolean alreadyAssigned(Staff staff){
+		for( Staff s : staffMembers){
+			if(staff.sameAs(s))
+				return true;
+		}
+		return false;
+	}
+
+
+
 	public boolean sameAs(Event e){
 		return e.getId()==this.getId();
 	}

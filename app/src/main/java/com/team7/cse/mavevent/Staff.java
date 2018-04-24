@@ -15,11 +15,11 @@ public class Staff extends UserBaseModel implements Serializable {
 	private ArrayList <Event> assignedEvents;
 	
 	Staff(){
-		assignedEvents = new ArrayList();
+		assignedEvents = new ArrayList<Event>();
 	}
 	
 	public ArrayList getAssignedEvents(){
-		ArrayList e = new ArrayList(assignedEvents);
+		ArrayList e = new ArrayList<Event>(assignedEvents);
 		return e;
 	}
 
