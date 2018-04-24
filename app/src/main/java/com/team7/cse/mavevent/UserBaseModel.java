@@ -1,6 +1,4 @@
-// Edit this
 package com.team7.cse.mavevent;
-//package arraylist;
 
 //import java.util.ArrayList;
 import java.io.Serializable;
