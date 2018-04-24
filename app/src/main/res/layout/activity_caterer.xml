@@ -9,21 +9,27 @@
     <android.support.design.widget.CoordinatorLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginBottom="50dp"
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent">
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:orientation="vertical">
+
+            <Button
+                android:id="@+id/button"
+                android:layout_width="80dp"
+                android:layout_height="0px"
+                android:layout_marginLeft="5dp"
+                android:layout_weight="5"
+                android:background="?android:attr/colorActivatedHighlight"
+                android:text="Logout" />
 
             <ImageView
                 android:id="@+id/imageView3"
                 android:layout_width="match_parent"
-                android:layout_height="140dp"
+                android:layout_height="0px"
+                android:layout_weight="25"
                 android:scaleType="fitCenter"
                 android:scaleX=".6"
                 android:scaleY=".6"
@@ -31,43 +37,50 @@
 
             <TableLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="0px"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="5dp"
+                android:layout_weight="70"
                 tools:layout_editor_absoluteY="100dp">
 
                 <TableRow
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent">
+                    android:layout_height="match_parent"
+                    android:layout_weight="25">
 
                     <Button
-                        android:id="@+id/button26"
+                        android:id="@+id/caterer_create_event_plan_id"
                         android:layout_width="wrap_content"
-                        android:layout_height="110dp"
-                        android:layout_margin="10dp"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="center_vertical"
+                        android:layout_margin="5dp"
                         android:layout_weight="100"
                         android:background="#3a7ce8"
                         android:padding="20dp"
-                        android:paddingBottom="50dp"
                         android:text="Create Event Plan" />
                 </TableRow>
 
                 <TableRow
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent">
+                    android:layout_height="match_parent"
+                    android:layout_weight="25">
 
                     <Button
-                        android:id="@+id/add_resources_id"
+                        android:id="@+id/caterer_add_resources_id"
                         android:layout_width="150dp"
-                        android:layout_height="130dp"
-                        android:layout_margin="10dp"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="center_vertical"
+                        android:layout_margin="5dp"
                         android:layout_weight="50"
                         android:background="#3a7ce8"
                         android:text="Add Resources" />
 
                     <Button
-                        android:id="@+id/schedule_venue_id"
+                        android:id="@+id/caterer_schedule_location_id"
                         android:layout_width="170dp"
-                        android:layout_height="130dp"
-                        android:layout_margin="10dp"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="center_vertical"
+                        android:layout_margin="5dp"
                         android:layout_weight="50"
                         android:background="#3a7ce8"
                         android:text="Schedule Location" />
@@ -75,22 +88,25 @@
 
                 <TableRow
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent">
+                    android:layout_height="match_parent"
+                    android:layout_weight="25">
 
                     <Button
-                        android:id="@+id/assign_staff_id"
+                        android:id="@+id/caterer_assign_staff_id"
                         android:layout_width="wrap_content"
-                        android:layout_height="110dp"
-                        android:layout_margin="10dp"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="center_vertical"
+                        android:layout_margin="5dp"
                         android:layout_weight="50"
                         android:background="#3a7ce8"
                         android:text="Assign Staff" />
 
                     <Button
-                        android:id="@+id/button28"
+                        android:id="@+id/caterer_view_calendar_id"
                         android:layout_width="wrap_content"
-                        android:layout_height="110dp"
-                        android:layout_margin="10dp"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="center_vertical"
+                        android:layout_margin="5dp"
                         android:layout_weight="50"
                         android:background="#3a7ce8"
                         android:text="View Calendar" />
@@ -98,22 +114,25 @@
 
                 <TableRow
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent">
+                    android:layout_height="match_parent"
+                    android:layout_weight="25">
 
                     <Button
-                        android:id="@+id/button32"
+                        android:id="@+id/caterer_view_event_details_id"
                         android:layout_width="wrap_content"
-                        android:layout_height="100dp"
-                        android:layout_margin="10dp"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="center_vertical"
+                        android:layout_margin="5dp"
                         android:layout_weight="50"
                         android:background="#3a7ce8"
                         android:text="View Event" />
 
                     <Button
-                        android:id="@+id/button29"
+                        android:id="@+id/caterer_delete_event_id"
                         android:layout_width="wrap_content"
-                        android:layout_height="100dp"
-                        android:layout_margin="10dp"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="center_vertical"
+                        android:layout_margin="5dp"
                         android:layout_weight="50"
                         android:background="#3a7ce8"
                         android:padding="10dp"

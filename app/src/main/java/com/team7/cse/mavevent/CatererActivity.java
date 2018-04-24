@@ -16,9 +16,9 @@ public class CatererActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_caterer);
 
-        // Just Testing the stuff out
-        final Button add_resources_Button = (Button) findViewById(R.id.add_resources_id);
-        add_resources_Button.setOnClickListener(new View.OnClickListener() {
+        // Caterer Homepage - > Add Resources Page
+        final Button caterer_add_resources_Button = (Button) findViewById(R.id.caterer_add_resources_id);
+        caterer_add_resources_Button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent add_resource_Intent = new Intent(CatererActivity.this, AddResourcesActivity.class);
@@ -26,8 +26,8 @@ public class CatererActivity extends AppCompatActivity {
             }
         });
 
-        // Just Testing the stuff out
-        final Button create_event_plan_Button = (Button) findViewById(R.id.button26);
+        // Caterer Homepage - > Create Event Plan Page
+        final Button create_event_plan_Button = (Button) findViewById(R.id.caterer_create_event_plan_id);
         create_event_plan_Button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -36,8 +36,8 @@ public class CatererActivity extends AppCompatActivity {
             }
         });
 
-        // Cater Homepage - > Assign Staff Page
-        final Button assign_staff_Button = (Button) findViewById(R.id.assign_staff_id);
+        // Caterer Homepage - > Assign Staff Page
+        final Button assign_staff_Button = (Button) findViewById(R.id.caterer_assign_staff_id);
         assign_staff_Button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -46,13 +46,33 @@ public class CatererActivity extends AppCompatActivity {
             }
         });
 
-        // Cater Homepage - > Schedule Venue/Location Page
-        final Button schedule_venue_Button = (Button) findViewById(R.id.schedule_venue_id);
+        // Caterer Homepage - > Schedule Venue/Location Page
+        final Button schedule_venue_Button = (Button) findViewById(R.id.caterer_schedule_location_id);
         schedule_venue_Button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent schedule_venue_Intent = new Intent(CatererActivity.this, ScheduleVenueActivity.class);
                 CatererActivity.this.startActivity(schedule_venue_Intent);
+            }
+        });
+
+        // Caterer Homepage - > View Event Details Page
+        final Button view_event_details_Button = (Button) findViewById(R.id.caterer_view_event_details_id);
+        view_event_details_Button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent view_event_details_Intent = new Intent(CatererActivity.this, ViewEventDetailsActivity.class);
+                CatererActivity.this.startActivity(view_event_details_Intent);
+            }
+        });
+
+        // Caterer Homepage - > Delete Event Page
+        final Button delete_event_Button = (Button) findViewById(R.id.caterer_delete_event_id);
+        delete_event_Button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent delete_event_Intent = new Intent(CatererActivity.this, DeleteEventActivity.class);
+                CatererActivity.this.startActivity(delete_event_Intent);
             }
         });
 

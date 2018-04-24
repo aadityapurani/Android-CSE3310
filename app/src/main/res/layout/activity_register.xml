@@ -22,29 +22,54 @@
         tools:showIn="@layout/activity_register">
 
         <EditText
-            android:id="@+id/editText2"
-            android:layout_width="200dp"
+            android:id="@+id/fnameSection"
+            android:layout_width="wrap_content"
             android:layout_height="40dp"
             android:layout_alignParentTop="true"
             android:layout_centerHorizontal="true"
-            android:layout_marginTop="164dp"
+            android:layout_marginTop="38dp"
             android:background="#11000000"
             android:drawableLeft="@drawable/ic_action_prns"
             android:ems="10"
-            android:hint="Name"
+            android:hint="First Name"
+            android:inputType="textPersonName"
+            android:textColor="#fff"
+            android:textColorHint="#ffffffff"
+            android:textSize="16sp" />
+
+        <Spinner
+            android:id="@+id/user_spinner_id"
+            style="@style/mySpinnerItemStyle"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="107dp"
+            android:popupBackground="#DD2e3f5b" />
+
+        <EditText
+            android:id="@+id/lnameSection"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="97dp"
+            android:background="#11000000"
+            android:drawableLeft="@drawable/ic_action_prns"
+            android:ems="10"
+            android:hint="Last Name"
             android:inputType="textPersonName"
             android:textColor="#fff"
             android:textColorHint="#ffffffff"
             android:textSize="16sp" />
 
         <EditText
-            android:id="@+id/editText4"
+            android:id="@+id/unameSection"
             android:layout_width="200dp"
-            android:layout_height="40dp"
-            android:layout_alignLeft="@+id/editText2"
-            android:layout_alignStart="@+id/editText2"
-            android:layout_below="@+id/editText2"
-            android:layout_marginTop="33dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="154dp"
             android:background="#11000000"
             android:drawableLeft="@drawable/ic_action_user"
             android:ems="10"
@@ -55,13 +80,12 @@
             android:textSize="16sp" />
 
         <EditText
-            android:id="@+id/editText5"
+            android:id="@+id/passwordSection"
             android:layout_width="200dp"
-            android:layout_height="40dp"
-            android:layout_alignLeft="@+id/editText4"
-            android:layout_alignStart="@+id/editText4"
-            android:layout_below="@+id/editText4"
-            android:layout_marginTop="28dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="212dp"
             android:background="#11000000"
             android:drawableLeft="@drawable/ic_action_pass"
             android:ems="10"
@@ -72,30 +96,27 @@
             android:textSize="16sp" />
 
         <EditText
-            android:id="@+id/editText7"
+            android:id="@+id/utaidSection"
             android:layout_width="200dp"
-            android:layout_height="40dp"
-            android:layout_alignLeft="@+id/editText6"
-            android:layout_alignStart="@+id/editText6"
-            android:layout_below="@+id/editText6"
-            android:layout_marginTop="36dp"
+            android:layout_height="wrap_content"
             android:background="#11000000"
-            android:drawableLeft="@drawable/ic_action_mail"
+            android:drawableLeft="@drawable/ic_action_addr"
             android:ems="10"
-            android:hint="E-mail"
-            android:inputType="textEmailAddress"
+            android:hint="ID"
+            android:inputType="textPostalAddress"
             android:textColor="#fff"
             android:textColorHint="#ffffffff"
-            android:textSize="16sp" />
+            android:textSize="16sp"
+            android:layout_alignTop="@+id/emailSection"
+            android:layout_alignLeft="@+id/emailSection"
+            android:layout_alignStart="@+id/emailSection"
+            android:layout_marginTop="62dp" />
 
         <EditText
-            android:id="@+id/editText6"
+            android:id="@+id/addressSection"
             android:layout_width="200dp"
-            android:layout_height="40dp"
-            android:layout_alignLeft="@+id/editText5"
-            android:layout_alignStart="@+id/editText5"
-            android:layout_below="@+id/editText5"
-            android:layout_marginTop="35dp"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
             android:background="#11000000"
             android:drawableLeft="@drawable/ic_action_addr"
             android:ems="10"
@@ -105,27 +126,48 @@
             android:textColorHint="#ffffffff"
             android:textSize="16sp" />
 
+        <EditText
+            android:id="@+id/emailSection"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:background="#11000000"
+            android:drawableLeft="@drawable/ic_action_mail"
+            android:ems="10"
+            android:hint="E-mail"
+            android:inputType="textEmailAddress"
+            android:textColor="#fff"
+            android:textColorHint="#ffffffff"
+            android:textSize="16sp"
+            android:layout_marginTop="23dp"
+            android:layout_below="@+id/addressSection"
+            android:layout_alignLeft="@+id/addressSection"
+            android:layout_alignStart="@+id/addressSection" />
+
         <Button
-            android:id="@+id/button2"
+            android:id="@+id/new_password_id"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignEnd="@+id/editText7"
-            android:layout_alignLeft="@+id/editText7"
-            android:layout_alignRight="@+id/editText7"
-            android:layout_alignStart="@+id/editText7"
-            android:layout_below="@+id/editText7"
-            android:layout_marginTop="33dp"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="31dp"
             android:background="#3a7ce8"
             android:text="Register" />
 
-        <ImageView
-            android:id="@+id/imageView2"
-            android:layout_width="120dp"
-            android:layout_height="150dp"
-            android:layout_alignParentTop="true"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="12dp"
-            app:srcCompat="@drawable/uta1" />
+        <EditText
+            android:id="@+id/phoneSection"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="13dp"
+            android:background="#11000000"
+            android:drawableLeft="@drawable/ic_action_prns"
+            android:ems="10"
+            android:hint="Phone Number"
+            android:inputType="textPhonetic"
+            android:textColor="#fff"
+            android:textColorHint="#ffffffff"
+            android:textSize="16sp"
+            android:layout_above="@+id/addressSection"
+            android:layout_centerHorizontal="true" />
 
 
     </RelativeLayout>

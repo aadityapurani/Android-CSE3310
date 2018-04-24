@@ -18,7 +18,7 @@
         app:srcCompat="@drawable/uta1" />
 
     <EditText
-        android:id="@+id/editText"
+        android:id="@+id/login_username_id"
         android:layout_width="200dp"
         android:layout_height="40dp"
         android:layout_centerHorizontal="true"
@@ -33,14 +33,14 @@
         android:textSize="16sp" />
 
     <EditText
-        android:id="@+id/editText3"
+        android:id="@+id/login_password_id"
         android:layout_width="200dp"
         android:layout_height="40dp"
-        android:layout_alignEnd="@+id/editText"
-        android:layout_alignLeft="@+id/editText"
-        android:layout_alignRight="@+id/editText"
-        android:layout_alignStart="@+id/editText"
-        android:layout_below="@+id/editText"
+        android:layout_alignEnd="@+id/login_username_id"
+        android:layout_alignLeft="@+id/login_username_id"
+        android:layout_alignRight="@+id/login_username_id"
+        android:layout_alignStart="@+id/login_username_id"
+        android:layout_below="@+id/login_username_id"
         android:layout_marginTop="23dp"
         android:background="#11000000"
         android:drawableLeft="@drawable/ic_action_pass"
@@ -52,26 +52,37 @@
         android:textSize="16sp" />
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/login_login_id"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignEnd="@+id/editText3"
-        android:layout_alignLeft="@+id/editText3"
-        android:layout_alignRight="@+id/editText3"
-        android:layout_alignStart="@+id/editText3"
-        android:layout_below="@+id/editText3"
+        android:layout_alignEnd="@+id/login_password_id"
+        android:layout_alignLeft="@+id/login_password_id"
+        android:layout_alignRight="@+id/login_password_id"
+        android:layout_alignStart="@+id/login_password_id"
+        android:layout_below="@+id/login_password_id"
         android:layout_marginTop="50dp"
         android:background="#3a7ce8"
         android:text="Login" />
 
     <TextView
-        android:id="@+id/tvRegisterHere"
+        android:id="@+id/login_register_id"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="61dp"
         android:text="Register"
+        android:textColor="#ffffffff"
+        android:textSize="18sp" />
+
+    <TextView
+        android:id="@+id/reset_password_id"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="24dp"
+        android:text="Reset Password"
         android:textColor="#ffffffff"
         android:textSize="18sp" />
 
