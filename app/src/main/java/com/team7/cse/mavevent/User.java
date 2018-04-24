@@ -9,16 +9,11 @@ import java.io.Serializable;
  */
 
 public class User extends UserBaseModel implements Serializable {
-	private ArrayList <Event> reservedEvents;
+	//private ArrayList <Event> reservedEvents;
 	private String utaId;
 	
 	User(){
-		reservedEvents = new ArrayList<Event>();
-	}
-	
-	public ArrayList getReservedEvents(){
-		ArrayList x = new ArrayList<Event>(reservedEvents);
-		return x;
+		events = new ArrayList<Event>();
 	}
 	
 	public String getUtaId(){
@@ -35,26 +30,25 @@ public class User extends UserBaseModel implements Serializable {
 		removes 
 	*/
 	
-	public boolean removeReservedEvent(Event e){
-		for(int i=0; i < reservedEvents.size();i++){
-			if(reservedEvents.get(i).sameAs(e)){
-				reservedEvents.remove(reservedEvents.get(i));
+	public boolean removeEvent(Event e){
+		for(int i=0; i < events.size();i++){
+			if(events.get(i).sameAs(e)){
+				events.remove(events.get(i));
 				return true;
 			}
 		}
 		return false;
 	}
-	
+	/*
 	public boolean updateEvent(Event e){
-		if(removeReservedEvent(e)){
-			this.addReservedEvent(e);
+		if(removeEvent(e)){
+			this.addEvent(e);
 			return true;
 		}
 		return false;
 	}
-	
-	public void addReservedEvent(Event e){
-		reservedEvents.add(e);
+	*/
+	public void addEvent(Event e){
+		events.add(e);
 	}
-	
 }

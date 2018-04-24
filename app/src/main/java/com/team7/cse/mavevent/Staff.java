@@ -12,36 +12,29 @@ import java.util.ArrayList;
  */
 
 public class Staff extends UserBaseModel implements Serializable {
-	private ArrayList <Event> assignedEvents;
+	//private ArrayList <Event> assignedEvents;
 	
 	Staff(){
-		assignedEvents = new ArrayList<Event>();
-	}
-	
-	public ArrayList getAssignedEvents(){
-		ArrayList e = new ArrayList<Event>(assignedEvents);
-		return e;
+		events = new ArrayList<Event>();
 	}
 
-	public void setAssignedEvents(ArrayList assignedEvents){
-
-		this.assignedEvents = new ArrayList(assignedEvents);
+	public boolean removeEvent(Event event){
+		for(Event e : events){
+			if(event.sameAs(e)){
+				events.remove(e);
+				return true;
+			}
+		}
+		return false;
 	}
-	
-	public boolean addAssignedEvent(Event e){
+
+	public boolean addEvent(Event e){
 		
 		if(this.isAvailable(e)){
-			assignedEvents.add(e);
+			events.add(e);
 			return true;
 		}
 		return false;
 	}
-	
-	public boolean isAvailable(Event e){
-		for(Event a : assignedEvents){
-			if(a.timeOverlap(e))
-				return false;
-		}
-		return true;
-	}
+
 }
