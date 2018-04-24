@@ -24,7 +24,7 @@ public class Event implements Serializable{
 	public boolean isFormal;
 	private int duration;
 	private ArrayList eventRecourses;
-	private ArrayList staffMembers;
+	private ArrayList <Staff> staffMembers;
 	public boolean isAccepted;
 	
 	Event(){
@@ -45,25 +45,25 @@ public class Event implements Serializable{
 		this.staffMembers = new ArrayList(staffMembers);
 	}
 	
-	/*public boolean addStaffMember(Staff staff){
+	public boolean addStaffMember(Staff staff){
 		if(this.alreadyAssigned(staff)){
 			return false;
 		}
 		this.staffMembers.add(staff);
 		return true;
-	}*/
+	}
 	
 	public void removeStaffMember(Staff staff){
 		staffMembers.remove(staff);
 	}
 	
-	/*public boolean alreadyAssigned(Staff staff){
-		for( Staff staff : staffMembers){
-			if(staff.sameAs(staff))
+	public boolean alreadyAssigned(Staff staff){
+		for( Staff s : staffMembers){
+			if(staff.sameAs(s))
 				return true;
 		}
 		return false;
-	}*/
+	}
 	
 	public int getId(){
 		return id;
@@ -97,13 +97,13 @@ public class Event implements Serializable{
 		return date;
 	}
 	
-	/*public boolean setDate(String date){
-		if(date.size()==8){
+	public boolean setDate(String date){
+		if(date.length()==8){
 			this.date = date;
 			return true;
 		}
 		return false;
-	}*/
+	}
 	
 	public int getCapacity(){
 		return capacity;
@@ -161,12 +161,13 @@ public class Event implements Serializable{
 		return e.getId()==this.getId();
 	}
 	
-	/*public boolean timeOverlap(int time, String date, int duration){
+	public boolean timeOverlap(int time, String date, int duration){
 		//MM/DD/YY
 		//01234567
 		// checks MM then DD then YY
 		for(int i=0;i<8;i+=3){
-			if(date[i]!=this.date.[i] || date[i+1]!=this.date[i+1])
+			this.date.substring(0);
+			if(date.substring(i)!=this.date.substring(i) || date.substring(i+1)!=this.date.substring(i+1))
 				return false;
 		}
 		
@@ -181,9 +182,9 @@ public class Event implements Serializable{
 		}
 		// it 
 		return false;
-	}*/
+	}
 	
-	/*public boolean timeOverlap(Event e){
+	public boolean timeOverlap(Event e){
 		return this.timeOverlap(e.time,e.date,e.duration);
-	}*/
+	}
 }
