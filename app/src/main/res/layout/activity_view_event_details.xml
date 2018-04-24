@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     android:background="@drawable/gradient"
     android:orientation="vertical"
-    tools:context="com.example.viewreventdetails.MainActivity">
+    tools:context="com.example.vieweventdetails.MainActivity">
 
     <Spinner
         android:id="@+id/spinner"
