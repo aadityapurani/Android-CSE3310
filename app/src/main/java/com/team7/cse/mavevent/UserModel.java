@@ -9,11 +9,22 @@ public class UserModel implements Serializable{
 
     private int id;
     private String userFName;
+    private String userLName;
     private String userUName;
     private String userEmail;
     private String userAddress;
+    private String userPhone;
     private String userPassword;
+    private int userUta;
     private int userType;
+
+    public int getUserUta() {
+        return userUta;
+    }
+
+    public void setUserUta(int userUta) {
+        this.userUta = userUta;
+    }
 
     public String getUserPassword() {
         return userPassword;
@@ -45,6 +56,22 @@ public class UserModel implements Serializable{
 
     public void setUserFName(String userFName) {
         this.userFName = userFName;
+    }
+
+    public String getUserLName() {
+        return userLName;
+    }
+
+    public void setUserLName(String userLName) {
+        this.userLName = userLName;
+    }
+
+    public String getUserPhone() {
+        return userPhone;
+    }
+
+    public void setUserPhone(String userPhone) {
+        this.userPhone = userPhone;
     }
 
     public int getId() {
