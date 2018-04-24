@@ -1,6 +1,5 @@
 // Edit this
-package com.example.mayur.myfirstapplication;
-package arraylist;
+package com.team7.cse.mavevent;
 import java.util.ArrayList;
 import java.io.Serializable;
 
@@ -40,7 +39,7 @@ public class User extends UserBaseModel implements Serializable {
 		removes 
 	*/
 	
-	public boolean removeReservedEvent(Event e){
+	/*public boolean removeReservedEvent(Event e){
 		for(int i=0; i < reservedEvents.size();i++){
 			if(reservedEvents.get(i).sameAs(e)){
 				reservedEvents.remove(reservedEvents.get(i));
@@ -48,15 +47,15 @@ public class User extends UserBaseModel implements Serializable {
 			}
 		}
 		return false;
-	}
+	}*/
 	
-	public boolean updateEvent(Event e){
+	/*public boolean updateEvent(Event e){
 		if(removeReservedEvent(e)){
 			addReservedEvent.add(e);
 			return true;
 		}
 		return false;
-	}
+	}*/
 	
 	public void addReservedEvent(Event e){
 		reservedEvents.add(e);

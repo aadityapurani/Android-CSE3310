@@ -1,8 +1,7 @@
 //***********CHANGE LATER***************
-package com.example.mayur.myfirstapplication;
+package com.team7.cse.mavevent;
 //***********CHANGE LATER***************
 //***********CHANGE LATER***************
-package arraylist;
 import java.util.ArrayList;
 import java.io.Serializable;
 
@@ -20,8 +19,8 @@ public class Event implements Serializable{
 	private String name;
 	private int time;
 	private String date;
-	private int capacity
-	private Hall hall;
+	private int capacity;
+	//private Hall hall;
 	public boolean isFormal;
 	private int duration;
 	private ArrayList eventRecourses;
@@ -34,7 +33,7 @@ public class Event implements Serializable{
 		date = "";
 		duration = -1;
 		capacity = 0;
-		isAccepted = 0;
+		isAccepted = false;
 	}
 	
 	public ArrayList getStaffMembers(){
@@ -46,25 +45,25 @@ public class Event implements Serializable{
 		this.staffMembers = new ArrayList(staffMembers);
 	}
 	
-	public boolean addStaffMember(Staff staff){
+	/*public boolean addStaffMember(Staff staff){
 		if(this.alreadyAssigned(staff)){
 			return false;
 		}
 		this.staffMembers.add(staff);
 		return true;
-	}
+	}*/
 	
 	public void removeStaffMember(Staff staff){
 		staffMembers.remove(staff);
 	}
 	
-	public boolean alreadyAssigned(Staff staff){
-		for( Staff a : staffMembers){
-			if(a.sameAs(staff)
+	/*public boolean alreadyAssigned(Staff staff){
+		for( Staff staff : staffMembers){
+			if(staff.sameAs(staff))
 				return true;
 		}
 		return false;
-	}
+	}*/
 	
 	public int getId(){
 		return id;
@@ -98,13 +97,13 @@ public class Event implements Serializable{
 		return date;
 	}
 	
-	public boolean setDate(String date){
+	/*public boolean setDate(String date){
 		if(date.size()==8){
 			this.date = date;
 			return true;
 		}
 		return false;
-	}
+	}*/
 	
 	public int getCapacity(){
 		return capacity;
@@ -118,11 +117,11 @@ public class Event implements Serializable{
 		return false;
 	}
 	
-	public Hall getHall(){
+	/*public Hall getHall(){
 		return hall;
-	}
+	}*/
 	
-	public boolean setHall(Hall hall){
+	/*public boolean setHall(Hall hall){
 		if(time==-1 || date.length()==0 || duration == -1){
 			return false;
 		}
@@ -131,7 +130,7 @@ public class Event implements Serializable{
 			return true;
 		}
 		return false;
-	}
+	}*/
 	
 	public int getDuration(){
 		return duration;
@@ -154,15 +153,15 @@ public class Event implements Serializable{
 		this.eventRecourses = new ArrayList(eventRecourses);
 	}
 	
-	public void addEventRecourse(EventRecourse e){
+	/*public void addEventRecourse(EventRecourse e){
 		eventRecourses.add(e);
-	}
+	}*/
 	
 	public boolean sameAs(Event e){
 		return e.getId()==this.getId();
 	}
 	
-	public boolean timeOverlap(int time, String date, int duration){
+	/*public boolean timeOverlap(int time, String date, int duration){
 		//MM/DD/YY
 		//01234567
 		// checks MM then DD then YY
@@ -182,9 +181,9 @@ public class Event implements Serializable{
 		}
 		// it 
 		return false;
-	}
+	}*/
 	
-	public boolean timeOverlap(Event e){
+	/*public boolean timeOverlap(Event e){
 		return this.timeOverlap(e.time,e.date,e.duration);
-	}
+	}*/
 }

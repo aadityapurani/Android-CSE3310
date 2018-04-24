@@ -1,6 +1,5 @@
 // Edit this
-package com.example.mayur.myfirstapplication;
-package arraylist;
+package com.team7.cse.mavevent;
 import java.util.ArrayList;
 import java.io.Serializable;
 
@@ -9,4 +8,7 @@ import java.io.Serializable;
  * Edited by Jonathon Kirkpatrick on 4/22/2018.
  */
 
-public class Staff extends UserBaseModel implements Serializable
+public class Caterer extends UserBaseModel implements Serializable
+{
+
+}

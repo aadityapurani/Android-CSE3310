@@ -1,15 +1,17 @@
 // Edit this
-package com.example.mayur.myfirstapplication;
-package arraylist;
-import java.util.ArrayList;
+package com.team7.cse.mavevent;
+
+
 import java.io.Serializable;
+import java.util.ArrayList;
+
 
 /**
  * Created by mayur on 4/11/2018.
  * Edited by Jonathon Kirkpatrick on 4/22/2018.
  */
 
-public class Staff extends UserBaseModel implements Serializable{
+public class Staff extends UserBaseModel implements Serializable {
 	private ArrayList assignedEvents;
 	
 	Staff(){
@@ -21,32 +23,32 @@ public class Staff extends UserBaseModel implements Serializable{
 		return e;
 	}
 	
-	public boolean setAssignedEvents(ArrayList assignedEvents){
+	/*public boolean setAssignedEvents(ArrayList assignedEvents){
 		this.assignedEvents = new ArrayList(assignedEvents);
-	}
+	}*/
 	
-	public boolean addAssignedEvent(Event e){
+	/*public boolean addAssignedEvent(Event e){
 		
 		if(this.isAvailable(e)){
 			assignedEvents.add(e);
 			return true;
 		}
 		return false;
-	}
+	}*/
 	
-	public boolean isAvailable(Event e){
+	/*public boolean isAvailable(Event e){
 		for(Event a : assignedEvents){
 			if(a.timeOverlaps(e))
 				return false;
 		}
 		return true;
-	}
+	}*/
 	
 	/*
 		deletes all events that may be 
 	*/
 	
-	public void overRide(Event e){
+	/*public void overRide(Event e){
 		for(Event a : assignedEvents){
 			if(a.timeOverlaps(e)){
 				assignedEvents.remove(a);
@@ -54,6 +56,6 @@ public class Staff extends UserBaseModel implements Serializable{
 			}
 		}
 		assignedEvents.add(e);
-	}
+	}*/
 	
 }

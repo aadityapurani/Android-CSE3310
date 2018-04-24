@@ -1,5 +1,5 @@
 // Edit this
-package com.example.mayur.myfirstapplication;
+package com.team7.cse.mavevent;
 //package arraylist;
 
 //import java.util.ArrayList;
