@@ -42,7 +42,68 @@ public class Event implements Serializable{
 		capacity = 0;
 		accepted = false;
 	}
-	
+
+	Event(
+			int id,
+		  String name,
+		  int time,
+		  String date,
+		  int capacity,
+		  Hall hall,
+		  boolean isFormal,
+		  int duration,
+		  ArrayList<Drink>drinks,
+		  ArrayList<EntertainmentItem>entertainmentItems,
+		  Food food,
+		  //ArrayList<Staff> staffMembers,
+		  boolean accepted
+		){
+		this.id = id;
+		this.name = name;
+		this.time = time;
+		this.date = date;
+		this.capacity = capacity;
+		this.hall = hall;
+		this.isFormal = isFormal;
+		this.duration = duration;
+		this.drinks = new ArrayList<Drink>(drinks);
+		this.entertainmentItems = new ArrayList<EntertainmentItem>(entertainmentItems);
+		this.food = new Food(food);
+		this.staffMembers = new ArrayList<Staff>();
+		this.accepted = accepted;
+	}
+
+	Event(
+			int id,
+			String name,
+			int time,
+			String date,
+			int capacity,
+			Hall hall,
+			boolean isFormal,
+			int duration,
+			ArrayList<Drink>drinks,
+			ArrayList<EntertainmentItem>entertainmentItems,
+			Food food,
+			ArrayList<Staff> staffMembers,
+			boolean accepted
+	){
+		this.id = id;
+		this.name = name;
+		this.time = time;
+		this.date = date;
+		this.capacity = capacity;
+		this.hall = hall;
+		this.isFormal = isFormal;
+		this.duration = duration;
+		this.drinks = new ArrayList<Drink>(drinks);
+		this.entertainmentItems = new ArrayList<EntertainmentItem>(entertainmentItems);
+		this.food = new Food(food);
+		this.staffMembers = new ArrayList<Staff>(staffMembers);
+		this.accepted = accepted;
+	}
+
+	//STAFF MEMBERS
 	public ArrayList getStaffMembers(){
 		ArrayList x = new ArrayList<Staff>(staffMembers);
 		return x;
@@ -50,6 +111,7 @@ public class Event implements Serializable{
 	
 	public void setStaffMembers(ArrayList staffMembers){this.staffMembers = new ArrayList<Staff>(staffMembers);}
 
+	//ACCEPTED
 	public boolean getAccepted(){return accepted;}
 
 	public void setAccepted(boolean accepted){
@@ -57,6 +119,7 @@ public class Event implements Serializable{
 		this.accepted = accepted;
 	}
 
+	//ID
 	public int getId(){
 		return id;
 	}
@@ -64,7 +127,8 @@ public class Event implements Serializable{
 	public void setId(int id){
 		this.id = id;
 	}
-	
+
+	//NAME
 	public String getName(){
 		return name;
 	}
@@ -72,7 +136,8 @@ public class Event implements Serializable{
 	public void setName(String name){
 		this.name = name;
 	}
-	
+
+	//TIME
 	public int getTime(){
 		return time;
 	}
@@ -84,7 +149,8 @@ public class Event implements Serializable{
 		}
 		return false;
 	}
-	
+
+	//DATE
 	public String getDate(){
 		return date;
 	}
@@ -96,7 +162,8 @@ public class Event implements Serializable{
 		}
 		return false;
 	}
-	
+
+	//CAPACITY
 	public int getCapacity(){
 		return capacity;
 	}
@@ -108,7 +175,8 @@ public class Event implements Serializable{
 		}
 		return false;
 	}
-	
+
+	//HALL
 	public Hall getHall(){
 		return hall;
 	}
@@ -123,7 +191,7 @@ public class Event implements Serializable{
 		}
 		return false;
 	}
-	
+	//DURATION
 	public int getDuration(){
 		return duration;
 	}
@@ -135,26 +203,27 @@ public class Event implements Serializable{
 		}
 		return false;
 	}
-	
-	/*public ArrayList getEventRecourses(){
-		ArrayList X = new ArrayList(eventRecourses);
-		return X;
-	}
-	
-	public void setEventRecourses(ArrayList eventRecourses){
-		this.eventRecourses = new ArrayList(eventRecourses);
-	}
 
-	public void addEventRecourse(EventRecourse e){
-		eventRecourses.add(e);
-	}
+	//DRINKS
+	public ArrayList<Drink>getDrinks(){return new ArrayList<Drink>(drinks);}
 
-	*/
-	//actual functions
-	/*
-	checks to see if staff is already assigned and removes them
-	*/
+	public void addDrink(Drink drink){this.drinks.add(drink);}
 
+	public boolean removeDrink(Drink drink){return drinks.remove(drink);}
+
+	//ENTERTAINMENT ITEMS
+	public ArrayList<EntertainmentItem> getEntertainmentItems(){return new ArrayList<EntertainmentItem>(entertainmentItems);}
+
+	public void addEntertainmentItem(EntertainmentItem entertainmentItem){this.entertainmentItems.add(entertainmentItem);}
+
+	public boolean removeEntertainmentItem(EntertainmentItem entertainmentItem){return this.entertainmentItems.remove(entertainmentItem);}
+
+	//FOOD
+	public Food getFood(){return food;}
+
+	public void setFoood(Food food){this.food=food;}
+
+	//STAFF
 	public boolean addStaffMember(Staff staff){
 		if(this.alreadyAssigned(staff)){
 			return false;
@@ -175,12 +244,12 @@ public class Event implements Serializable{
 		return false;
 	}
 
-
-
+	//ID
 	public boolean sameAs(Event e){
 		return e.getId()==this.getId();
 	}
-	
+
+	//TIME OVER LAP
 	public boolean timeOverlap(int time, String date, int duration){
 		//MM/DD/YY
 		//01234567
@@ -189,7 +258,7 @@ public class Event implements Serializable{
 			return false;
 		for(int i=0;i<8;i+=3){
 			this.date.substring(0);
-			if(date.substring(i)!=this.date.substring(i) || date.substring(i+1)!=this.date.substring(i+1))
+			if(!date.substring(i,i+1).equals(this.date.substring(i,i+1)))
 				return false;
 		}
 		

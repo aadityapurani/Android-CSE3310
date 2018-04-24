@@ -11,4 +11,11 @@ public class EntertainmentItem extends EventRecourse implements Serializable {
     EntertainmentItem(){
         adultEntertainment=false;
     }
+    EntertainmentItem(String name,
+                      int price,
+                      boolean adultEntertainment){
+        this.name = name;
+        this.price = price;
+        this.adultEntertainment = adultEntertainment;
+    }
 }

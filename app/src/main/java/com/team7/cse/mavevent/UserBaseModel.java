@@ -20,7 +20,49 @@ public class UserBaseModel implements Serializable {
 	private String address;
 	private int id;
 	protected ArrayList<Event> events;
-	
+
+	UserBaseModel(){
+		events = new ArrayList<Event>();
+	}
+
+	UserBaseModel(String fName,
+				  String lName,
+				  String email,
+				  String userName,
+				  String password,
+				  String phone,
+				  String address,
+				  int id){
+		this.fName =fName;
+		this.lName=lName;
+		this.email=email;
+		this.userName=userName;
+		this.password=password;
+		this.phone=phone;
+		this.address=address;
+		this.id = id;
+		events = new ArrayList<Event>();
+	}
+
+	UserBaseModel(String fName,
+				  String lName,
+				  String email,
+				  String userName,
+				  String password,
+				  String phone,
+				  String address,
+				  int id,ArrayList<Event>events){
+		this.fName =fName;
+		this.lName=lName;
+		this.email=email;
+		this.userName=userName;
+		this.password=password;
+		this.phone=phone;
+		this.address=address;
+		this.id = id;
+		this.events = new ArrayList<Event>(events);
+	}
+
 	//private ArrayList reservedEvents = new ArrayList();
 	public ArrayList<Event> getEvents(){return new ArrayList<Event>(events);}
 

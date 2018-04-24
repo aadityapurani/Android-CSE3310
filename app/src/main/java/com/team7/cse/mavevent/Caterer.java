@@ -12,7 +12,30 @@ public class Caterer extends UserBaseModel implements Serializable {
     //private ArrayList<Event> events;
 
     Caterer(){
-        events = new ArrayList<Event>();
+        super();
+    }
+
+    Caterer(String fName,
+            String lName,
+            String email,
+            String userName,
+            String password,
+            String phone,
+            String address,
+            int id){
+        super(fName, lName, email, userName, password, phone, address, id);
+    }
+
+    Caterer(String fName,
+            String lName,
+            String email,
+            String userName,
+            String password,
+            String phone,
+            String address,
+            int id,
+            ArrayList<Event>events){
+        super(fName, lName, email, userName, password, phone, address, id,events);
     }
 
 	/*
@@ -38,17 +61,4 @@ public class Caterer extends UserBaseModel implements Serializable {
         events.remove(e);
         e.setAccepted(false);
     }
-
-    private boolean addEvent(Event e){
-        if(isAvailable(e)){
-            events.add(e);
-            return true;
-        }
-        return false;
-    }
-
-    /*public void addEventRecourse(EventRecourse er,Event e){
-        if(Event.event)
-    }*/
-
 }

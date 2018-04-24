@@ -9,7 +9,9 @@ import java.util.ArrayList;
 public class Calender implements Serializable {
    private ArrayList<Event> events;
 
-   Calender(){this.events = new ArrayList<Event>();}
+   Calender(){events = new ArrayList<Event>();}
+
+   Calender(ArrayList<Event>events){this.events = new ArrayList<Event>(events);}
 
    public ArrayList<Event> getEvents(){return new ArrayList<Event>(events);}
 

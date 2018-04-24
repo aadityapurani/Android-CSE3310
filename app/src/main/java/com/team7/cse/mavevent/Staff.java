@@ -1,7 +1,6 @@
 // Edit this
 package com.team7.cse.mavevent;
 
-
 import java.io.Serializable;
 import java.util.ArrayList;
 
@@ -13,9 +12,32 @@ import java.util.ArrayList;
 
 public class Staff extends UserBaseModel implements Serializable {
 	//private ArrayList <Event> assignedEvents;
-	
+
 	Staff(){
-		events = new ArrayList<Event>();
+		super();
+	}
+
+	Staff(String fName,
+		  String lName,
+		  String email,
+		  String userName,
+		  String password,
+		  String phone,
+		  String address,
+		  int id){
+		super(fName, lName, email, userName, password, phone, address, id);
+	}
+
+	Staff(String fName,
+		  String lName,
+		  String email,
+		  String userName,
+		  String password,
+		  String phone,
+		  String address,
+		  int id,
+		  ArrayList<Event> events){
+		super(fName, lName, email, userName, password, phone, address, id,events);
 	}
 
 	public boolean removeEvent(Event event){
@@ -29,12 +51,10 @@ public class Staff extends UserBaseModel implements Serializable {
 	}
 
 	public boolean addEvent(Event e){
-		
 		if(this.isAvailable(e)){
 			events.add(e);
 			return true;
 		}
 		return false;
 	}
-
 }

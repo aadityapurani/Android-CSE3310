@@ -28,4 +28,18 @@ enum MEAL_TYPE{
 public class Food extends EventRecourse implements Serializable {
     public MEAL_TYPE meal_type;
     public VENUE venue;
+    Food(){}
+    Food(Food food){
+
+        this.meal_type=food.meal_type;
+        this.venue = food.venue;
+        this.price=food.price;
+        this.name=food.name;
+    }
+    Food(String name,int price,int venue,int meal_type){
+        this.name = name;
+        this.price = price;
+        this.venue = VENUE.values()[venue];
+        this.meal_type = MEAL_TYPE.values()[meal_type];
+    }
 }

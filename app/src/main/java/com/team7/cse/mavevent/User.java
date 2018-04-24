@@ -12,10 +12,37 @@ public class User extends UserBaseModel implements Serializable {
 	//private ArrayList <Event> reservedEvents;
 	private String utaId;
 	
-	User(){
-		events = new ArrayList<Event>();
+	User(String fName,
+		 String lName,
+		 String email,
+		 String userName,
+		 String password,
+		 String phone,
+		 String address,
+		 int id,
+		 String utaId){
+		super(fName, lName, email, userName, password, phone, address, id);
+		this.utaId = utaId;
 	}
-	
+
+	User(String fName,
+		 String lName,
+		 String email,
+		 String userName,
+		 String password,
+		 String phone,
+		 String address,
+		 int id,
+		 String utaId,
+		 ArrayList<Event>events){
+		super(fName, lName, email, userName, password, phone, address, id, events);
+		this.utaId = utaId;
+	}
+
+	User(){
+		super();
+	}
+
 	public String getUtaId(){
 		return utaId;
 	}
@@ -29,7 +56,6 @@ public class User extends UserBaseModel implements Serializable {
 	/*
 		removes 
 	*/
-	
 	public boolean removeEvent(Event e){
 		for(int i=0; i < events.size();i++){
 			if(events.get(i).sameAs(e)){
@@ -39,7 +65,7 @@ public class User extends UserBaseModel implements Serializable {
 		}
 		return false;
 	}
-	/*
+
 	public boolean updateEvent(Event e){
 		if(removeEvent(e)){
 			this.addEvent(e);
@@ -47,8 +73,10 @@ public class User extends UserBaseModel implements Serializable {
 		}
 		return false;
 	}
-	*/
+
+
 	public void addEvent(Event e){
 		events.add(e);
 	}
+
 }
