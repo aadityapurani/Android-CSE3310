@@ -146,13 +146,13 @@
         android:layout_height="wrap_content"
         android:text="Exit"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/button2"
+        app:layout_constraintEnd_toStartOf="@+id/new_password_id"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/guideline3"
         app:layout_constraintTop_toBottomOf="@+id/switch1" />
 
     <Button
-        android:id="@+id/button2"
+        android:id="@+id/new_password_id"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Submit"
