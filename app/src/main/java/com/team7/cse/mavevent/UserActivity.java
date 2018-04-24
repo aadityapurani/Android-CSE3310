@@ -46,5 +46,25 @@ public class UserActivity extends AppCompatActivity {
             }
         });
 
+        // User Homepage - > View Schedule Page
+        final Button view_event_schedule_Button = (Button) findViewById(R.id.view_schedule_id);
+        view_event_schedule_Button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent view_event_schedule_Intent = new Intent(UserActivity.this, ViewEventScheduleActivity.class);
+                UserActivity.this.startActivity(view_event_schedule_Intent);
+            }
+        });
+
+        // User Homepage - > Main Page
+        final Button logout_Button = (Button) findViewById(R.id.logout_id);
+        logout_Button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent logout_Intent = new Intent(UserActivity.this, MainActivity.class);
+                UserActivity.this.startActivity(logout_Intent);
+            }
+        });
+
     }
 }

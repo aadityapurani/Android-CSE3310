@@ -26,5 +26,15 @@ public class StaffActivity extends AppCompatActivity {
             }
         });
 
+        // Staff Homepage - > Main Page
+        final Button logout_Button = (Button) findViewById(R.id.logout_id);
+        logout_Button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent logout_Intent = new Intent(StaffActivity.this, MainActivity.class);
+                StaffActivity.this.startActivity(logout_Intent);
+            }
+        });
+
     }
 }

@@ -76,5 +76,25 @@ public class CatererActivity extends AppCompatActivity {
             }
         });
 
+        // Caterer Homepage - > View Event Calender
+        final Button view_calender_Button = (Button) findViewById(R.id.view_event_calender_id);
+        view_calender_Button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent view_calender_Intent = new Intent(CatererActivity.this, ViewEventCalenderActivity.class);
+                CatererActivity.this.startActivity(view_calender_Intent);
+            }
+        });
+
+        // Caterer Homepage - > Main Page
+        final Button logout_Button = (Button) findViewById(R.id.logout_id);
+        logout_Button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent logout_Intent = new Intent(CatererActivity.this, MainActivity.class);
+                CatererActivity.this.startActivity(logout_Intent);
+            }
+        });
+
     }
 }
