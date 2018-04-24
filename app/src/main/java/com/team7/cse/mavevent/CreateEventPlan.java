@@ -19,12 +19,20 @@ public class CreateEventPlan extends AppCompatActivity {
         setContentView(R.layout.activity_create_event_plan);
 
         final EditText attendees_field   = (EditText)findViewById(R.id.cep_attendees_id);
+
         Switch alcohol_switch = (Switch) findViewById(R.id.cep_alcohol_id);
+        Switch formality_switch = (Switch) findViewById(R.id.cep_formality_id);
+
+
+
+
+
         // Submit Button
         Button cep_submit_button = (Button) findViewById(R.id.cep_submit_id);
         cep_submit_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
 
 
             }

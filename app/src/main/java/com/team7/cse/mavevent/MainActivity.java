@@ -134,10 +134,9 @@ public class MainActivity extends AppCompatActivity {
         MainActivity.this.startActivity(registerIntent);
     }
 
-<<<<<<< HEAD
 });
-=======
-        });
+
+
 
         final TextView resetLink = (TextView) findViewById(R.id.reset_password_id);
         resetLink.setOnClickListener(new View.OnClickListener(){
@@ -166,7 +165,6 @@ public class MainActivity extends AppCompatActivity {
 
         return status;
 
->>>>>>> 9a7a03f81c75791a4e8637ad2318b476591db5d3
     }
 
 }
