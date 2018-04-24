@@ -31,7 +31,7 @@ public class AddResourcesActivity extends AppCompatActivity implements OnItemSel
         setContentView(R.layout.activity_add_resources);
         final EditText item_field   = (EditText)findViewById(R.id.add_resources_item_id);
         final EditText quantity_field   = (EditText)findViewById(R.id.add_resources_quantity_id);
-        final EditText cost_field   = (EditText)findViewById(R.id.add_resources_quantity_id);
+        final EditText cost_field   = (EditText)findViewById(R.id.add_resources_cost_id);
 
 
         ////////////////////////////////////////////////////////////////////////////////////////////////////SPINNER LOGIC
@@ -67,10 +67,64 @@ public class AddResourcesActivity extends AppCompatActivity implements OnItemSel
             public void onClick(View v) {
                 if (rowSelected>0)
                 {
-                    String item = item_field.getText().toString();
-                    int quantity = Integer.parseInt(quantity_field.getText().toString());
-                    double cost = Double.parseDouble(cost_field.getText().toString());
-                    int event_id = events_id.get(rowSelected);
+                    try
+                    {
+                        String item = item_field.getText().toString();
+
+                        if (!item.matches(""))
+                        {
+                            try
+                            {
+                                int quantity = Integer.parseInt(quantity_field.getText().toString());
+                                try
+                                {
+                                    double cost = Double.parseDouble(cost_field.getText().toString());
+                                }
+                                catch (Exception e)
+                                {
+                                    Context context = getApplicationContext();
+                                    CharSequence text = "You didn't enter a cost!";
+                                    int duration = Toast.LENGTH_SHORT;
+
+                                    Toast toast = Toast.makeText(context, text, duration);
+                                    toast.show();
+                                }
+                            }
+                            catch(Exception e)
+                            {
+                                Context context = getApplicationContext();
+                                CharSequence text = "You didn't enter a quantity!";
+                                int duration = Toast.LENGTH_SHORT;
+
+                                Toast toast = Toast.makeText(context, text, duration);
+                                toast.show();
+                            }
+
+                        }
+                        else
+                        {
+                            Context context = getApplicationContext();
+                            CharSequence text = "You didn't enter an item!";
+                            int duration = Toast.LENGTH_SHORT;
+
+                            Toast toast = Toast.makeText(context, text, duration);
+                            toast.show();
+                        }
+
+                    }
+                    catch(Exception e)
+                    {
+                        Context context = getApplicationContext();
+                        CharSequence text = "You didn't enter an item!";
+                        int duration = Toast.LENGTH_SHORT;
+
+                        Toast toast = Toast.makeText(context, text, duration);
+                        toast.show();
+                    }
+
+                        int event_id = events_id.get(rowSelected);
+
+
                     //logic here to submit the add resources request
                 }
                 else
