@@ -45,6 +45,43 @@ public class MainActivity extends AppCompatActivity {
                 String login_user = user_field.getText().toString();
                 String login_pass = pass_field.getText().toString();
                 //put code to auth from database here...
+
+                if(isInputValid(user_field, pass_field)){
+                    DatabaseHelper handler = new DatabaseHelper(MainActivity.this);
+                    UserModel user = handler.retrieveUser(login_user, login_pass);
+
+                    if(user!=null){
+                        Toast.makeText(MainActivity.this, "Login Successful ", Toast.LENGTH_LONG).show();
+                        int hh = user.getUserType();
+                        switch(hh){
+                            case 0:
+                            {
+                                Intent loginIntent = new Intent(MainActivity.this, CatererActivity.class);
+                                MainActivity.this.startActivity(loginIntent);
+                                break;
+                            }
+                            case 1:
+                            {
+                                Intent loginIntent = new Intent(MainActivity.this, UserActivity.class);
+                                MainActivity.this.startActivity(loginIntent);
+                                break;
+                            }
+                            case 2:
+                            {
+                                Intent loginIntent = new Intent(MainActivity.this, StaffActivity.class);
+                                MainActivity.this.startActivity(loginIntent);
+                                break;
+                            }
+
+                        }
+                    }
+                    else{
+                        Toast.makeText(MainActivity.this, "WRONG USERNAME OR PASSWORD", Toast.LENGTH_LONG).show();
+                    }
+                }
+
+
+                /*
                 loginSuccessful = login(login_user, login_pass);
                 if (loginSuccessful)
                 {
@@ -83,6 +120,8 @@ public class MainActivity extends AppCompatActivity {
                     toast.show();
                 }
 
+                */
+
             }
 
         });
@@ -92,9 +131,12 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v){
                 Intent registerIntent = new Intent(MainActivity.this, RegisterActivity.class);
-                MainActivity.this.startActivity(registerIntent);
-            }
+        MainActivity.this.startActivity(registerIntent);
+    }
 
+<<<<<<< HEAD
+});
+=======
         });
 
         final TextView resetLink = (TextView) findViewById(R.id.reset_password_id);
@@ -106,6 +148,25 @@ public class MainActivity extends AppCompatActivity {
             }
 
         });
+    }
+
+    // Just Another Validator
+    private boolean isInputValid(EditText unameSection, EditText passwordSection){
+        boolean status = true;
+
+        if (passwordSection.getText().toString().length() < 2) {
+            passwordSection.setError("Please enter valid password");
+            status = false;
+        }
+
+        if (unameSection.getText().toString().length() < 4){
+            unameSection.setError("Please Enter valid Username");
+            status = false;
+        }
+
+        return status;
+
+>>>>>>> 9a7a03f81c75791a4e8637ad2318b476591db5d3
     }
 
 }
