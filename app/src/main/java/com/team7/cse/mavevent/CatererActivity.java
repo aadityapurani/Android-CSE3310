@@ -16,7 +16,7 @@ public class CatererActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_caterer);
 
-        // Just Testing the stuff out
+        // Caterer Homepage - > Add Resources Page
         final Button caterer_add_resources_Button = (Button) findViewById(R.id.caterer_add_resources_id);
         caterer_add_resources_Button.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -26,7 +26,7 @@ public class CatererActivity extends AppCompatActivity {
             }
         });
 
-        // Just Testing the stuff out
+        // Caterer Homepage - > Create Event Plan Page
         final Button create_event_plan_Button = (Button) findViewById(R.id.button26);
         create_event_plan_Button.setOnClickListener(new View.OnClickListener() {
             @Override

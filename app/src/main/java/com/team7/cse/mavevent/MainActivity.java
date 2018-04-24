@@ -25,7 +25,7 @@ public class MainActivity extends AppCompatActivity {
     }
     protected user_type get_user_from_DB()
     {
-        return STAFF;
+        return CATERER;
     }
 
     @Override
