@@ -96,6 +96,16 @@ public class MainActivity extends AppCompatActivity {
             }
 
         });
+
+        final TextView resetLink = (TextView) findViewById(R.id.reset_password_id);
+        resetLink.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v){
+                Intent reset_password_Intent = new Intent(MainActivity.this, ResetPasswordActivity.class);
+                MainActivity.this.startActivity(reset_password_Intent);
+            }
+
+        });
     }
 
 }

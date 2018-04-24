@@ -22,6 +22,10 @@
             android:label="@string/title_activity_register"
             android:theme="@style/AppTheme"></activity>
         <activity
+            android:name=".ResetPasswordActivity"
+            android:label="@string/title_activity_register"
+            android:theme="@style/AppTheme"></activity>
+        <activity
             android:name=".CatererActivity"
             android:label="@string/title_caterer"
             android:theme="@style/AppTheme"></activity>
@@ -71,6 +75,10 @@
             android:windowSoftInputMode="stateAlwaysHidden"></activity>
         <activity
             android:name=".CancelEventActivity"
+            android:theme="@style/AppTheme"
+            android:windowSoftInputMode="stateAlwaysHidden"></activity>
+        <activity
+            android:name=".NewPasswordActivity"
             android:theme="@style/AppTheme"
             android:windowSoftInputMode="stateAlwaysHidden"></activity>
     </application>
