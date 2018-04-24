@@ -102,11 +102,7 @@
                         android:text="Assign Staff" />
 
                     <Button
-<<<<<<< HEAD
                         android:id="@+id/view_event_calender_id"
-=======
-                        android:id="@+id/caterer_view_calendar_id"
->>>>>>> 9a7a03f81c75791a4e8637ad2318b476591db5d3
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
                         android:layout_gravity="center_vertical"
