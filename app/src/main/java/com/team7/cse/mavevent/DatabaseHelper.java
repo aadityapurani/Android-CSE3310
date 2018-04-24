@@ -36,7 +36,7 @@ public class DatabaseHelper extends SQLiteOpenHelper{
     private static final String KEY_PHONE = "phone_number";
     private static final String KEY_LNAME = "last_name";
     private static final String KEY_UTAID = "uta_id";
-    private static final String KEY_UTYPE = "user_type";
+    private static final String KEY_UTYPE = "user-type";
 
     // Just a database creator
     public DatabaseHelper(Context context){

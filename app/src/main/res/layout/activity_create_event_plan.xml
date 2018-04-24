@@ -19,7 +19,7 @@
             android:orientation="vertical">
 
             <TextView
-                android:id="@+id/cep_header_id"
+                android:id="@+id/textView5"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="50dp"
@@ -28,30 +28,29 @@
                 android:textSize="25sp" />
 
             <EditText
-                android:id="@+id/cep_attendees_id"
+                android:id="@+id/editText8"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="50dp"
                 android:layout_marginRight="50dp"
                 android:ems="10"
-                android:imeOptions="actionDone"
                 android:inputType="number"
-                android:numeric="integer"
                 android:text="Number of Attendees"
-                android:textColor="#ffffffff" />
+                android:textColor="#ffffffff"
+                android:imeOptions="actionDone"/>
 
             <Spinner
-                android:id="@+id/cep_food_type_id"
+                android:id="@+id/spinner3"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="20dp"
                 android:layout_marginLeft="50dp"
                 android:layout_marginRight="50dp"
                 android:layout_marginTop="20dp"
-                android:imeOptions="actionDone" />
+                android:imeOptions="actionDone"/>
 
             <DatePicker
-                android:id="@+id/cep_date_id"
+                android:id="@+id/datePicker"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="50dp"
@@ -59,31 +58,31 @@
                 android:calendarTextColor="#ffffffff"
                 android:dayOfWeekBackground="#3a7ce8"
                 android:headerBackground="#3a7ce8"
-                android:imeOptions="actionDone"
                 android:isScrollContainer="false"
-                android:nestedScrollingEnabled="true" />
+                android:nestedScrollingEnabled="true"
+                android:imeOptions="actionDone"/>
 
             <TimePicker
-                android:id="@+id/cep_time_id"
+                android:id="@+id/timePicker"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginLeft="50dp"
                 android:layout_marginRight="50dp"
                 android:headerBackground="#3a7ce8"
-                android:imeOptions="actionDone"
-                android:numbersSelectorColor="#3a7ce8" />
+                android:numbersSelectorColor="#3a7ce8"
+                android:imeOptions="actionDone"/>
 
             <EditText
-                android:id="@+id/cep_duration_id"
+                android:id="@+id/editText10"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="50dp"
                 android:layout_marginRight="50dp"
                 android:ems="10"
-                android:imeOptions="actionDone"
                 android:inputType="number"
                 android:text="Duration"
-                android:textColor="#ffffffff" />
+                android:textColor="#ffffffff"
+                android:imeOptions="actionDone"/>
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -95,17 +94,17 @@
                 android:orientation="horizontal">
 
                 <Switch
-                    android:id="@+id/cep_alcohol_id"
+                    android:id="@+id/switch2"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:imeOptions="actionDone"
                     android:scaleY="1"
                     android:text="Alcohol"
                     android:textColor="#ffffffff"
                     android:textSize="18sp"
                     android:thumbTint="#3a7ce8"
-                    android:trackTint="#ffffffff" />
+                    android:trackTint="#ffffffff"
+                    android:imeOptions="actionDone"/>
 
             </LinearLayout>
 
@@ -119,22 +118,22 @@
                 android:orientation="horizontal">
 
                 <Switch
-                    android:id="@+id/cep_formality_id"
+                    android:id="@+id/switch2"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:imeOptions="actionDone"
                     android:scaleY="1"
                     android:text="Formal"
                     android:textColor="#ffffffff"
                     android:textSize="18sp"
                     android:thumbTint="#3a7ce8"
-                    android:trackTint="#ffffffff" />
+                    android:trackTint="#ffffffff"
+                    android:imeOptions="actionDone"/>
 
             </LinearLayout>
 
             <Button
-                android:id="@+id/cep_submit_id"
+                android:id="@+id/button4"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="50dp"
@@ -142,8 +141,8 @@
                 android:layout_marginRight="50dp"
                 android:layout_weight="1"
                 android:background="#3a7ce8"
-                android:imeOptions="actionDone"
-                android:text="Submit" />
+                android:text="Submit"
+                android:imeOptions="actionDone"/>
 
         </LinearLayout>
     </ScrollView>

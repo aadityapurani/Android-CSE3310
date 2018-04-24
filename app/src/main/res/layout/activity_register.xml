@@ -6,28 +6,20 @@
     android:layout_height="match_parent"
     tools:context="com.team7.cse.mavevent.RegisterActivity">
 
-    <android.support.design.widget.AppBarLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:theme="@style/AppTheme.AppBarOverlay">
-
-    </android.support.design.widget.AppBarLayout>
-
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@drawable/gradient"
-        app:layout_behavior="@string/appbar_scrolling_view_behavior"
         tools:context="com.team7.cse.mavevent.RegisterActivity"
         tools:showIn="@layout/activity_register">
 
         <EditText
-            android:id="@+id/fnameSection"
-            android:layout_width="wrap_content"
+            android:id="@+id/editText2"
+            android:layout_width="200dp"
             android:layout_height="40dp"
             android:layout_alignParentTop="true"
             android:layout_centerHorizontal="true"
-            android:layout_marginTop="38dp"
+            android:layout_marginTop="73dp"
             android:background="#11000000"
             android:drawableLeft="@drawable/ic_action_prns"
             android:ems="10"
@@ -42,18 +34,18 @@
             style="@style/mySpinnerItemStyle"
             android:layout_width="200dp"
             android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
+            android:layout_alignParentTop="true"
             android:layout_centerHorizontal="true"
-            android:layout_marginBottom="107dp"
+            android:layout_marginTop="400dp"
             android:popupBackground="#DD2e3f5b" />
 
         <EditText
-            android:id="@+id/lnameSection"
+            android:id="@+id/editText11"
             android:layout_width="200dp"
             android:layout_height="wrap_content"
             android:layout_alignParentTop="true"
             android:layout_centerHorizontal="true"
-            android:layout_marginTop="97dp"
+            android:layout_marginTop="122dp"
             android:background="#11000000"
             android:drawableLeft="@drawable/ic_action_prns"
             android:ems="10"
@@ -64,12 +56,12 @@
             android:textSize="16sp" />
 
         <EditText
-            android:id="@+id/unameSection"
+            android:id="@+id/editText4"
             android:layout_width="200dp"
             android:layout_height="wrap_content"
             android:layout_alignParentTop="true"
             android:layout_centerHorizontal="true"
-            android:layout_marginTop="154dp"
+            android:layout_marginTop="168dp"
             android:background="#11000000"
             android:drawableLeft="@drawable/ic_action_user"
             android:ems="10"
@@ -80,7 +72,7 @@
             android:textSize="16sp" />
 
         <EditText
-            android:id="@+id/passwordSection"
+            android:id="@+id/editText5"
             android:layout_width="200dp"
             android:layout_height="wrap_content"
             android:layout_alignParentTop="true"
@@ -96,9 +88,12 @@
             android:textSize="16sp" />
 
         <EditText
-            android:id="@+id/utaidSection"
+            android:id="@+id/editText6"
             android:layout_width="200dp"
             android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="300dp"
             android:background="#11000000"
             android:drawableLeft="@drawable/ic_action_addr"
             android:ems="10"
@@ -106,17 +101,15 @@
             android:inputType="textPostalAddress"
             android:textColor="#fff"
             android:textColorHint="#ffffffff"
-            android:textSize="16sp"
-            android:layout_alignTop="@+id/emailSection"
-            android:layout_alignLeft="@+id/emailSection"
-            android:layout_alignStart="@+id/emailSection"
-            android:layout_marginTop="62dp" />
+            android:textSize="16sp" />
 
         <EditText
-            android:id="@+id/addressSection"
+            android:id="@+id/editText"
             android:layout_width="200dp"
             android:layout_height="wrap_content"
-            android:layout_centerInParent="true"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="255dp"
             android:background="#11000000"
             android:drawableLeft="@drawable/ic_action_addr"
             android:ems="10"
@@ -127,9 +120,12 @@
             android:textSize="16sp" />
 
         <EditText
-            android:id="@+id/emailSection"
+            android:id="@+id/editText12"
             android:layout_width="200dp"
             android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="350dp"
             android:background="#11000000"
             android:drawableLeft="@drawable/ic_action_mail"
             android:ems="10"
@@ -137,37 +133,17 @@
             android:inputType="textEmailAddress"
             android:textColor="#fff"
             android:textColorHint="#ffffffff"
-            android:textSize="16sp"
-            android:layout_marginTop="23dp"
-            android:layout_below="@+id/addressSection"
-            android:layout_alignLeft="@+id/addressSection"
-            android:layout_alignStart="@+id/addressSection" />
+            android:textSize="16sp" />
 
         <Button
             android:id="@+id/new_password_id"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
+            android:layout_alignParentTop="true"
             android:layout_centerHorizontal="true"
-            android:layout_marginBottom="31dp"
+            android:layout_marginTop="500dp"
             android:background="#3a7ce8"
             android:text="Register" />
-
-        <EditText
-            android:id="@+id/phoneSection"
-            android:layout_width="200dp"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="13dp"
-            android:background="#11000000"
-            android:drawableLeft="@drawable/ic_action_prns"
-            android:ems="10"
-            android:hint="Phone Number"
-            android:inputType="textPhonetic"
-            android:textColor="#fff"
-            android:textColorHint="#ffffffff"
-            android:textSize="16sp"
-            android:layout_above="@+id/addressSection"
-            android:layout_centerHorizontal="true" />
 
 
     </RelativeLayout>

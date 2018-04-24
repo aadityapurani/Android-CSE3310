@@ -27,7 +27,7 @@ public class CatererActivity extends AppCompatActivity {
         });
 
         // Caterer Homepage - > Create Event Plan Page
-        final Button create_event_plan_Button = (Button) findViewById(R.id.caterer_create_event_plan_id);
+        final Button create_event_plan_Button = (Button) findViewById(R.id.button26);
         create_event_plan_Button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -37,7 +37,7 @@ public class CatererActivity extends AppCompatActivity {
         });
 
         // Caterer Homepage - > Assign Staff Page
-        final Button assign_staff_Button = (Button) findViewById(R.id.caterer_assign_staff_id);
+        final Button assign_staff_Button = (Button) findViewById(R.id.assign_staff_id);
         assign_staff_Button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -47,7 +47,7 @@ public class CatererActivity extends AppCompatActivity {
         });
 
         // Caterer Homepage - > Schedule Venue/Location Page
-        final Button schedule_venue_Button = (Button) findViewById(R.id.caterer_schedule_location_id);
+        final Button schedule_venue_Button = (Button) findViewById(R.id.schedule_venue_id);
         schedule_venue_Button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -57,7 +57,7 @@ public class CatererActivity extends AppCompatActivity {
         });
 
         // Caterer Homepage - > View Event Details Page
-        final Button view_event_details_Button = (Button) findViewById(R.id.caterer_view_event_details_id);
+        final Button view_event_details_Button = (Button) findViewById(R.id.view_event_details_id);
         view_event_details_Button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -67,7 +67,7 @@ public class CatererActivity extends AppCompatActivity {
         });
 
         // Caterer Homepage - > Delete Event Page
-        final Button delete_event_Button = (Button) findViewById(R.id.caterer_delete_event_id);
+        final Button delete_event_Button = (Button) findViewById(R.id.delete_event_id);
         delete_event_Button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
