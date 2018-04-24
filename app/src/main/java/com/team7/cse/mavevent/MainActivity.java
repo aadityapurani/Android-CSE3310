@@ -22,10 +22,10 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v){
                 Intent registerIntent = new Intent(MainActivity.this, RegisterActivity.class);
-                MainActivity.this.startActivity(registerIntent);
-            }
+        MainActivity.this.startActivity(registerIntent);
+    }
 
-        });
+});
     }
 
 }
