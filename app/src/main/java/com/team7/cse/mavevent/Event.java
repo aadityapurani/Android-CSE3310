@@ -99,7 +99,7 @@ public class Event implements Serializable{
 		this.entertainmentItems = new ArrayList<EntertainmentItem>(entertainmentItems);
 		this.food = new Food(food);
 		this.staffMembers = new ArrayList<Staff>();
-		this.accepted = Boolean.parseBoolean(accepted);
+		//this.accepted = Boolean.parseBoolean(accepted);
 	}
 
 	Event(

@@ -16,7 +16,7 @@ public class Drink extends EventRecourse implements Serializable {
           boolean alcholic){
         this.name = name;
         this.price = price;
-        this.alcholic=alcholic;
+        //this.alcholic=alcholic;
     }
 	
 	Drink(String name,
@@ -24,6 +24,6 @@ public class Drink extends EventRecourse implements Serializable {
           String alcholic){
         this.name = name;
         this.price = Integer.parseInt(price);
-        this.alcholic=alcholic;
+        //this.alcholic=true;
     }
 }
