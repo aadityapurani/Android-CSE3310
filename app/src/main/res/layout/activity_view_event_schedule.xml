@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/gradient">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/textView5"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="50dp"
+            android:text="Schedule Specifications"
+            android:textColor="#ffffffff"
+            android:textSize="25sp" />
+
+        <Spinner
+            android:id="@+id/hall_id"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="20dp"
+            android:layout_marginLeft="50dp"
+            android:layout_marginRight="50dp"
+            android:layout_marginTop="20dp"
+            android:imeOptions="actionDone"
+            android:popupBackground="#DD2e3f5b" />
+
+        <DatePicker
+            android:id="@+id/datePicker"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="50dp"
+            android:layout_marginRight="50dp"
+            android:calendarTextColor="#ffffffff"
+            android:dayOfWeekBackground="#3a7ce8"
+            android:headerBackground="#3a7ce8"
+            android:imeOptions="actionDone"
+            android:isScrollContainer="false"
+            android:nestedScrollingEnabled="true" />
+
+        <Button
+            android:id="@+id/button4"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="50dp"
+            android:layout_marginLeft="50dp"
+            android:layout_marginRight="50dp"
+            android:layout_weight="1"
+            android:background="#3a7ce8"
+            android:imeOptions="actionDone"
+            android:text="Submit" />
+
+    </LinearLayout>
+</android.support.constraint.ConstraintLayout>

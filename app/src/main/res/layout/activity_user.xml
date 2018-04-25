@@ -18,7 +18,7 @@
             android:orientation="vertical">
 
             <Button
-                android:id="@+id/button5"
+                android:id="@+id/user_logout_id"
                 android:layout_width="80dp"
                 android:layout_height="25dp"
                 android:background="?android:attr/colorActivatedHighlight"
@@ -44,7 +44,7 @@
                     android:layout_height="match_parent">
 
                     <Button
-                        android:id="@+id/request_event_id"
+                        android:id="@+id/user_request_events_id"
                         android:layout_width="150dp"
                         android:layout_height="130dp"
                         android:layout_margin="10dp"
@@ -53,7 +53,7 @@
                         android:text="Request Events" />
 
                     <Button
-                        android:id="@+id/view_schedule_id"
+                        android:id="@+id/user_view_schedule_id"
                         android:layout_width="170dp"
                         android:layout_height="130dp"
                         android:layout_margin="10dp"
@@ -67,7 +67,7 @@
                     android:layout_height="match_parent">
 
                     <Button
-                        android:id="@+id/view_reserved_event_id"
+                        android:id="@+id/user_view_reserved_event_id"
                         android:layout_width="wrap_content"
                         android:layout_height="110dp"
                         android:layout_margin="10dp"
@@ -76,7 +76,7 @@
                         android:text="View Reserved Events" />
 
                     <Button
-                        android:id="@+id/cancel_event_id"
+                        android:id="@+id/user_cancel_event_id"
                         android:layout_width="wrap_content"
                         android:layout_height="110dp"
                         android:layout_margin="10dp"

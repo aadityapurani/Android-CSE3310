@@ -17,7 +17,7 @@ public class StaffActivity extends AppCompatActivity {
         setContentView(R.layout.activity_staff);
 
         // Staff Homepage - > View Events
-        final Button view_events_Button = (Button) findViewById(R.id.view_events_id);
+        final Button view_events_Button = (Button) findViewById(R.id.staff_view_events_id);
         view_events_Button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -26,5 +26,16 @@ public class StaffActivity extends AppCompatActivity {
             }
         });
 
+        // Staff Homepage - > Main Page
+        final Button logout_Button = (Button) findViewById(R.id.staff_logout_id);
+        logout_Button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent logout_Intent = new Intent(StaffActivity.this, MainActivity.class);
+                StaffActivity.this.startActivity(logout_Intent);
+            }
+        });
+
     }
+
 }

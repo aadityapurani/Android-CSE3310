@@ -6,6 +6,9 @@ import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.Switch;
 
 public class CreateEventPlan extends AppCompatActivity {
 
@@ -13,7 +16,6 @@ public class CreateEventPlan extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_event_plan);
-<<<<<<< HEAD
 
         final EditText attendees_field   = (EditText)findViewById(R.id.cep_attendees_id);
 
@@ -34,8 +36,7 @@ public class CreateEventPlan extends AppCompatActivity {
 
             }
         });
-=======
->>>>>>> parent of 096a8bc... Merge branch 'master' of https://github.com/aadityapurani/Android-CSE3310
+
     }
 
 }

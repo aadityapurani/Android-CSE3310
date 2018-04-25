@@ -19,7 +19,7 @@
             android:orientation="vertical">
 
             <TextView
-                android:id="@+id/textView5"
+                android:id="@+id/cep_header_id"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="50dp"
@@ -28,7 +28,7 @@
                 android:textSize="25sp" />
 
             <EditText
-                android:id="@+id/editText8"
+                android:id="@+id/cep_attendees_id"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="50dp"
@@ -40,7 +40,7 @@
                 android:imeOptions="actionDone"/>
 
             <Spinner
-                android:id="@+id/spinner3"
+                android:id="@+id/cep_meal_id"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="20dp"
@@ -50,7 +50,7 @@
                 android:imeOptions="actionDone"/>
 
             <DatePicker
-                android:id="@+id/datePicker"
+                android:id="@+id/cep_date_id"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="50dp"
@@ -63,7 +63,7 @@
                 android:imeOptions="actionDone"/>
 
             <TimePicker
-                android:id="@+id/timePicker"
+                android:id="@+id/cep_time_id"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginLeft="50dp"
@@ -73,7 +73,7 @@
                 android:imeOptions="actionDone"/>
 
             <EditText
-                android:id="@+id/editText10"
+                android:id="@+id/cep_duration_id"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="50dp"
@@ -94,7 +94,7 @@
                 android:orientation="horizontal">
 
                 <Switch
-                    android:id="@+id/switch2"
+                    android:id="@+id/cep_alcohol_id"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -118,7 +118,7 @@
                 android:orientation="horizontal">
 
                 <Switch
-                    android:id="@+id/switch2"
+                    android:id="@+id/cep_formality_id"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -133,7 +133,7 @@
             </LinearLayout>
 
             <Button
-                android:id="@+id/button4"
+                android:id="@+id/cep_submit_id"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="50dp"
