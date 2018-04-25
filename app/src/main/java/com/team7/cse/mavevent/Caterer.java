@@ -34,7 +34,7 @@ public class Caterer extends UserBaseModel implements Serializable {
             String phone,
             String address,
             String id){
-        super(fName, lName, email, userName, password, phone, address, id);
+        super(fName, lName, email, userName, password, phone, address, Integer.parseInt(id));
     }
 	
     Caterer(String fName,
