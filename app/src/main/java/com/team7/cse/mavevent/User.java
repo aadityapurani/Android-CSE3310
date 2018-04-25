@@ -19,6 +19,19 @@ public class User extends UserBaseModel implements Serializable {
 		 String password,
 		 String phone,
 		 String address,
+		 String id,
+		 String utaId){
+		super(fName, lName, email, userName, password, phone, address, id);
+		this.utaId =utaId;
+	}
+	
+	User(String fName,
+		 String lName,
+		 String email,
+		 String userName,
+		 String password,
+		 String phone,
+		 String address,
 		 int id,
 		 String utaId){
 		super(fName, lName, email, userName, password, phone, address, id);

@@ -72,6 +72,35 @@ public class Event implements Serializable{
 		this.staffMembers = new ArrayList<Staff>();
 		this.accepted = accepted;
 	}
+	
+	Event(String id,
+		  String name,
+		  String time,
+		  String date,
+		  String capacity,
+		  Hall hall,
+		  String isFormal,
+		  String duration,
+		  //ArrayList<Drink>drinks,
+		  //ArrayList<EntertainmentItem>entertainmentItems,
+		  Food food,
+		  //ArrayList<Staff> staffMembers,
+		  boolean accepted
+		){
+		this.id = Integer.parseInt(id);
+		this.name = name;
+		this.time = Integer.parseInt(time);
+		this.date = date;
+		this.capacity = Integer.parseInt(capacity);
+		this.hall = hall;
+		this.isFormal = Boolean.parseBoolean(isFormal);
+		this.duration = Integer.parseInt(duration);
+		this.drinks = new ArrayList<Drink>(drinks);
+		this.entertainmentItems = new ArrayList<EntertainmentItem>(entertainmentItems);
+		this.food = new Food(food);
+		this.staffMembers = new ArrayList<Staff>();
+		this.accepted = Boolean.parseBoolean(accepted);
+	}
 
 	Event(
 			int id,

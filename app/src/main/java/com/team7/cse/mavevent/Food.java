@@ -12,8 +12,14 @@ public class Food extends EventRecourse implements Serializable {
         this.price=food.price;
         this.name=food.name;
     }
-    Food(String name,int price){
+    
+	Food(String name,int price){
         this.name = name;
         this.price = price;
+    }
+	
+	Food(String name,String price){
+        this.name = name;
+        this.price = Integer.parseInt(price);
     }
 }

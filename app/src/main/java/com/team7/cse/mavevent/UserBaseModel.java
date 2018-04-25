@@ -32,6 +32,25 @@ public class UserBaseModel implements Serializable {
 				  String password,
 				  String phone,
 				  String address,
+				  String id){
+		this.fName =fName;
+		this.lName=lName;
+		this.email=email;
+		this.userName=userName;
+		this.password=password;
+		this.phone=phone;
+		this.address=address;
+		this.id = Integer.parseInt(id);
+		events = new ArrayList<Event>();
+	}
+	
+	UserBaseModel(String fName,
+				  String lName,
+				  String email,
+				  String userName,
+				  String password,
+				  String phone,
+				  String address,
 				  int id){
 		this.fName =fName;
 		this.lName=lName;
@@ -43,7 +62,7 @@ public class UserBaseModel implements Serializable {
 		this.id = id;
 		events = new ArrayList<Event>();
 	}
-
+	
 	UserBaseModel(String fName,
 				  String lName,
 				  String email,

@@ -26,6 +26,17 @@ public class Caterer extends UserBaseModel implements Serializable {
         super(fName, lName, email, userName, password, phone, address, id);
     }
 
+	Caterer(String fName,
+            String lName,
+            String email,
+            String userName,
+            String password,
+            String phone,
+            String address,
+            String id){
+        super(fName, lName, email, userName, password, phone, address, id);
+    }
+	
     Caterer(String fName,
             String lName,
             String email,

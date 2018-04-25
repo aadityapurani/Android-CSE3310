@@ -22,6 +22,19 @@ public class MealType extends Food implements Serializable {
         this.mealType = MEAL_TYPE.values()[mealType];
     }
 
+	MealType(String name,
+             String price,
+             String mealType){
+        super(name, price);
+        this.mealType = MEAL_TYPE.values()[Integer.parseInt(mealType)];
+    }
+	
+	MealType(MealType mealType){
+		this.name = mealType.name;
+		this.price = mealType.price;
+		this.mealType = mealType.mealType;
+	}
+	
     MealType(int mealType){
         this.mealType = MEAL_TYPE.values()[mealType];
     }

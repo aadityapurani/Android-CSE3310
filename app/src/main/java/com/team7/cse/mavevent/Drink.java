@@ -18,4 +18,12 @@ public class Drink extends EventRecourse implements Serializable {
         this.price = price;
         this.alcholic=alcholic;
     }
+	
+	Drink(String name,
+          String price,
+          String alcholic){
+        this.name = name;
+        this.price = Integer.parseInt(price);
+        this.alcholic=alcholic;
+    }
 }
