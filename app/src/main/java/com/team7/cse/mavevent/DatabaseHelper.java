@@ -22,10 +22,12 @@ public class DatabaseHelper extends SQLiteOpenHelper{
 
     // Tables Name
     private static final String TABLE_USERS = "Users_tbl";
+    private static final String TABLE_HALL = "Hall_tbl";
 
     // Common column names
     private static final String KEY_USERID = "user_id";
     private static final String KEY_CREATED_AT = "created_at";
+    private static final String KEY_HALLID = "hall_id";
 
     // Specific Columns for Users table
     private static final String KEY_USERNAME = "username";
@@ -37,6 +39,12 @@ public class DatabaseHelper extends SQLiteOpenHelper{
     private static final String KEY_LNAME = "last_name";
     private static final String KEY_UTAID = "uta_id";
     private static final String KEY_UTYPE = "user_type";
+
+    // Specific Columns for Hall table
+    private static final String KEY_HALLNAME = "name";
+    private static final String KEY_HALLPRICE = "price";
+    private static final String KEY_HALLCAPACITY = "capacity";
+    private static final String KEY_HALLADDRESS = "address";
 
     // Just a database creator
     public DatabaseHelper(Context context){
@@ -56,11 +64,20 @@ public class DatabaseHelper extends SQLiteOpenHelper{
             + " INTEGER," + KEY_UTYPE
             +" INTEGER" + ")";
 
+    // Create Table Hall
+    private static final String CREATE_TABLE_HALL = "CREATE TABLE "
+            + TABLE_HALL + "(" + KEY_HALLID + " INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,"
+            + KEY_HALLNAME + " TEXT,"
+            + KEY_HALLPRICE + " INTEGER,"
+            + KEY_HALLCAPACITY + " INTEGER," + KEY_HALLADDRESS
+            + " TEXT" + ")";
+
     // Will execute the query
     @Override
     public void onCreate(SQLiteDatabase db) {
         // creating required tables
         db.execSQL(CREATE_TABLE_USERS);
+        db.execSQL(CREATE_TABLE_HALL);
     }
 
     // If newer version exists, start with fresh database
