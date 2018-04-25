@@ -108,15 +108,18 @@ public class MainActivity extends AppCompatActivity {
                             break;
                         }
                     }
+
                 }
                 else
                 {
                     Context context = getApplicationContext();
                     CharSequence text = "Login Failed...";
                     int duration = Toast.LENGTH_SHORT;
+
                     Toast toast = Toast.makeText(context, text, duration);
                     toast.show();
                 }
+
                 */
 
             }
@@ -132,8 +135,6 @@ public class MainActivity extends AppCompatActivity {
             }
 
         });
-
-
 
         final TextView resetLink = (TextView) findViewById(R.id.reset_password_id);
         resetLink.setOnClickListener(new View.OnClickListener(){

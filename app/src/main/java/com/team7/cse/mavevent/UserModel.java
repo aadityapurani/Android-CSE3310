@@ -22,10 +22,6 @@ public class UserModel implements Serializable{
         return userUta;
     }
 
-    public void setUserUta(int userUta) {
-        this.userUta = userUta;
-    }
-
     public String getUserPassword() {
         return userPassword;
     }
@@ -98,4 +94,7 @@ public class UserModel implements Serializable{
         this.userType = userType;
     }
 
+    public void setUserUta(int userUta) {
+        this.userUta = userUta;
+    }
 }
