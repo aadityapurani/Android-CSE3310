@@ -7,23 +7,24 @@ import java.io.Serializable;
  */
 
 public class Drink extends EventRecourse implements Serializable {
-    public boolean alcholic;
+    public boolean alcoholic;
     Drink(){
-        alcholic=false;
+        alcoholic=false;
     }
     Drink(String name,
           int price,
-          boolean alcholic){
+          boolean alcoholic){
         this.name = name;
         this.price = price;
-        //this.alcholic=alcholic;
+        this.alcoholic=alcoholic;
     }
 	
 	Drink(String name,
           String price,
-          String alcholic){
+          String alcoholic){
         this.name = name;
         this.price = Integer.parseInt(price);
+        this.alcoholic = Boolean.parseBoolean(alcoholic);
         //this.alcholic=true;
     }
 }

@@ -26,6 +26,18 @@ public class Hall implements Serializable {
         schedule = new ArrayList<Event>();
     }
 
+    Hall(int capacity,int price,String name){
+        this.capacity=capacity;
+        this.price=price;
+        this.name= name;
+    }
+
+    Hall(String capacity,String price, String name){
+        this.capacity = Integer.parseInt(capacity);
+        this.price=Integer.parseInt(price);
+        this.name=name;
+    }
+
     public void setCapacity(int capcity) {this.capacity = capacity;}
 
     public int getCapacity(){return capacity;}
