@@ -44,8 +44,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="50dp"
-            android:layout_marginRight="50dp"
-            android:popupBackground="#DD2e3f5b" />
+            android:layout_marginRight="50dp"/>
 
         <EditText
             android:id="@+id/add_resources_item_id"

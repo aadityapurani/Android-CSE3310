@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/gradient"
+        android:padding="20dp"
+        android:paddingBottom="30dp"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="0dp"
+        tools:ignore="MissingConstraints">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/cep_header_id"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="50dp"
+                android:text="Create an Event Plan"
+                android:textColor="#ffffffff"
+                android:textSize="25sp" />
+
+            <EditText
+                android:id="@+id/cep_attendees_id"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="50dp"
+                android:layout_marginRight="50dp"
+                android:ems="10"
+                android:inputType="number"
+                android:text="Number of Attendees"
+                android:textColor="#ffffffff"
+                android:imeOptions="actionDone"/>
+
+            <Spinner
+                android:id="@+id/cep_meal_id"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="20dp"
+                android:layout_marginLeft="50dp"
+                android:layout_marginRight="50dp"
+                android:layout_marginTop="20dp"
+                android:imeOptions="actionDone"/>
+
+            <DatePicker
+                android:id="@+id/cep_date_id"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="50dp"
+                android:layout_marginRight="50dp"
+                android:calendarTextColor="#ffffffff"
+                android:dayOfWeekBackground="#3a7ce8"
+                android:headerBackground="#3a7ce8"
+                android:isScrollContainer="false"
+                android:nestedScrollingEnabled="true"
+                android:imeOptions="actionDone"/>
+            <TimePicker
+                android:id="@+id/cep_time_id"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="50dp"
+                android:layout_marginRight="50dp"
+                android:headerBackground="#3a7ce8"
+                android:numbersSelectorColor="#3a7ce8"
+                android:imeOptions="actionDone"/>
+
+            <EditText
+                android:id="@+id/cep_duration_id"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="50dp"
+                android:layout_marginRight="50dp"
+                android:ems="10"
+                android:inputType="number"
+                android:text="Duration"
+                android:textColor="#ffffffff"
+                android:imeOptions="actionDone"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginBottom="10dp"
+                android:layout_marginLeft="50dp"
+                android:layout_marginRight="50dp"
+                android:layout_marginTop="10dp"
+                android:orientation="horizontal">
+
+                <Switch
+                    android:id="@+id/cep_alcohol_id"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:scaleY="1"
+                    android:text="Alcohol"
+                    android:textColor="#ffffffff"
+                    android:textSize="18sp"
+                    android:thumbTint="#3a7ce8"
+                    android:trackTint="#ffffffff"
+                    android:imeOptions="actionDone"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginBottom="10dp"
+                android:layout_marginLeft="50dp"
+                android:layout_marginRight="50dp"
+                android:layout_marginTop="10dp"
+                android:orientation="horizontal">
+
+                <Switch
+                    android:id="@+id/cep_formality_id"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:scaleY="1"
+                    android:text="Formal"
+                    android:textColor="#ffffffff"
+                    android:textSize="18sp"
+                    android:thumbTint="#3a7ce8"
+                    android:trackTint="#ffffffff"
+                    android:imeOptions="actionDone"/>
+
+            </LinearLayout>
+
+            <Button
+                android:id="@+id/cep_submit_id"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="50dp"
+                android:layout_marginLeft="50dp"
+                android:layout_marginRight="50dp"
+                android:layout_weight="1"
+                android:background="#3a7ce8"
+                android:text="Submit"
+                android:imeOptions="actionDone"/>
+
+        </LinearLayout>
+    </ScrollView>
+
+</android.support.constraint.ConstraintLayout>
