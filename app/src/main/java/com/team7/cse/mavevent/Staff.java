@@ -40,6 +40,16 @@ public class Staff extends UserBaseModel implements Serializable {
 		super(fName, lName, email, userName, password, phone, address, id,events);
 	}
 
+	Staff(String fName,
+		  String lName,
+		  String email,
+		  String userName,
+		  String password,
+		  String phone,
+		  String address,
+		  String id){
+		super(fName, lName, email, userName, password, phone, address, Integer.parseInt(id));
+	}
 	public boolean removeEvent(Event event){
 		for(Event e : events){
 			if(event.sameAs(e)){

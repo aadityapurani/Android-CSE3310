@@ -2,6 +2,7 @@ package com.team7.cse.mavevent;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.provider.ContactsContract;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
@@ -18,17 +19,23 @@ import android.widget.Toast;
 import java.util.ArrayList;
 import java.util.List;
 import java.lang.String;
+import com.team7.cse.mavevent.DatabaseHelper;
+import com.team7.cse.mavevent.User;
 
 public class RegisterActivity extends AppCompatActivity implements OnItemSelectedListener{
 
     EditText emailSection, passwordSection, fnameSection, lnameSection, unameSection, utaidSection, addressSection, phoneSection;
     String val1;
     int pos;
+    DatabaseHelper handler;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
+
+        // Creating Global Handler
+         handler = new DatabaseHelper(this);
 
         emailSection = (EditText) findViewById(R.id.emailSection);
         passwordSection = (EditText) findViewById(R.id.passwordSection);
@@ -54,31 +61,14 @@ public class RegisterActivity extends AppCompatActivity implements OnItemSelecte
         user_spinner.setAdapter(dataAdapter);
 
 
+
         // Just Testing the stuff out
         final Button regButton = (Button) findViewById(R.id.new_password_id);
         regButton.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){
-                if (isInputValid(emailSection, passwordSection, unameSection)){
-                    UserModel user = new UserModel();
-                    user.setUserFName(fnameSection.getText().toString());
-                    user.setUserLName(lnameSection.getText().toString());
-                    user.setUserName(unameSection.getText().toString());
-                    user.setUserAddress(addressSection.getText().toString());
-                    user.setUserPhone(phoneSection.getText().toString());
-                    user.setUserEmail(emailSection.getText().toString());
-                    user.setUserPassword(passwordSection.getText().toString());
-                    val1 = utaidSection.getText().toString();
-                    int finalval1 = Integer.parseInt(val1);
-                    user.setUserUta(finalval1);
-                    user.setUserType(pos);
-                    DatabaseHelper handler = new DatabaseHelper(RegisterActivity.this);
-                    handler.addNewUser(user);
-                    Toast.makeText(RegisterActivity.this, "Registration succesful", Toast.LENGTH_LONG).show();
-                    finish();
-                }
 
-
+                Reg(handler);
                 //Intent catereractIntent = new Intent(RegisterActivity.this, UserActivity.class);
                 //RegisterActivity.this.startActivity(catereractIntent);
             }
@@ -96,6 +86,67 @@ public class RegisterActivity extends AppCompatActivity implements OnItemSelecte
 
     public void onNothingSelected(AdapterView<?> arg0) {
         //TODO Auto-generated method stub
+    }
+
+
+    public void Reg(DatabaseHelper handler){
+
+        UserModel user = new UserModel();
+
+        String fname = fnameSection.getText().toString();
+        String lname = lnameSection.getText().toString();
+        String uname = unameSection.getText().toString();
+        String address = addressSection.getText().toString();
+        String phone = phoneSection.getText().toString();
+        String email = emailSection.getText().toString();
+        String password = passwordSection.getText().toString();
+
+        boolean ready = true;
+
+        if((isInputValid(unameSection, passwordSection, emailSection)) && (!fname.isEmpty()) && (!lname.isEmpty()) && (!uname.isEmpty()) &&  (!email.isEmpty()) && (!address.isEmpty()) && (!phone.isEmpty())){
+
+            user.setUserFName(fname);
+            user.setUserLName(lname);
+            user.setUserName(uname);
+            user.setUserAddress(address);
+            user.setUserType(pos);
+            user.setUserEmail(email);
+            user.setUserPassword(password);
+
+            if(phone.length() == 10) {
+                user.setUserPhone(phone);
+            }
+            else{
+                ready = false;
+                Toast.makeText(RegisterActivity.this, "Phone Number should be of 10 digits", Toast.LENGTH_LONG).show();
+            }
+
+            val1 = utaidSection.getText().toString();
+            if(val1.length() == 10) {
+                int finalval1 = Integer.parseInt(val1);
+                user.setUserUta(finalval1);
+            }else{
+                ready = false;
+                Toast.makeText(RegisterActivity.this, "ID should be of 10 digits", Toast.LENGTH_LONG).show();
+            }
+
+        }else{
+            Toast.makeText(RegisterActivity.this, "Empty Text Field(s)", Toast.LENGTH_LONG).show();
+            ready = false;
+        }
+
+        if(ready){
+            handler.addNewUser(user);
+            Toast.makeText(RegisterActivity.this, "Registration succesful", Toast.LENGTH_LONG).show();
+            finish();
+        }
+        if(!ready) {
+            Toast.makeText(RegisterActivity.this, "Registration failure", Toast.LENGTH_LONG).show();
+        }
+
+
+
+
     }
 
     private boolean isInputValid(EditText unameSection, EditText passwordSection, EditText emailSection){
