@@ -5,6 +5,11 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.provider.ContactsContract;
+
+import com.team7.cse.mavevent.App;
+
+
 /**
  * Created by aadit on 4/23/2018.
  */
@@ -51,6 +56,10 @@ public class DatabaseHelper extends SQLiteOpenHelper{
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
     }
 
+    public DatabaseHelper(){
+        super(App.getContext(), DATABASE_NAME, null, DATABASE_VERSION);
+    }
+
     // Create Table Users
     private static final String CREATE_TABLE_USERS = "CREATE TABLE "
             + TABLE_USERS + "(" + KEY_USERID + " INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL," + KEY_USERNAME
@@ -80,16 +89,59 @@ public class DatabaseHelper extends SQLiteOpenHelper{
         db.execSQL(CREATE_TABLE_HALL);
     }
 
+    public void updateData(){
+        addHall(1,"Arlington hall",50,500,"Planet UTA");
+        addHall(2,"KC hall",60,400,"Planet Arlington");
+        addHall(3,"Shard hall",70,300,"Planet Tarrant");
+        addHall(4,"Liberty hall",80,200,"Planet Texas");
+        addHall(5,"Maverick Hall",90,100,"Planet USA");
+    }
+
     // If newer version exists, start with fresh database
     @Override
     public void onUpgrade(SQLiteDatabase sqLiteDatabase, int i, int i1) {
         sqLiteDatabase.execSQL("DROP TABLE IF EXISTS " + TABLE_USERS);
+        sqLiteDatabase.execSQL("DROP TABLE IF EXISTS " + TABLE_HALL);
         onCreate(sqLiteDatabase);
+    }
+
+
+    public void addHall(int id, String hallName,int price,int capacity,String address){
+        SQLiteDatabase db = DatabaseManager.getInstance().openDatabase();
+       // SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues values = new ContentValues();
+        values.put(KEY_HALLID, id);
+        values.put(KEY_HALLNAME, hallName);
+        values.put(KEY_HALLPRICE, price);
+        values.put(KEY_HALLCAPACITY, capacity);
+        values.put(KEY_ADDRESS, address);
+        db.insert(TABLE_HALL,null,values);
+        DatabaseManager.getInstance().closeDatabase();
+    }
+
+    public Hall retrieveHall(int id) {
+        SQLiteDatabase db = DatabaseManager.getInstance().openDatabase();
+        //SQLiteDatabase db = this.getWritableDatabase();
+
+        String query = "SELECT * from " + TABLE_HALL+ " WHERE " + KEY_HALLID+ " = \""
+                + id+"\";";
+        Cursor cursor = db.rawQuery(query, null);
+        if(!cursor.moveToFirst()){
+            return null;
+        }
+        Hall hall = new Hall(cursor.getInt(cursor.getColumnIndex(KEY_HALLID)),
+                cursor.getInt(cursor.getColumnIndex(KEY_HALLCAPACITY)),
+                cursor.getInt(cursor.getColumnIndex(KEY_HALLPRICE)),
+                cursor.getString(cursor.getColumnIndex(KEY_HALLNAME))
+                );
+
+        return hall;
     }
 
     // Register User Database Logic
     public void addNewUser(UserModel user){
-        SQLiteDatabase db = this.getWritableDatabase();
+       // SQLiteDatabase db = this.getWritableDatabase();
+        SQLiteDatabase db = DatabaseManager.getInstance().openDatabase();
         ContentValues values = new ContentValues();
         values.put(KEY_USERNAME, user.getUserName());
         values.put(KEY_PASSWORD, user.getUserPassword());
@@ -101,7 +153,8 @@ public class DatabaseHelper extends SQLiteOpenHelper{
         values.put(KEY_UTAID, user.getUserUta());
         values.put(KEY_UTYPE, user.getUserType());
         db.insert(TABLE_USERS, null, values);
-        db.close();
+        //db.close();
+        DatabaseManager.getInstance().closeDatabase();
     }
 
     // Login
