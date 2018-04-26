@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
@@ -20,7 +21,8 @@
             android:layout_marginBottom="20dp"
             android:layout_marginLeft="50dp"
             android:layout_marginRight="50dp"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="50dp"
+            android:layout_weight="1"
             android:gravity="center_horizontal"
             android:text="Create an Event Plan"
             android:textColor="#ffffffff"
@@ -32,7 +34,7 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="50dp"
             android:layout_marginRight="50dp"
-            android:ems="10"
+            android:layout_weight="1"
             android:gravity="center_horizontal"
             android:hint="Number of Attendees"
             android:imeOptions="actionDone"
@@ -49,6 +51,7 @@
             android:layout_marginLeft="50dp"
             android:layout_marginRight="50dp"
             android:layout_marginTop="20dp"
+            android:layout_weight="1"
             android:imeOptions="actionDone" />
 
         <Button
@@ -59,6 +62,7 @@
             android:layout_marginLeft="50dp"
             android:layout_marginRight="50dp"
             android:layout_marginTop="10dp"
+            android:layout_weight="1"
             android:background="#3a7ce8"
             android:text="Pick a Date" />
 
@@ -70,6 +74,7 @@
             android:layout_marginLeft="50dp"
             android:layout_marginRight="50dp"
             android:layout_marginTop="10dp"
+            android:layout_weight="1"
             android:background="#3a7ce8"
             android:paddingBottom="10dp"
             android:paddingTop="10dp"
@@ -81,6 +86,7 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="50dp"
             android:layout_marginRight="50dp"
+            android:layout_weight="1"
             android:ems="10"
             android:gravity="center_horizontal"
             android:hint="Duration"
@@ -97,6 +103,7 @@
             android:layout_marginLeft="50dp"
             android:layout_marginRight="50dp"
             android:layout_marginTop="10dp"
+            android:layout_weight="1"
             android:imeOptions="actionDone"
             android:text="Alcohol"
             android:textColor="#ffffffff"
@@ -112,6 +119,7 @@
             android:layout_marginLeft="50dp"
             android:layout_marginRight="50dp"
             android:layout_marginTop="10dp"
+            android:layout_weight="1"
             android:imeOptions="actionDone"
             android:text="Formal"
             android:textColor="#ffffffff"
@@ -127,6 +135,7 @@
             android:layout_marginLeft="50dp"
             android:layout_marginRight="50dp"
             android:layout_marginTop="30dp"
+            android:layout_weight="1"
             android:background="#3a7ce8"
             android:imeOptions="actionDone"
             android:text="Submit" />

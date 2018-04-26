@@ -238,6 +238,10 @@ public class CreateEventPlan extends AppCompatActivity implements AdapterView.On
         //TODO Auto-generated method stub
     }
 
+
+    //**************************WORK YOUR MAGIC HERE TO ACTUALLY FILL THE REQUEST*********************
+
+
     public boolean createPlanDB(String attendees, String mealType, String comboDate, String isAlcohol, String formal, String userID)
     {
         boolean wasAccepted = false;
