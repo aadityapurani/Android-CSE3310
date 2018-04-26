@@ -28,10 +28,16 @@ public class CreateEventPlan extends AppCompatActivity implements AdapterView.On
     List<String> meals;
     int rowSelected;
     String attendees;
+    String duration;
     String mealType;
     String dateTime;
     int hasAlcohol = 0;
     int isFormal = 0;
+    boolean setDate=false;
+    boolean setTime=false;
+    boolean validAttendees = false;
+    boolean validDuration = false;
+    boolean validMeal = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,7 +49,7 @@ public class CreateEventPlan extends AppCompatActivity implements AdapterView.On
         final EditText attendees_field   = (EditText)findViewById(R.id.cep_attendees_id);
 
         //////////////////////<M E A L - T Y P E - S P I N N E R//////////////////////////////////
-        Spinner cep_meal_spinner = (Spinner) findViewById(R.id.cep_meal_id);
+        final Spinner cep_meal_spinner = (Spinner) findViewById(R.id.cep_meal_id);
         cep_meal_spinner.setOnItemSelectedListener(this);
 
         meals = new ArrayList<String>();//this is the user-viewable name
@@ -66,18 +72,20 @@ public class CreateEventPlan extends AppCompatActivity implements AdapterView.On
             public void onDateSet(DatePicker view, int year, int month, int day) {
 
                 activityCalendar.set(year, month, year);
+                setDate = true;
 
             }
 
         }, activityCalendar.get(Calendar.YEAR), activityCalendar.get(Calendar.MONTH), activityCalendar.get(Calendar.DAY_OF_MONTH));
 
         // Pick a Date Button
-        Button cep_pick_date_button = (Button) findViewById(R.id.cep_pick_date_id);
+        final Button cep_pick_date_button = (Button) findViewById(R.id.cep_pick_date_id);
         cep_pick_date_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
                 datePickerDialog.show();
+                cep_pick_date_button.setBackgroundColor(0xFF3A7CE8);
 
             }
         });
@@ -89,22 +97,26 @@ public class CreateEventPlan extends AppCompatActivity implements AdapterView.On
 
                 activityCalendar.set(Calendar.HOUR_OF_DAY, hour);
                 activityCalendar.set(Calendar.MINUTE, minute);
+                setTime = true;
 
             }
 
         }, activityCalendar.get(Calendar.HOUR_OF_DAY), activityCalendar.get(Calendar.MINUTE), false);
 
         // Pick a Date Button
-        Button cep_pick_time_button = (Button) findViewById(R.id.cep_pick_time_id);
+        final Button cep_pick_time_button = (Button) findViewById(R.id.cep_pick_time_id);
         cep_pick_time_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
                 timePickerDialog.show();
+                cep_pick_time_button.setBackgroundColor(0xFF3A7CE8);
 
             }
         });
         /////////////////////// T I M E - P I C K E R> ///////////////////////////////////////////
+
+
         final EditText duration_field   = (EditText)findViewById(R.id.cep_duration_id);
 
         //////////////////////// <S W I T C H E S /////////////////////////////////////////////////
@@ -134,34 +146,81 @@ public class CreateEventPlan extends AppCompatActivity implements AdapterView.On
             @Override
             public void onClick(View v) {
 
+                if (!setTime)
+                {
+                    cep_pick_time_button.setBackgroundColor(0xFFf44e42);
+                }
+                if (!setDate)
+                {
+                    cep_pick_date_button.setBackgroundColor(0xFFf44e42);
+                }
                 String hour = Integer.toString(activityCalendar.get(Calendar.HOUR_OF_DAY));
                 String minute = Integer.toString(activityCalendar.get(Calendar.MINUTE));
                 String day = Integer.toString(activityCalendar.get(Calendar.DAY_OF_MONTH));
                 String month = Integer.toString(activityCalendar.get(Calendar.MONTH));
                 String year = Integer.toString(activityCalendar.get(Calendar.YEAR)%100);
-
-                //here is everything you need to make the database request... they are formatted as strings
-                attendees = attendees_field.getText().toString();
-                mealType = Integer.toString(rowSelected);
-                String comboDate = day + '/' + month + '/' + year + ' ' + hour + ':' + minute;
-                String isAlcohol = Integer.toString(hasAlcohol);
-                String formal = Integer.toString(isFormal);
-                //need userID from somewhere
-                String userID="";//this is just temporary so that the request code works, remove it once you get the session version
-
-                boolean wasAccepted = createPlanDB(attendees, mealType, comboDate, isAlcohol, formal, userID);//call to attempt to write to the database
-
-                if (wasAccepted) finish();
-
-                else {
-                    //let them know
+                try
+                {
+                    Integer.parseInt(attendees_field.getText().toString());
+                    attendees_field.setError(null);
+                    attendees = attendees_field.getText().toString();
+                    validAttendees = true;
+                }
+                catch (Exception e)
+                {
+                    attendees_field.setError("Invalid number of attendees");
+                }
+                try
+                {
+                    Integer.parseInt(duration_field.getText().toString());
+                    duration_field.setError(null);
+                    duration = duration_field.getText().toString();
+                    validDuration = true;
+                }
+                catch (Exception e)
+                {
+                    duration_field.setError("Invalid duration");
+                }
+                if(rowSelected == 0)
+                {
                     Context context = getApplicationContext();
-                    CharSequence text = "There was an error making the request";
+                    CharSequence text = "Please select a meal";
                     int duration = Toast.LENGTH_SHORT;
 
                     Toast toast = Toast.makeText(context, text, duration);
                     toast.show();
+                    cep_meal_spinner.setBackgroundColor(0xFFf44e42);
                 }
+                else
+                {
+                    mealType = Integer.toString(rowSelected);
+                    validMeal = true;
+                    String comboDate = day + '/' + month + '/' + year + ' ' + hour + ':' + minute;
+                    String isAlcohol = Integer.toString(hasAlcohol);
+                    String formal = Integer.toString(isFormal);
+                    //need userID from somewhere
+                    String userID="";//this is just temporary so that the request code works, remove it once you get the session version
+                    boolean wasAccepted=false;
+
+
+                    if (setDate && setTime && validDuration && validDuration && validMeal) {
+                        wasAccepted = createPlanDB(attendees, mealType, comboDate, isAlcohol, formal, userID);//call to attempt to write to the database
+                        if (wasAccepted) finish();
+
+                        else {
+                            //let them know
+                            Context context = getApplicationContext();
+                            CharSequence text = "There was an error making the request";
+                            int duration = Toast.LENGTH_SHORT;
+
+                            Toast toast = Toast.makeText(context, text, duration);
+                            toast.show();
+                        }
+                    }
+
+
+                }
+
 
             }
         });
@@ -170,6 +229,8 @@ public class CreateEventPlan extends AppCompatActivity implements AdapterView.On
     //@Override
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
         rowSelected = position;
+        view = findViewById(R.id.cep_meal_id);
+        view.setBackgroundColor(0x00000000);
 
     }
 
