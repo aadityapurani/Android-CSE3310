@@ -10,8 +10,6 @@ import java.io.Serializable;
 
 public class User extends UserBaseModel implements Serializable {
 	//private ArrayList <Event> reservedEvents;
-	private String utaId;
-	
 	User(String fName,
 		 String lName,
 		 String email,
@@ -20,22 +18,20 @@ public class User extends UserBaseModel implements Serializable {
 		 String phone,
 		 String address,
 		 String id,
-		 String utaId){
-		super(fName, lName, email, userName, password, phone, address, id);
-		this.utaId =utaId;
+		 int utaId){
+		super(fName, lName, email, userName, password, phone, address, Integer.parseInt(id),1,utaId);
 	}
 	
-	User(String fName,
+	User(int id,
+		 String fName,
 		 String lName,
 		 String email,
 		 String userName,
 		 String password,
 		 String phone,
 		 String address,
-		 int id,
-		 String utaId){
-		super(fName, lName, email, userName, password, phone, address, id);
-		this.utaId = utaId;
+		 int utaId){
+		super(fName, lName, email, userName, password, phone, address, id,1,utaId);
 	}
 
 	User(String fName,
@@ -46,22 +42,13 @@ public class User extends UserBaseModel implements Serializable {
 		 String phone,
 		 String address,
 		 int id,
-		 String utaId,
+		 int utaId,
 		 ArrayList<Event>events){
-		super(fName, lName, email, userName, password, phone, address, id, events);
-		this.utaId = utaId;
+		super(fName, lName, email, userName, password, phone, address, id, events,1,utaId);;
 	}
 
 	User(){
 		super();
-	}
-
-	public String getUtaId(){
-		return utaId;
-	}
-	
-	public void setUtaId(String utaId){
-		this.utaId = utaId;
 	}
 	
 	// Actual functions

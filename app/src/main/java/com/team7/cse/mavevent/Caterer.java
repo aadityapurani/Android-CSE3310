@@ -23,7 +23,7 @@ public class Caterer extends UserBaseModel implements Serializable {
             String phone,
             String address,
             int id){
-        super(fName, lName, email, userName, password, phone, address, id);
+        super(fName, lName, email, userName, password, phone, address, id,0,-1);
     }
 
 	Caterer(String fName,
@@ -34,7 +34,7 @@ public class Caterer extends UserBaseModel implements Serializable {
             String phone,
             String address,
             String id){
-        super(fName, lName, email, userName, password, phone, address, Integer.parseInt(id));
+        super(fName, lName, email, userName, password, phone, address, Integer.parseInt(id),0,-1);
     }
 	
     Caterer(String fName,
@@ -46,7 +46,7 @@ public class Caterer extends UserBaseModel implements Serializable {
             String address,
             int id,
             ArrayList<Event>events){
-        super(fName, lName, email, userName, password, phone, address, id,events);
+        super(fName, lName, email, userName, password, phone, address, id,events,0,-1);
     }
 
 	/*

@@ -8,85 +8,117 @@
     android:background="@drawable/gradient"
     tools:context="com.team7.cse.mavevent.MainActivity">
 
-
-    <android.support.constraint.ConstraintLayout
+    <ImageView
+        android:id="@+id/imageView4"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="86dp"
+        app:srcCompat="@drawable/uta1" />
 
-        <android.support.constraint.ConstraintLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/imageView4"
+        android:layout_marginLeft="11dp"
+        android:layout_marginStart="11dp"
+        android:layout_marginTop="14dp"
+        android:text="Event Details"
+        android:textColor="#ffffff"
+        android:textSize="22sp" />
 
-            <android.support.constraint.ConstraintLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:background="@drawable/gradient">
+    <EditText
+        android:id="@+id/detail_time"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_below="@+id/textView"
+        android:layout_marginTop="144dp"
+        android:ems="15"
+        android:inputType="textPersonName"
+        android:text="Time: "
+        android:layout_alignLeft="@+id/textView" />
 
-                <android.support.design.widget.CoordinatorLayout
-                    android:layout_width="395dp"
-                    android:layout_height="643dp"
-                    android:layout_marginBottom="52dp"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    tools:layout_editor_absoluteX="8dp">
+    <EditText
+        android:id="@+id/detail_date"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/detail_time"
+        android:ems="15"
+        android:inputType="textPersonName"
+        android:text="Date: "
+        android:layout_alignLeft="@+id/textView" />
 
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="150dp"
-                        android:orientation="vertical">
+    <EditText
+        android:id="@+id/detail_attendes"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/detail_date"
+        android:ems="15"
+        android:inputType="textPersonName"
+        android:text="Number of Attendes: "
+        android:layout_alignLeft="@+id/textView" />
 
-                        <ImageView
-                            android:id="@+id/imageView3"
-                            android:layout_width="match_parent"
-                            android:layout_height="140dp"
-                            android:scaleType="fitCenter"
-                            android:scaleX=".5"
-                            android:scaleY=".5"
-                            app:srcCompat="@drawable/uta1" />
+    <EditText
+        android:id="@+id/detail_hall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/detail_attendes"
+        android:ems="15"
+        android:inputType="textPersonName"
+        android:text="Hall: "
+        android:layout_alignLeft="@+id/textView" />
 
-                        <TableLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            tools:layout_editor_absoluteY="100dp">
+    <EditText
+        android:id="@+id/detail_formality"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/detail_hall"
+        android:ems="15"
+        android:inputType="textPersonName"
+        android:text="Formality: "
+        android:layout_alignLeft="@+id/textView" />
 
-                            <TableRow
-                                android:layout_width="match_parent"
-                                android:layout_height="match_parent">
+    <EditText
+        android:id="@+id/detail_duration"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/detail_formality"
+        android:ems="15"
+        android:inputType="textPersonName"
+        android:text="Duration: "
+        android:layout_alignLeft="@+id/textView" />
 
-                            </TableRow>
+    <EditText
+        android:id="@+id/editText6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/detail_duration"
+        android:ems="15"
+        android:inputType="textPersonName"
+        android:text="Name"
+        android:layout_alignLeft="@+id/textView" />
 
-                            <TableRow
-                                android:layout_width="match_parent"
-                                android:layout_height="match_parent">
+    <EditText
+        android:id="@+id/editText5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/editText6"
+        android:ems="15"
+        android:inputType="textPersonName"
+        android:text="Name"
+        android:layout_alignLeft="@+id/textView" />
 
-                            </TableRow>
+    <EditText
+        android:id="@+id/editText3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/editText5"
+        android:ems="15"
+        android:inputType="textPersonName"
+        android:text="Name"
+        android:layout_alignLeft="@+id/textView" />
 
-                        </TableLayout>
 
-                        <Button
-                            android:id="@+id/event_id"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:background="#3a7ce8"
-                            android:text="Button"
-                            tools:text="Event #" />
-
-                        <TableRow
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent">
-
-                            <Button
-                                android:id="@+id/button6"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:background="#3a7ce8"
-                                android:text="Done" />
-                        </TableRow>
-
-                    </LinearLayout>
-
-                </android.support.design.widget.CoordinatorLayout>
-            </android.support.constraint.ConstraintLayout>
-        </android.support.constraint.ConstraintLayout>
-    </android.support.constraint.ConstraintLayout>
 </RelativeLayout>

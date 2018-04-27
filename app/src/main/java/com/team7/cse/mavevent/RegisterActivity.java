@@ -1,6 +1,9 @@
 package com.team7.cse.mavevent;
 
+import com.team7.cse.mavevent.DatabaseManager;
+import com.team7.cse.mavevent.DatabaseHelper;
 import android.content.Intent;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.provider.ContactsContract;
 import android.support.design.widget.FloatingActionButton;
@@ -89,10 +92,10 @@ public class RegisterActivity extends AppCompatActivity implements OnItemSelecte
     }
 
 
-    public void Reg(DatabaseHelper handler){
+    public void Reg(DatabaseHelper handler) {
 
-        UserModel user = new UserModel();
-
+        UserBaseModel currentPerson;
+        final DatabaseHelper db = new DatabaseHelper(RegisterActivity.this);
         String fname = fnameSection.getText().toString();
         String lname = lnameSection.getText().toString();
         String uname = unameSection.getText().toString();
@@ -103,50 +106,52 @@ public class RegisterActivity extends AppCompatActivity implements OnItemSelecte
 
         boolean ready = true;
 
-        if((isInputValid(unameSection, passwordSection, emailSection)) && (!fname.isEmpty()) && (!lname.isEmpty()) && (!uname.isEmpty()) &&  (!email.isEmpty()) && (!address.isEmpty()) && (!phone.isEmpty())){
+        if ((isInputValid(unameSection, passwordSection, emailSection)) && (!fname.isEmpty()) && (!lname.isEmpty()) && (!uname.isEmpty()) && (!email.isEmpty()) && (!address.isEmpty()) && (!phone.isEmpty())) {
 
-            user.setUserFName(fname);
-            user.setUserLName(lname);
-            user.setUserName(uname);
-            user.setUserAddress(address);
-            user.setUserType(pos);
-            user.setUserEmail(email);
-            user.setUserPassword(password);
 
-            if(phone.length() == 10) {
-                user.setUserPhone(phone);
-            }
-            else{
+            String val1 = utaidSection.getText().toString();
+            if (phone.length() != 10) {
                 ready = false;
                 Toast.makeText(RegisterActivity.this, "Phone Number should be of 10 digits", Toast.LENGTH_LONG).show();
             }
+            if (pos == 1) {
+                if (val1.length() != 10) {
+                    ready = false;
+                    Toast.makeText(RegisterActivity.this, "ID should be of 10 digits", Toast.LENGTH_LONG).show();
+                }
+            }
+            //check if username || utaId exists if it's a already exists
+            boolean test=true;
+            if(pos==1){
+                test = db. checkExistence(uname,Integer.parseInt(utaidSection.getText().toString()),true);
+            }
+            else {
+                test = db. checkExistence(uname,Integer.parseInt(utaidSection.getText().toString()),false);
+            }
+            if (test&&ready) {
+                currentPerson = new UserBaseModel();
+                currentPerson.setFName(fname);
+                currentPerson.setLName(lname);
+                currentPerson.setUserName(uname);
+                currentPerson.setAddress(address);
+                currentPerson.setEmail(email);
+                currentPerson.type = pos;
+                currentPerson.setPassword(password);
+                if(pos==1)
+                    currentPerson.setUtaId(Integer.parseInt(utaidSection.getText().toString()));
+                else
+                    currentPerson.setUtaId(-1);
+                currentPerson.setPhone(phone);
+                db.addNewUser(currentPerson);
 
-            val1 = utaidSection.getText().toString();
-            if(val1.length() == 10) {
-                int finalval1 = Integer.parseInt(val1);
-                user.setUserUta(finalval1);
-            }else{
-                ready = false;
-                Toast.makeText(RegisterActivity.this, "ID should be of 10 digits", Toast.LENGTH_LONG).show();
+                Toast.makeText(RegisterActivity.this, "Registration succesful", Toast.LENGTH_LONG).show();
+                finish();
+            } else {
+                Toast.makeText(RegisterActivity.this, "Registration failure", Toast.LENGTH_LONG).show();
             }
 
-        }else{
-            Toast.makeText(RegisterActivity.this, "Empty Text Field(s)", Toast.LENGTH_LONG).show();
-            ready = false;
+
         }
-
-        if(ready){
-            handler.addNewUser(user);
-            Toast.makeText(RegisterActivity.this, "Registration succesful", Toast.LENGTH_LONG).show();
-            finish();
-        }
-        if(!ready) {
-            Toast.makeText(RegisterActivity.this, "Registration failure", Toast.LENGTH_LONG).show();
-        }
-
-
-
-
     }
 
     private boolean isInputValid(EditText unameSection, EditText passwordSection, EditText emailSection){

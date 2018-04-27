@@ -5,6 +5,11 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.provider.ContactsContract;
+
+import com.team7.cse.mavevent.App;
+
+
 /**
  * Created by aadit on 4/23/2018.
  */
@@ -51,6 +56,10 @@ public class DatabaseHelper extends SQLiteOpenHelper{
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
     }
 
+    public DatabaseHelper(){
+        super(App.getContext(), DATABASE_NAME, null, DATABASE_VERSION);
+    }
+
     // Create Table Users
     private static final String CREATE_TABLE_USERS = "CREATE TABLE "
             + TABLE_USERS + "(" + KEY_USERID + " INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL," + KEY_USERNAME
@@ -80,49 +89,177 @@ public class DatabaseHelper extends SQLiteOpenHelper{
         db.execSQL(CREATE_TABLE_HALL);
     }
 
+    public void updateData(){
+        addHall(1,"Arlington hall",0,50,"Planet UTA");
+        addHall(2,"KC hall",0,25,"Planet Arlington");
+        addHall(3,"Shard hall",0,25,"Planet Tarrant");
+        addHall(4,"Liberty hall",0,75,"Planet USA");
+        addHall(5,"Maverick Hall",0,100,"Planet Texas");
+    }
+
     // If newer version exists, start with fresh database
     @Override
     public void onUpgrade(SQLiteDatabase sqLiteDatabase, int i, int i1) {
         sqLiteDatabase.execSQL("DROP TABLE IF EXISTS " + TABLE_USERS);
+        sqLiteDatabase.execSQL("DROP TABLE IF EXISTS " + TABLE_HALL);
         onCreate(sqLiteDatabase);
     }
 
+
+    public void addHall(int id, String hallName,int price,int capacity,String address){
+        SQLiteDatabase db = DatabaseManager.getInstance().openDatabase();
+        // SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues values = new ContentValues();
+        values.put(KEY_HALLID, id);
+        values.put(KEY_HALLNAME, hallName);
+        values.put(KEY_HALLPRICE, price);
+        values.put(KEY_HALLCAPACITY, capacity);
+        values.put(KEY_ADDRESS, address);
+        db.insert(TABLE_HALL,null,values);
+        DatabaseManager.getInstance().closeDatabase();
+    }
+
+    public Hall retrieveHall(int id) {
+        SQLiteDatabase db = DatabaseManager.getInstance().openDatabase();
+        //SQLiteDatabase db = this.getWritableDatabase();
+
+        String query = "SELECT * from " + TABLE_HALL+ " WHERE " + KEY_HALLID+ " = \""
+                + id+"\";";
+        Cursor cursor = db.rawQuery(query, null);
+        if(!cursor.moveToFirst()){
+            return null;
+        }
+        Hall hall = new Hall(cursor.getInt(cursor.getColumnIndex(KEY_HALLID)),
+                cursor.getInt(cursor.getColumnIndex(KEY_HALLCAPACITY)),
+                cursor.getInt(cursor.getColumnIndex(KEY_HALLPRICE)),
+                cursor.getString(cursor.getColumnIndex(KEY_HALLNAME))
+        );
+
+        return hall;
+    }
+
     // Register User Database Logic
-    public void addNewUser(UserModel user){
-        SQLiteDatabase db = this.getWritableDatabase();
+    public void addNewUser(UserBaseModel user){
+        // SQLiteDatabase db = this.getWritableDatabase();
+        SQLiteDatabase db = DatabaseManager.getInstance().openDatabase();
         ContentValues values = new ContentValues();
         values.put(KEY_USERNAME, user.getUserName());
-        values.put(KEY_PASSWORD, user.getUserPassword());
-        values.put(KEY_ADDRESS, user.getUserAddress());
-        values.put(KEY_FNAME, user.getUserFName());
-        values.put(KEY_LNAME, user.getUserLName());
-        values.put(KEY_EMAIL, user.getUserEmail());
-        values.put(KEY_PHONE, user.getUserPhone());
-        values.put(KEY_UTAID, user.getUserUta());
-        values.put(KEY_UTYPE, user.getUserType());
+        values.put(KEY_PASSWORD, user.getPassword());
+        values.put(KEY_ADDRESS, user.getAddress());
+        values.put(KEY_FNAME, user.getFName());
+        values.put(KEY_LNAME, user.getLName());
+        values.put(KEY_EMAIL, user.getEmail());
+        values.put(KEY_PHONE, user.getPhone());
+        values.put(KEY_UTAID, user.getUtaId());
+        values.put(KEY_UTYPE, user.type);
         db.insert(TABLE_USERS, null, values);
-        db.close();
+        //db.close();
+        DatabaseManager.getInstance().closeDatabase();
+    }
+
+    public boolean checkExistence(String username,int id,boolean isAUser){
+        SQLiteDatabase db = this.getWritableDatabase();
+        String query = "SELECT * from " + TABLE_USERS + " WHERE " + KEY_USERNAME + " = \""
+                + username + "\";";
+        Cursor cursor = db.rawQuery(query, null);
+        if(!cursor.moveToFirst()){
+            String query2 = "SELECT * from " + TABLE_USERS + " WHERE " + KEY_UTAID+ " = \""
+                    + id + "\";";
+            Cursor cursor2 = db.rawQuery(query, null);
+            return !cursor2.moveToFirst()||!isAUser;
+        }
+        return false;
     }
 
     // Login
-    public UserModel retrieveUser(String username, String password) {
+    /*
+        0 is invalid
+        1 is user
+        2 is cater
+        3 is staff
+
+     */
+    public int isValidUser(String username, String password){
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        String query = "SELECT * from " + TABLE_USERS + " WHERE " + KEY_USERNAME + " = \""
+                + username + "\" AND " + KEY_PASSWORD + " = \"" + password + "\";";
+        Cursor cursor = db.rawQuery(query, null);
+        if(!cursor.moveToFirst()){
+            return -1;
+        }
+        return cursor.getInt(cursor.getColumnIndex(KEY_UTYPE));
+    }
+
+    // User getter values
+    public User getUser(String username, String password) {
         SQLiteDatabase db = this.getWritableDatabase();
 
         String query = "SELECT * from " + TABLE_USERS + " WHERE " + KEY_USERNAME + " = \""
                 + username + "\" AND " + KEY_PASSWORD + " = \"" + password + "\";";
         Cursor cursor = db.rawQuery(query, null);
 
-        UserModel model = new UserModel();
+        //get the value
+        User model = new User();
 
-        if (cursor.moveToFirst()) {
+        if(cursor.moveToFirst()) {
             model.setId(cursor.getInt(cursor.getColumnIndex(KEY_USERID)));
-            model.setUserFName(cursor.getString(cursor.getColumnIndex(KEY_FNAME)));
-            model.setUserLName(cursor.getString(cursor.getColumnIndex(KEY_LNAME)));
+            model.setFName(cursor.getString(cursor.getColumnIndex(KEY_FNAME)));
+            model.setLName(cursor.getString(cursor.getColumnIndex(KEY_LNAME)));
             model.setUserName(cursor.getString(cursor.getColumnIndex(KEY_USERNAME)));
-            model.setUserUta(cursor.getInt(cursor.getColumnIndex(KEY_UTAID)));
-            model.setUserPhone(cursor.getString(cursor.getColumnIndex(KEY_PHONE)));
-            model.setUserType(cursor.getInt(cursor.getColumnIndex(KEY_UTYPE)));
-            model.setUserAddress(cursor.getString(cursor.getColumnIndex(KEY_ADDRESS)));
+            model.setUtaId(cursor.getInt(cursor.getColumnIndex(KEY_UTAID)));
+            model.setPhone(cursor.getString(cursor.getColumnIndex(KEY_PHONE)));
+            //model.set(cursor.getInt(cursor.getColumnIndex(KEY_UTYPE)));
+            model.setAddress(cursor.getString(cursor.getColumnIndex(KEY_ADDRESS)));
+        } else {
+            model = null;
+        }
+        return model;
+    }
+
+    public Staff getStaff(String username, String password) {
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        String query = "SELECT * from " + TABLE_USERS + " WHERE " + KEY_USERNAME + " = \""
+                + username + "\" AND " + KEY_PASSWORD + " = \"" + password + "\";";
+        Cursor cursor = db.rawQuery(query, null);
+
+        //get the value
+        Staff model = new Staff();
+
+        if(cursor.moveToFirst()) {
+            model.setId(cursor.getInt(cursor.getColumnIndex(KEY_USERID)));
+            model.setFName(cursor.getString(cursor.getColumnIndex(KEY_FNAME)));
+            model.setLName(cursor.getString(cursor.getColumnIndex(KEY_LNAME)));
+            model.setUserName(cursor.getString(cursor.getColumnIndex(KEY_USERNAME)));
+            //model.setUtaId(cursor.getInt(cursor.getColumnIndex(KEY_UTAID)));
+            model.setPhone(cursor.getString(cursor.getColumnIndex(KEY_PHONE)));
+            //model.set(cursor.getInt(cursor.getColumnIndex(KEY_UTYPE)));
+            model.setAddress(cursor.getString(cursor.getColumnIndex(KEY_ADDRESS)));
+        } else {
+            model = null;
+        }
+        return model;
+    }
+
+    public Caterer getCaterer(String username, String password) {
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        String query = "SELECT * from " + TABLE_USERS + " WHERE " + KEY_USERNAME + " = \""
+                + username + "\" AND " + KEY_PASSWORD + " = \"" + password + "\";";
+        Cursor cursor = db.rawQuery(query, null);
+        //get the value
+        Caterer model = new Caterer();
+
+        if(cursor.moveToFirst()) {
+            model.setId(cursor.getInt(cursor.getColumnIndex(KEY_USERID)));
+            model.setFName(cursor.getString(cursor.getColumnIndex(KEY_FNAME)));
+            model.setLName(cursor.getString(cursor.getColumnIndex(KEY_LNAME)));
+            model.setUserName(cursor.getString(cursor.getColumnIndex(KEY_USERNAME)));
+            //model.setUtaId(cursor.getInt(cursor.getColumnIndex(KEY_UTAID)));
+            model.setPhone(cursor.getString(cursor.getColumnIndex(KEY_PHONE)));
+            //model.set(cursor.getInt(cursor.getColumnIndex(KEY_UTYPE)));
+            model.setAddress(cursor.getString(cursor.getColumnIndex(KEY_ADDRESS)));
         } else {
             model = null;
         }

@@ -19,8 +19,9 @@ public class UserBaseModel implements Serializable {
 	private String phone;
 	private String address;
 	private int id;
+	public int type;
 	protected ArrayList<Event> events;
-
+	private int utaId;
 	UserBaseModel(){
 		events = new ArrayList<Event>();
 	}
@@ -32,7 +33,8 @@ public class UserBaseModel implements Serializable {
 				  String password,
 				  String phone,
 				  String address,
-				  String id){
+				  String id,
+	              String type){
 		this.fName =fName;
 		this.lName=lName;
 		this.email=email;
@@ -42,6 +44,8 @@ public class UserBaseModel implements Serializable {
 		this.address=address;
 		this.id = Integer.parseInt(id);
 		events = new ArrayList<Event>();
+		this.type = Integer.parseInt(type);
+
 	}
 	
 	UserBaseModel(String fName,
@@ -51,7 +55,9 @@ public class UserBaseModel implements Serializable {
 				  String password,
 				  String phone,
 				  String address,
-				  int id){
+				  int id,
+				  int type,
+				  int utaId){
 		this.fName =fName;
 		this.lName=lName;
 		this.email=email;
@@ -60,6 +66,7 @@ public class UserBaseModel implements Serializable {
 		this.phone=phone;
 		this.address=address;
 		this.id = id;
+		this.type = type;
 		events = new ArrayList<Event>();
 	}
 	
@@ -70,7 +77,11 @@ public class UserBaseModel implements Serializable {
 				  String password,
 				  String phone,
 				  String address,
-				  int id,ArrayList<Event>events){
+				  int id,
+				  ArrayList<Event>events,
+				  int type,
+				  int utaId
+	){
 		this.fName =fName;
 		this.lName=lName;
 		this.email=email;
@@ -80,6 +91,8 @@ public class UserBaseModel implements Serializable {
 		this.address=address;
 		this.id = id;
 		this.events = new ArrayList<Event>(events);
+		this.type = type;
+		this.utaId = utaId;
 	}
 
 	//private ArrayList reservedEvents = new ArrayList();
@@ -115,7 +128,7 @@ public class UserBaseModel implements Serializable {
         return fName;
     }
 
-    public void setUserFName(String fName) {
+    public void setFName(String fName) {
         this.fName = fName;
     }
 
@@ -149,6 +162,14 @@ public class UserBaseModel implements Serializable {
 	
 	public void setId(int id){
 		this.id = id;
+	}
+
+	public int getUtaId(){
+		return utaId;
+	}
+
+	public void setUtaId(int utaId){
+		this.utaId = utaId;
 	}
 	
 	// actual functions

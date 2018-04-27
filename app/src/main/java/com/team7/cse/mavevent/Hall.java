@@ -21,18 +21,20 @@ public class Hall implements Serializable {
     private int price;
     private String name;
     private ArrayList<Event>schedule;
-
+    public int id;
     Hall() {
         schedule = new ArrayList<Event>();
     }
 
-    Hall(int capacity,int price,String name){
+    Hall(int id, int capacity,int price,String name){
         this.capacity=capacity;
         this.price=price;
         this.name= name;
+        this.id=id;
     }
 
-    Hall(String capacity,String price, String name){
+    Hall(String id, String capacity,String price, String name){
+        this.id = Integer.parseInt(id);
         this.capacity = Integer.parseInt(capacity);
         this.price=Integer.parseInt(price);
         this.name=name;
