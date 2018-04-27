@@ -60,27 +60,36 @@ public class MainActivity extends AppCompatActivity {
 
                 if(isInputValid(user_field, pass_field)){
                     // DatabaseHelper handler = new DatabaseHelper(MainActivity.this);
-                    UserModel user = handler.retrieveUser(login_user, login_pass);
+                    // check if user is in database
+                    UserBaseModel currentPerson;
+                    //x = new User();
+                    int userType = handler.isValidUser(login_user,login_pass);
 //                    handler.updateData();
+                    /*
+                    helpful stuff
+                     */
 
-                    if(user!=null){
+                    if(userType!=-1){
                         Toast.makeText(MainActivity.this, "Login Successful ", Toast.LENGTH_LONG).show();
-                        int hh = user.getUserType();
-                        switch(hh){
+                        //int hh = user.getUserType();
+                        switch(userType){
                             case 0:
                             {
+                                currentPerson = handler.getCaterer(login_user,login_pass);
                                 Intent loginIntent = new Intent(MainActivity.this, CatererActivity.class);
                                 MainActivity.this.startActivity(loginIntent);
                                 break;
                             }
                             case 1:
                             {
+                                currentPerson= handler.getUser(login_user,login_pass);
                                 Intent loginIntent = new Intent(MainActivity.this, UserActivity.class);
                                 MainActivity.this.startActivity(loginIntent);
                                 break;
                             }
                             case 2:
                             {
+                                currentPerson = handler.getStaff(login_user,login_pass);
                                 Intent loginIntent = new Intent(MainActivity.this, StaffActivity.class);
                                 MainActivity.this.startActivity(loginIntent);
                                 break;
