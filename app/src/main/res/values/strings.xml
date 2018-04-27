@@ -10,4 +10,12 @@
         <item>Event 4</item>
     </array>
     <string name="title_activity_delete_event">deleteEvent</string>
+
+    <string-array name="hallnames">
+        <item value="1">Arlington Hall</item>
+        <item value="2">KC Hall</item>
+        <item value="3">Shard Hall</item>
+        <item value="4">Liberty Hall</item>
+        <item value="5">Maverick Hall</item>
+    </string-array>
 </resources>
