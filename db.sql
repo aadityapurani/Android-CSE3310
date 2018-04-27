@@ -44,16 +44,16 @@ bookedDateEnd TEXT,
 desired_attendees INTEGER,
   alco_or_not INTEGER,
     hall_id INTEGER,
+	user_id INTEGER,
     formality INTEGER,
     status INTEGER,
-    CONSTRAINT fk_hall
-    FOREIGN KEY (hall_id)
-    REFERENCES Hall_tbl(hall_id)
-
+    CONSTRAINT fk_hall FOREIGN KEY (hall_id) REFERENCES Hall_tbl(hall_id),
+    CONSTRAINT fk_user FOREIGN KEY (user_id) REFERENCES Users_tbl(user_id)
+    
 );
 
-INSERT INTO Events_tbl VALUES(1, "My Own Event", "Party", "2018-04-22 01:22:20", "2018-04-22 04:22:20",50, 0, 2, 1, 0);
-INSERT INTO Events_tbl VALUES(2, "Dads Own Event", "Party", "2018-04-23 01:22:20", "2018-04-23 04:22:20",50, 1, 3, 1, 0);
+INSERT INTO Events_tbl VALUES(1, "My Own Event", "Party", "2018-04-22 01:22:20", "2018-04-22 04:22:20",50, 0, 2, 1, 1, 0);
+INSERT INTO Events_tbl VALUES(2, "Dads Own Event", "Party", "2018-04-23 01:22:20", "2018-04-23 04:22:20",50, 1, 3, 2, 1, 0);
 -- By Default we keep events as 0 as pending
 -- 1 as Accepted
 -- 2 as Declined
