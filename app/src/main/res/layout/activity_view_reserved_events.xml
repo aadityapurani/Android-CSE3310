@@ -17,10 +17,10 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/spinner2" />
+        app:layout_constraintTop_toBottomOf="@+id/assign_staff_event_id" />
 
     <Spinner
-        android:id="@+id/spinner2"
+        android:id="@+id/assign_staff_event_id"
         android:layout_width="368dp"
         android:layout_height="26dp"
         app:layout_constraintBottom_toTopOf="@+id/spinner"

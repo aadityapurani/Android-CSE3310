@@ -56,7 +56,7 @@ public class MainActivity extends AppCompatActivity {
                         switch(hh){
                             case 0:
                             {
-                                Intent loginIntent = new Intent(MainActivity.this, CatererActivity.class);
+                                Intent loginIntent = new Intent(MainActivity.this, CatererHomeScreenActivity.class);
                                 MainActivity.this.startActivity(loginIntent);
                                 break;
                             }

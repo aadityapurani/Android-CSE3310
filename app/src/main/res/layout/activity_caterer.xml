@@ -6,140 +6,119 @@
     android:layout_height="match_parent"
     android:background="@drawable/gradient">
 
-    <android.support.design.widget.CoordinatorLayout
+    <LinearLayout
+        android:id="@+id/f"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        app:layout_constraintStart_toStartOf="parent">
+        android:orientation="vertical">
+
+        <Button
+            android:id="@+id/caterer_logout_id"
+            android:layout_width="match_parent"
+            android:layout_height="0px"
+            android:layout_weight="1"
+            android:background="?android:attr/colorActivatedHighlight"
+            android:text="Logout" />
+
+        <ImageView
+            android:id="@+id/imageView3"
+            android:layout_width="match_parent"
+            android:layout_height="0px"
+            android:layout_weight="3"
+            android:scaleType="fitCenter"
+            android:scaleX=".6"
+            android:scaleY=".6"
+            app:srcCompat="@drawable/uta1" />
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical">
+            android:layout_height="0px"
+            android:layout_marginLeft="50dp"
+            android:layout_marginRight="50dp"
+            android:layout_weight="1"
+            android:orientation="horizontal">
 
-            <Button
-                android:id="@+id/caterer_logout_id"
-                android:layout_width="80dp"
-                android:layout_height="0px"
-                android:layout_marginLeft="5dp"
-                android:layout_weight="5"
-                android:background="?android:attr/colorActivatedHighlight"
-                android:text="Logout" />
+            <TextView
+                android:id="@+id/textView12"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="right"
+                android:text="Event: "
+                android:textColor="#FFFFFFFF"
+                android:textSize="18sp" />
 
-            <ImageView
-                android:id="@+id/imageView3"
-                android:layout_width="match_parent"
-                android:layout_height="0px"
-                android:layout_weight="25"
-                android:scaleType="fitCenter"
-                android:scaleX=".6"
-                android:scaleY=".6"
-                app:srcCompat="@drawable/uta1" />
+            <TextView
+                android:id="@+id/textView10"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="left"
+                android:hint="Event A"
+                android:textColor="#FFFFFFFF"
+                android:textColorHint="#FFFFFFFF"
+                android:textSize="18sp" />
 
-            <TableLayout
-                android:layout_width="match_parent"
-                android:layout_height="0px"
-                android:layout_marginLeft="5dp"
-                android:layout_marginRight="5dp"
-                android:layout_weight="70"
-                tools:layout_editor_absoluteY="100dp">
-
-                <TableRow
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_weight="25">
-
-                    <Button
-                        android:id="@+id/caterer_create_event_plan_id"
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:layout_gravity="center_vertical"
-                        android:layout_margin="5dp"
-                        android:layout_weight="100"
-                        android:background="#3a7ce8"
-                        android:padding="20dp"
-                        android:text="Create Event Plan" />
-                </TableRow>
-
-                <TableRow
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_weight="25">
-
-                    <Button
-                        android:id="@+id/caterer_add_resources_id"
-                        android:layout_width="150dp"
-                        android:layout_height="match_parent"
-                        android:layout_gravity="center_vertical"
-                        android:layout_margin="5dp"
-                        android:layout_weight="50"
-                        android:background="#3a7ce8"
-                        android:text="Add Resources" />
-
-                    <Button
-                        android:id="@+id/caterer_schedule_venue_id"
-                        android:layout_width="170dp"
-                        android:layout_height="match_parent"
-                        android:layout_gravity="center_vertical"
-                        android:layout_margin="5dp"
-                        android:layout_weight="50"
-                        android:background="#3a7ce8"
-                        android:text="Schedule Location" />
-                </TableRow>
-
-                <TableRow
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_weight="25">
-
-                    <Button
-                        android:id="@+id/caterer_assign_staff_id"
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:layout_gravity="center_vertical"
-                        android:layout_margin="5dp"
-                        android:layout_weight="50"
-                        android:background="#3a7ce8"
-                        android:text="Assign Staff" />
-
-                    <Button
-                        android:id="@+id/caterer_view_event_calendar_id"
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:layout_gravity="center_vertical"
-                        android:layout_margin="5dp"
-                        android:layout_weight="50"
-                        android:background="#3a7ce8"
-                        android:text="View Calendar" />
-                </TableRow>
-
-                <TableRow
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_weight="25">
-
-                    <Button
-                        android:id="@+id/caterer_view_event_details_id"
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:layout_gravity="center_vertical"
-                        android:layout_margin="5dp"
-                        android:layout_weight="50"
-                        android:background="#3a7ce8"
-                        android:text="View Event" />
-
-                    <Button
-                        android:id="@+id/caterer_delete_event_id"
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:layout_gravity="center_vertical"
-                        android:layout_margin="5dp"
-                        android:layout_weight="50"
-                        android:background="#3a7ce8"
-                        android:padding="10dp"
-                        android:text="Delete Event" />
-                </TableRow>
-            </TableLayout>
         </LinearLayout>
 
-    </android.support.design.widget.CoordinatorLayout>
+        <Button
+            android:id="@+id/caterer_add_resources_id"
+            android:layout_width="match_parent"
+            android:layout_height="0px"
+            android:layout_gravity="center_vertical"
+            android:layout_margin="5dp"
+            android:layout_weight="2"
+            android:background="#3a7ce8"
+            android:text="Add Resources" />
+
+        <Button
+            android:id="@+id/caterer_schedule_venue_id"
+            android:layout_width="match_parent"
+            android:layout_height="0px"
+            android:layout_gravity="center_vertical"
+            android:layout_margin="5dp"
+            android:layout_weight="2"
+            android:background="#3a7ce8"
+            android:text="Schedule Location" />
+
+        <Button
+            android:id="@+id/caterer_assign_staff_id"
+            android:layout_width="match_parent"
+            android:layout_height="0px"
+            android:layout_gravity="center_vertical"
+            android:layout_margin="5dp"
+            android:layout_weight="2"
+            android:background="#3a7ce8"
+            android:text="Assign Staff" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0px"
+            android:layout_weight="2"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/caterer_view_event_details_id"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="center_vertical"
+                android:layout_margin="5dp"
+                android:layout_weight="1"
+                android:background="#3a7ce8"
+                android:text="View Event" />
+
+            <Button
+                android:id="@+id/caterer_delete_event_id"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="center_vertical"
+                android:layout_margin="5dp"
+                android:layout_weight="1"
+                android:background="#3a7ce8"
+                android:padding="10dp"
+                android:text="Delete Event" />
+        </LinearLayout>
+
+    </LinearLayout>
+
 </android.support.constraint.ConstraintLayout>
