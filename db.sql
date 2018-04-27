@@ -37,17 +37,26 @@ INSERT INTO Hall_tbl VALUES(5, "Liberty Hall", 50, 20, "Planet TX");
 
 CREATE TABLE Events_tbl (
 	event_id INTeger PRIMARY KEY AUTOINCREMENT NOT NULL,
+  event_name TEXT,
+  event_type TEXT,
  bookedDateStart TEXT,
 bookedDateEnd TEXT,
-no_of_attendees INTEGER,
+desired_attendees INTEGER,
+  alco_or_not INTEGER,
     hall_id INTEGER,
     formality INTEGER,
+    status INTEGER,
     CONSTRAINT fk_hall
     FOREIGN KEY (hall_id)
     REFERENCES Hall_tbl(hall_id)
+
 );
 
-INSERT INTO Events_tbl VALUES(1, "2018-04-22 01:22:20", "2018-04-22 04:22:20",50, 2, 3);
+INSERT INTO Events_tbl VALUES(1, "My Own Event", "Party", "2018-04-22 01:22:20", "2018-04-22 04:22:20",50, 0, 2, 1, 0);
+INSERT INTO Events_tbl VALUES(2, "Dads Own Event", "Party", "2018-04-23 01:22:20", "2018-04-23 04:22:20",50, 1, 3, 1, 0);
+-- By Default we keep events as 0 as pending
+-- 1 as Accepted
+-- 2 as Declined
 -- SELECT * FROM 'Events_tbl' INNER JOIN Hall_tbl WHERE Hall_tbl.hall_id = Events_tbl.hall_id;
 
 CREATE TABLE bookedSlot (
