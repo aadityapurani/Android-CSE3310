@@ -38,7 +38,7 @@ public class RegisterActivity extends AppCompatActivity implements OnItemSelecte
         setContentView(R.layout.activity_register);
 
         // Creating Global Handler
-         handler = new DatabaseHelper(this);
+        handler = new DatabaseHelper(this);
 
         emailSection = (EditText) findViewById(R.id.emailSection);
         passwordSection = (EditText) findViewById(R.id.passwordSection);

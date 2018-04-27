@@ -76,7 +76,7 @@ public class MainActivity extends AppCompatActivity {
                             case 0:
                             {
                                 currentPerson = handler.getCaterer(login_user,login_pass);
-                                Intent loginIntent = new Intent(MainActivity.this, CatererActivity.class);
+                                Intent loginIntent = new Intent(MainActivity.this, CatererHomeScreenActivity.class);
                                 MainActivity.this.startActivity(loginIntent);
                                 break;
                             }
