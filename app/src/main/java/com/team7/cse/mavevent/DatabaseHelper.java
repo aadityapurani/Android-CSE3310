@@ -28,11 +28,13 @@ public class DatabaseHelper extends SQLiteOpenHelper{
     // Tables Name
     private static final String TABLE_USERS = "Users_tbl";
     private static final String TABLE_HALL = "Hall_tbl";
+    private static final String TABLE_EVENTS = "Events_tbl";
 
     // Common column names
     private static final String KEY_USERID = "user_id";
     private static final String KEY_CREATED_AT = "created_at";
     private static final String KEY_HALLID = "hall_id";
+    private static final String KEY_EVENTSID = "event_id";
 
     // Specific Columns for Users table
     private static final String KEY_USERNAME = "username";
@@ -50,6 +52,19 @@ public class DatabaseHelper extends SQLiteOpenHelper{
     private static final String KEY_HALLPRICE = "price";
     private static final String KEY_HALLCAPACITY = "capacity";
     private static final String KEY_HALLADDRESS = "address";
+
+    // Specific Columns for Events Table
+    private static final String KEY_EVENTNAME = "name";
+    private static final String KEY_EVENTTYPE = "type";
+    private static final String KEY_EVENTSTARTDATE = "bookedDateStart";
+    private static final String KEY_EVENTENDDATE = "bookedDateEnd";
+    private static final String KEY_EVENTATTENDEES = "desiredAttendees";
+    private static final String KEY_EVENTALCOHOL = "alco_or_not";
+    private static final String KEY_EVENTHID = "hall_id";
+    private static final String KEY_EVENTUID = "user_id";
+    private static final String KEY_EVENTFORMALITY = "formality";
+    private static final String KEY_EVENTSTATUS = "status";
+
 
     // Just a database creator
     public DatabaseHelper(Context context){
@@ -81,12 +96,41 @@ public class DatabaseHelper extends SQLiteOpenHelper{
             + KEY_HALLCAPACITY + " INTEGER," + KEY_HALLADDRESS
             + " TEXT" + ")";
 
+    // Create Table Event
+    /**
+     * Event Status
+     * 0 - Pending
+     * 1 - Accepted
+     * 2 - Rejected
+     *
+     */
+
+    private static final String CREATE_TABLE_EVENT = "CREATE TABLE "
+            + TABLE_EVENTS + "(" + KEY_EVENTSID + " INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,"
+            + KEY_EVENTNAME + " TEXT,"
+            + KEY_EVENTTYPE + " TEXT,"
+            + KEY_EVENTSTARTDATE + " TEXT,"
+            + KEY_EVENTENDDATE + " TEXT,"
+            + KEY_EVENTATTENDEES + " INTEGER,"
+            + KEY_EVENTALCOHOL + " INTEGER,"
+            + KEY_EVENTHID + " INTEGER,"
+            + KEY_EVENTUID + " INTEGER,"
+            + KEY_EVENTFORMALITY + " INTEGER,"
+            + KEY_EVENTSTATUS + " INTEGER,"
+            + "CONSTRAINT fk_hall FOREIGN KEY ("+KEY_EVENTHID+") REFERENCES "+TABLE_HALL+"("+KEY_HALLID+"),"
+            + "CONSTRAINT fk_user FOREIGN KEY ("+KEY_EVENTUID+") REFERENCES "+TABLE_HALL+"("+KEY_USERID+"))";
+
+
+
     // Will execute the query
     @Override
     public void onCreate(SQLiteDatabase db) {
         // creating required tables
         db.execSQL(CREATE_TABLE_USERS);
         db.execSQL(CREATE_TABLE_HALL);
+        db.execSQL(CREATE_TABLE_EVENT);
+
+
     }
 
     public void updateData(){
@@ -102,6 +146,7 @@ public class DatabaseHelper extends SQLiteOpenHelper{
     public void onUpgrade(SQLiteDatabase sqLiteDatabase, int i, int i1) {
         sqLiteDatabase.execSQL("DROP TABLE IF EXISTS " + TABLE_USERS);
         sqLiteDatabase.execSQL("DROP TABLE IF EXISTS " + TABLE_HALL);
+        sqLiteDatabase.execSQL("DROP TABLE IF EXISTS " + TABLE_EVENTS);
         onCreate(sqLiteDatabase);
     }
 
