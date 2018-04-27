@@ -9,29 +9,41 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import static com.team7.cse.mavevent.MainActivity.user_type.CATERER;
-import static com.team7.cse.mavevent.MainActivity.user_type.STAFF;
-import static com.team7.cse.mavevent.MainActivity.user_type.USER;
+import com.team7.cse.mavevent.DatabaseHelper;
+import com.team7.cse.mavevent.DatabaseManager;
+
+//import static com.team7.cse.mavevent.MainActivity.user_type.CATERER;
+//import static com.team7.cse.mavevent.MainActivity.user_type.STAFF;
+//import static com.team7.cse.mavevent.MainActivity.user_type.USER;
 
 public class MainActivity extends AppCompatActivity {
-    boolean loginSuccessful = false;
-    public enum user_type {
-        CATERER, USER, STAFF
-    }
-    user_type dbUser;
-    protected boolean login(String user, String pass)
-    {
-        return true;
-    }
-    protected user_type get_user_from_DB()
-    {
-        return CATERER;
-    }
+
+    /**
+     boolean loginSuccessful = false;
+     public enum user_type {
+     CATERER, USER, STAFF
+     }
+
+     user_type dbUser;
+     protected boolean login(String user, String pass)
+     {
+     return true;
+     }
+     protected user_type get_user_from_DB()
+     {
+     return CATERER;
+     }
+     **/
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        final DatabaseHelper handler = new DatabaseHelper(MainActivity.this);
+        //UserModel user = handler.retrieveUser(login_user, login_pass);
+        handler.updateData();
+
         // It's just a workaround UI Demo to link the hyperlink to Register Page
 
 
@@ -47,8 +59,9 @@ public class MainActivity extends AppCompatActivity {
                 //put code to auth from database here...
 
                 if(isInputValid(user_field, pass_field)){
-                    DatabaseHelper handler = new DatabaseHelper(MainActivity.this);
+                    // DatabaseHelper handler = new DatabaseHelper(MainActivity.this);
                     UserModel user = handler.retrieveUser(login_user, login_pass);
+//                    handler.updateData();
 
                     if(user!=null){
                         Toast.makeText(MainActivity.this, "Login Successful ", Toast.LENGTH_LONG).show();
@@ -56,7 +69,7 @@ public class MainActivity extends AppCompatActivity {
                         switch(hh){
                             case 0:
                             {
-                                Intent loginIntent = new Intent(MainActivity.this, CatererHomeScreenActivity.class);
+                                Intent loginIntent = new Intent(MainActivity.this, CatererActivity.class);
                                 MainActivity.this.startActivity(loginIntent);
                                 break;
                             }
