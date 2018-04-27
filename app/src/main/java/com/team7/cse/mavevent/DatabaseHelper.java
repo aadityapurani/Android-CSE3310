@@ -90,11 +90,11 @@ public class DatabaseHelper extends SQLiteOpenHelper{
     }
 
     public void updateData(){
-        addHall(1,"Arlington hall",50,500,"Planet UTA");
-        addHall(2,"KC hall",60,400,"Planet Arlington");
-        addHall(3,"Shard hall",70,300,"Planet Tarrant");
-        addHall(4,"Liberty hall",80,200,"Planet Texas");
-        addHall(5,"Maverick Hall",90,100,"Planet USA");
+        addHall(1,"Arlington hall",0,50,"Planet UTA");
+        addHall(2,"KC hall",0,25,"Planet Arlington");
+        addHall(3,"Shard hall",0,25,"Planet Tarrant");
+        addHall(4,"Liberty hall",0,75,"Planet Texas");
+        addHall(5,"Maverick Hall",0,100,"Planet USA");
     }
 
     // If newer version exists, start with fresh database
