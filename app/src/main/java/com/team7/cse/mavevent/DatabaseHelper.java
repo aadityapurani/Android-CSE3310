@@ -290,14 +290,12 @@ public class DatabaseHelper extends SQLiteOpenHelper{
         return cursor.getInt(cursor.getColumnIndex(KEY_UTYPE));
     }
 
-<<<<<<< HEAD
     public boolean eventExists(Event event){
 
         return false;
     }           //NEED TO CREATE
 
     // FOR LOGIN
-=======
 
     /* Hacking it here*/
     public boolean requestEvent(String attendees, String mealType, String comboDate, String comboDate2, String isAlcohol, String formal, String userID, String eventName, String eventCategory){
@@ -324,7 +322,6 @@ public class DatabaseHelper extends SQLiteOpenHelper{
 
 
     // User getter values
->>>>>>> e08b8e3b45475bd1f0900c38f130a9cf27166af6
     public User getUser(String username, String password) {
         SQLiteDatabase db = this.getWritableDatabase();
 
