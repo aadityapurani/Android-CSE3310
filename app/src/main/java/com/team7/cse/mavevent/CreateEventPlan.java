@@ -3,7 +3,8 @@ package com.team7.cse.mavevent;
 import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
 import android.content.Context;
-import android.icu.util.Calendar;
+//import android.icu.util.Calendar;
+import java.util.Calendar;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -32,6 +33,7 @@ public class CreateEventPlan extends AppCompatActivity implements AdapterView.On
     String mealType;
     String dateTime;
     String eventName;
+    String eventCategory;
     int hasAlcohol = 0;
     int isFormal = 0;
     boolean setDate=false;
@@ -161,7 +163,7 @@ public class CreateEventPlan extends AppCompatActivity implements AdapterView.On
                 String minute = Integer.toString(activityCalendar.get(Calendar.MINUTE));
                 String day = Integer.toString(activityCalendar.get(Calendar.DAY_OF_MONTH));
                 String month = Integer.toString(activityCalendar.get(Calendar.MONTH));
-                String year = Integer.toString(activityCalendar.get(Calendar.YEAR)%100);
+                String year = Integer.toString(activityCalendar.get(Calendar.YEAR));
 
                 if(event_name_field.getText().length() !=0)
                 {
@@ -177,7 +179,7 @@ public class CreateEventPlan extends AppCompatActivity implements AdapterView.On
                 if (event_category_field.getText().length() != 0)
                 {
                     event_category_field.setError(null);
-                    eventName = event_category_field.getText().toString();
+                    eventCategory = event_category_field.getText().toString();
                     validCategory = true;
                 }
                 else
@@ -220,7 +222,7 @@ public class CreateEventPlan extends AppCompatActivity implements AdapterView.On
                 {
                     mealType = Integer.toString(rowSelected);
                     validMeal = true;
-                    String comboDate = day + '/' + month + '/' + year + ' ' + hour + ':' + minute;
+                    String comboDate = year + '/' + month + '/' + day + ' ' + hour + ':' + minute + "00";
                     String isAlcohol = Integer.toString(hasAlcohol);
                     String formal = Integer.toString(isFormal);
                     //need userID from somewhere
