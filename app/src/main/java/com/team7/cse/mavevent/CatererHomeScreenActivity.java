@@ -32,8 +32,12 @@ public class CatererHomeScreenActivity extends AppCompatActivity {
         caterer_view_requests_Button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent view_approved_Intent = new Intent(CatererHomeScreenActivity.this, CatererActivity.class);
-                CatererHomeScreenActivity.this.startActivity(view_approved_Intent);
+
+                Intent view_pending_Intent = new Intent(CatererHomeScreenActivity.this, CatererViewApproved.class);
+                CatererHomeScreenActivity.this.startActivity(view_pending_Intent);
+
+                //Intent view_approved_Intent = new Intent(CatererHomeScreenActivity.this, CatererActivity.class);
+                //CatererHomeScreenActivity.this.startActivity(view_approved_Intent);
             }
         });
 

@@ -346,6 +346,27 @@ public class DatabaseHelper extends SQLiteOpenHelper{
         return eventObj;
     }
 
+    public ArrayList<PendingEventBean> getApprovedEvents(){
+        SQLiteDatabase db = DatabaseManager.getInstance().openDatabase();
+
+        String query = "SELECT * FROM "+TABLE_EVENTS+" WHERE "+KEY_EVENTSTATUS+"=1;";
+        Cursor cursor = db.rawQuery(query, null);
+        ArrayList<PendingEventBean> eventObj=new ArrayList<PendingEventBean>();
+        cursor.moveToFirst();
+        int i=0;
+        while (!cursor.isAfterLast()) {
+            PendingEventBean peb=new PendingEventBean();
+            peb.setId(cursor.getInt(cursor.getColumnIndex(KEY_EVENTSID)));
+            peb.setEventName(cursor.getString(cursor.getColumnIndex(KEY_EVENTNAME)));
+            eventObj.add(peb);
+            i++;
+            cursor.moveToNext();
+        }
+        DatabaseManager.getInstance().closeDatabase();
+        return eventObj;
+
+    }
+
     /* Accept */
     public ArrayList<PendingEventBean> acceptPendingEvents(int id){
         SQLiteDatabase db = DatabaseManager.getInstance().openDatabase();
