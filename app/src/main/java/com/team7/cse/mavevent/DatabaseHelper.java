@@ -9,6 +9,8 @@ import android.provider.ContactsContract;
 
 import com.team7.cse.mavevent.App;
 
+import java.util.ArrayList;
+
 import static java.sql.Types.NULL;
 
 
@@ -278,16 +280,21 @@ public class DatabaseHelper extends SQLiteOpenHelper{
         return false;
     }
 
-    public int isValidUser(String username, String password){
+    public UserBaseModel isValidUser(String username, String password){
         SQLiteDatabase db = this.getWritableDatabase();
 
         String query = "SELECT * from " + TABLE_USERS + " WHERE " + KEY_USERNAME + " = \""
                 + username + "\" AND " + KEY_PASSWORD + " = \"" + password + "\";";
         Cursor cursor = db.rawQuery(query, null);
         if(!cursor.moveToFirst()){
-            return -1;
+            return null;
         }
-        return cursor.getInt(cursor.getColumnIndex(KEY_UTYPE));
+        UserBaseModel u =new UserBaseModel();
+        u.setId(cursor.getInt(cursor.getColumnIndex(KEY_USERID)));
+        u.setType(cursor.getInt(cursor.getColumnIndex(KEY_UTYPE)));
+
+
+        return u;
     }
 
     public boolean eventExists(Event event){
@@ -316,7 +323,50 @@ public class DatabaseHelper extends SQLiteOpenHelper{
         DatabaseManager.getInstance().closeDatabase();
         return true;
     }
+    /* New Added*/
 
+    public ArrayList<PendingEventBean> getPendingEvents(){
+        SQLiteDatabase db = DatabaseManager.getInstance().openDatabase();
+
+
+        String query = "SELECT * FROM "+TABLE_EVENTS+" WHERE "+KEY_EVENTSTATUS+"=0;";
+        Cursor cursor = db.rawQuery(query, null);
+        ArrayList<PendingEventBean> eventObj=new ArrayList<PendingEventBean>();
+        cursor.moveToFirst();
+        int i=0;
+        while (!cursor.isAfterLast()) {
+            PendingEventBean peb=new PendingEventBean();
+            peb.setId(cursor.getInt(cursor.getColumnIndex(KEY_EVENTSID)));
+            peb.setEventName(cursor.getString(cursor.getColumnIndex(KEY_EVENTNAME)));
+            eventObj.add(peb);
+            i++;
+            cursor.moveToNext();
+        }
+        DatabaseManager.getInstance().closeDatabase();
+        return eventObj;
+    }
+
+    /* Accept */
+    public ArrayList<PendingEventBean> acceptPendingEvents(int id){
+        SQLiteDatabase db = DatabaseManager.getInstance().openDatabase();
+        String query = "UPDATE "+TABLE_EVENTS+" SET "+KEY_EVENTSTATUS+"=1 WHERE "+KEY_EVENTSID+"="+id;
+        Cursor cursor=db.rawQuery(query,null);
+        cursor.moveToFirst();
+        DatabaseManager.getInstance().closeDatabase();
+        return getPendingEvents();
+
+    }
+
+    /* Reject */
+    public ArrayList<PendingEventBean> rejectPendingEvents(int id){
+        SQLiteDatabase db = DatabaseManager.getInstance().openDatabase();
+        String query = "UPDATE "+TABLE_EVENTS+" SET "+KEY_EVENTSTATUS+"=2 WHERE "+KEY_EVENTSID+"="+id;
+        Cursor cursor=db.rawQuery(query,null);
+        cursor.moveToFirst();
+        DatabaseManager.getInstance().closeDatabase();
+        return getPendingEvents();
+
+    }
 
 
 

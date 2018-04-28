@@ -100,7 +100,15 @@ public class UserBaseModel implements Serializable {
 
 /* public void setEvents(ArrayList events){this.events= new ArrayList<Event>(events);} */
 
-    public String getPassword() {
+	public int getType() {
+		return type;
+	}
+
+	public void setType(int type) {
+		this.type = type;
+	}
+
+	public String getPassword() {
         return password;
     }
 

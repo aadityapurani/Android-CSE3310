@@ -2,6 +2,7 @@ package com.team7.cse.mavevent;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -9,6 +10,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.gson.Gson;
 import com.team7.cse.mavevent.DatabaseHelper;
 import com.team7.cse.mavevent.DatabaseManager;
 
@@ -63,16 +65,27 @@ public class MainActivity extends AppCompatActivity {
                     // check if user is in database
                     UserBaseModel currentPerson;
                     //x = new User();
-                    int userType = handler.isValidUser(login_user,login_pass);
+                    UserBaseModel User = handler.isValidUser(login_user,login_pass);
+                    SharedPreferences mPrefs = getSharedPreferences("GLOBAL",MODE_PRIVATE);
+                    SharedPreferences.Editor prefsEditor = mPrefs.edit();
+                    Gson gson = new Gson();
+                    String json = gson.toJson(User);
+                    prefsEditor.putString("User", json);
+                    prefsEditor.commit();
+
+                    Gson gson1 = new Gson();
+                    String jsons = mPrefs.getString("User", "");
+                    UserBaseModel u = gson1.fromJson(jsons, UserBaseModel.class);
 //                    handler.updateData();
                     /*
                     helpful stuff
                      */
 
-                    if(userType!=-1){
+                    if(User!=null){
                         Toast.makeText(MainActivity.this, "Login Successful ", Toast.LENGTH_LONG).show();
                         //int hh = user.getUserType();
-                        switch(userType){
+
+                        switch(User.getType()){
                             case 0:
                             {
                                 currentPerson = handler.getCaterer(login_user,login_pass);

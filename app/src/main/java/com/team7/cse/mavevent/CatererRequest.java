@@ -11,8 +11,11 @@ import android.widget.ListView;
 import android.widget.Toast;
 import android.app.AlertDialog;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+
+import com.team7.cse.mavevent.DatabaseHelper;
 
 /**
  * Created by aadit on 4/27/2018.
@@ -21,14 +24,24 @@ import java.util.List;
 public class CatererRequest extends AppCompatActivity {
 
     ListView listView;
+    DatabaseHelper handler;
+    ArrayList<PendingEventBean> pb;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_pending_request);
 
+        final DatabaseHelper db = new DatabaseHelper(CatererRequest.this);
+
         listView = (ListView) findViewById(R.id.pendingList);
-        final String[] testArray1 = getResources().getStringArray(R.array.event_list);
+        pb=db.getPendingEvents();
+        String[] testArray1 =new String[pb.size()];
+        int i=0;
+        for(PendingEventBean p : pb ){
+            testArray1[i]=p.getEventName();
+            i++;
+        }
         List<String> testList = Arrays.asList(testArray1);
         // Instanciating Adapter
         ArrayAdapter<String> adapter = new ArrayAdapter<>(getBaseContext(),
@@ -41,7 +54,7 @@ public class CatererRequest extends AppCompatActivity {
         {
             @Override
             public void onItemClick(AdapterView<?> parent, View view,
-                                    int position, long id) {
+                                    final int position, long id) {
                 // TODO Auto-generated method stub
 
                 AlertDialog.Builder builder = new AlertDialog.Builder(CatererRequest.this);
@@ -57,7 +70,12 @@ public class CatererRequest extends AppCompatActivity {
                 builder.setPositiveButton("Accept", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
+                        PendingEventBean p=pb.get(position);
+                        db.acceptPendingEvents(p.getId());
+
                         Toast.makeText(getApplicationContext(),"Event Approved",Toast.LENGTH_LONG).show();
+                        finish();
+                        startActivity(getIntent());
                     }
                 });
 
@@ -65,9 +83,14 @@ public class CatererRequest extends AppCompatActivity {
                 builder.setNegativeButton("Decline", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
+
+                        PendingEventBean p=pb.get(position);
+                        db.rejectPendingEvents(p.getId());
+
                         Toast.makeText(getApplicationContext(),"Event Declined",Toast.LENGTH_LONG).show();
                         dialog.dismiss();
-
+                        finish();
+                        startActivity(getIntent());
                     }
                 });
 

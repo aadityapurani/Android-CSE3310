@@ -5,6 +5,8 @@ import android.app.TimePickerDialog;
 import android.content.Context;
 //import android.icu.util.Calendar;
 import java.util.Calendar;
+
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -22,6 +24,7 @@ import android.widget.Toast;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.google.gson.Gson;
 import com.team7.cse.mavevent.DatabaseHelper;
 
 
@@ -236,7 +239,11 @@ public class CreateEventPlan extends AppCompatActivity implements AdapterView.On
                     String comboDate2 = year + '-' + month + '-' + day + ' ' + Integer.toString(final_int) + ':' + minute + ":" + "00";
                     String formal = Integer.toString(isFormal);
                     //need userID from somewhere
-                    String userID="1";//this is just temporary so that the request code works, remove it once you get the session version
+                    SharedPreferences mPrefs = getSharedPreferences("GLOBAL",MODE_PRIVATE);
+                    Gson gson = new Gson();
+                    String json = mPrefs.getString("User", "");
+                    UserBaseModel user = gson.fromJson(json, UserBaseModel.class);
+                    String userID=user.getId()+"";//this is just temporary so that the request code works, remove it once you get the session version
                     boolean wasAccepted=false;
 
 
