@@ -17,7 +17,17 @@ public class CatererHomeScreenActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_caterer_home_screen);
 
-        // Caterer Homepage - > View Pending Requests Page
+        // Caterer Homepage -> View Pending
+        final Button caterer_view_pending_id_Button = (Button)findViewById(R.id.caterer_view_pending_id);
+        caterer_view_pending_id_Button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent view_pending_Intent = new Intent(CatererHomeScreenActivity.this, CatererRequest.class);
+                CatererHomeScreenActivity.this.startActivity(view_pending_Intent);
+            }
+        });
+
+        // Caterer Homepage - > View Approved
         final Button caterer_view_requests_Button = (Button) findViewById(R.id.caterer_view_approved_id);
         caterer_view_requests_Button.setOnClickListener(new View.OnClickListener() {
             @Override

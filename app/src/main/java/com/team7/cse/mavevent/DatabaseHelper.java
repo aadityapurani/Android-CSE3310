@@ -59,6 +59,7 @@ public class DatabaseHelper extends SQLiteOpenHelper{
     private static final String KEY_EVENTSTARTDATE = "bookedDateStart";
     private static final String KEY_EVENTENDDATE = "bookedDateEnd";
     private static final String KEY_EVENTATTENDEES = "desiredAttendees";
+    private static final String KEY_EVENTMEAL = "meal";
     private static final String KEY_EVENTALCOHOL = "alco_or_not";
     private static final String KEY_EVENTHID = "hall_id";
     private static final String KEY_EVENTUID = "user_id";
@@ -105,6 +106,13 @@ public class DatabaseHelper extends SQLiteOpenHelper{
      *
      */
 
+    /**
+     * Meal Type
+     * 1 - Breakfast
+     * 2 - Lunch
+     * 3 - Dinner
+     */
+
     private static final String CREATE_TABLE_EVENT = "CREATE TABLE "
             + TABLE_EVENTS + "(" + KEY_EVENTSID + " INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,"
             + KEY_EVENTNAME + " TEXT,"
@@ -112,6 +120,7 @@ public class DatabaseHelper extends SQLiteOpenHelper{
             + KEY_EVENTSTARTDATE + " TEXT,"
             + KEY_EVENTENDDATE + " TEXT,"
             + KEY_EVENTATTENDEES + " INTEGER,"
+            + KEY_EVENTMEAL + " INTEGER,"
             + KEY_EVENTALCOHOL + " INTEGER,"
             + KEY_EVENTHID + " INTEGER,"
             + KEY_EVENTUID + " INTEGER,"
