@@ -230,8 +230,8 @@ public class CreateEventPlan extends AppCompatActivity implements AdapterView.On
                     boolean wasAccepted=false;
 
 
-                    if (setDate && setTime && validDuration && validDuration && validMeal) {
-                        wasAccepted = createPlanDB(attendees, mealType, comboDate, isAlcohol, formal, userID);//call to attempt to write to the database
+                    if (setDate && setTime && validDuration && validDuration && validMeal && validCategory && validName) {
+                        wasAccepted = createPlanDB(attendees, mealType, comboDate, isAlcohol, formal, userID, eventName, eventCategory);//call to attempt to write to the database
                         if (wasAccepted) finish();
 
                         else {
@@ -269,7 +269,7 @@ public class CreateEventPlan extends AppCompatActivity implements AdapterView.On
     //**************************WORK YOUR MAGIC HERE TO ACTUALLY FILL THE REQUEST*********************
 
 
-    public boolean createPlanDB(String attendees, String mealType, String comboDate, String isAlcohol, String formal, String userID)
+    public boolean createPlanDB(String attendees, String mealType, String comboDate, String isAlcohol, String formal, String userID, String eventName, String eventCategory)
     {
         boolean wasAccepted = false;
 
