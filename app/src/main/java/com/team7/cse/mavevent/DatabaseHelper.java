@@ -9,6 +9,8 @@ import android.provider.ContactsContract;
 
 import com.team7.cse.mavevent.App;
 
+import static java.sql.Types.NULL;
+
 
 /**
  * Created by aadit on 4/23/2018.
@@ -244,6 +246,31 @@ public class DatabaseHelper extends SQLiteOpenHelper{
         }
         return cursor.getInt(cursor.getColumnIndex(KEY_UTYPE));
     }
+
+
+    /* Hacking it here*/
+    public boolean requestEvent(String attendees, String mealType, String comboDate, String comboDate2, String isAlcohol, String formal, String userID, String eventName, String eventCategory){
+        SQLiteDatabase db = DatabaseManager.getInstance().openDatabase();
+        ContentValues values = new ContentValues();
+        values.put(KEY_EVENTNAME, eventName);
+        values.put(KEY_EVENTTYPE, eventCategory);
+        values.put(KEY_EVENTATTENDEES, attendees);
+        values.put(KEY_EVENTMEAL, Integer.parseInt(mealType));    // int
+        values.put(KEY_EVENTALCOHOL, Integer.parseInt(isAlcohol)); // int
+        values.put(KEY_EVENTFORMALITY, Integer.parseInt(formal));  // int
+        values.putNull(KEY_EVENTHID);
+        values.put(KEY_EVENTUID, Integer.parseInt(userID)); //int
+        values.put(KEY_EVENTSTATUS, 0); // Pending
+        values.put(KEY_EVENTSTARTDATE, comboDate);
+        values.put(KEY_EVENTENDDATE, comboDate2);
+        db.insert(TABLE_EVENTS, null, values);
+        DatabaseManager.getInstance().closeDatabase();
+        return true;
+    }
+
+
+
+
 
     // User getter values
     public User getUser(String username, String password) {

@@ -22,6 +22,8 @@ import android.widget.Toast;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.team7.cse.mavevent.DatabaseHelper;
+
 
 public class CreateEventPlan extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
 
@@ -43,12 +45,16 @@ public class CreateEventPlan extends AppCompatActivity implements AdapterView.On
     boolean validMeal = false;
     boolean validName = false;
     boolean validCategory = false;
+    DatabaseHelper handler;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_event_plan);
         final Calendar activityCalendar= Calendar.getInstance();
+
+        // Handler
+        handler = new DatabaseHelper(this);
 
         final EditText event_name_field   = (EditText)findViewById(R.id.cep_event_name_id);
         final EditText event_category_field   = (EditText)findViewById(R.id.cep_event_category_id);
@@ -222,16 +228,20 @@ public class CreateEventPlan extends AppCompatActivity implements AdapterView.On
                 {
                     mealType = Integer.toString(rowSelected);
                     validMeal = true;
-                    String comboDate = year + '/' + month + '/' + day + ' ' + hour + ':' + minute + "00";
+                    String comboDate = year + '-' + month + '-' + day + ' ' + hour + ':' + minute + ":" + "00";
                     String isAlcohol = Integer.toString(hasAlcohol);
+                    int hr_int = Integer.parseInt(hour);
+                    int duration_int = Integer.parseInt(duration);
+                    int final_int = hr_int + duration_int;
+                    String comboDate2 = year + '-' + month + '-' + day + ' ' + Integer.toString(final_int) + ':' + minute + ":" + "00";
                     String formal = Integer.toString(isFormal);
                     //need userID from somewhere
-                    String userID="";//this is just temporary so that the request code works, remove it once you get the session version
+                    String userID="1";//this is just temporary so that the request code works, remove it once you get the session version
                     boolean wasAccepted=false;
 
 
                     if (setDate && setTime && validDuration && validDuration && validMeal && validCategory && validName) {
-                        wasAccepted = createPlanDB(attendees, mealType, comboDate, isAlcohol, formal, userID, eventName, eventCategory);//call to attempt to write to the database
+                        wasAccepted = createPlanDB(attendees, mealType, comboDate, comboDate2, isAlcohol, formal, userID, eventName, eventCategory, duration);//call to attempt to write to the database
                         if (wasAccepted) finish();
 
                         else {
@@ -269,9 +279,12 @@ public class CreateEventPlan extends AppCompatActivity implements AdapterView.On
     //**************************WORK YOUR MAGIC HERE TO ACTUALLY FILL THE REQUEST*********************
 
 
-    public boolean createPlanDB(String attendees, String mealType, String comboDate, String isAlcohol, String formal, String userID, String eventName, String eventCategory)
+    public boolean createPlanDB(String attendees, String mealType, String comboDate, String comboDate2, String isAlcohol, String formal, String userID, String eventName, String eventCategory, String duration)
     {
         boolean wasAccepted = false;
+        final DatabaseHelper db = new DatabaseHelper(CreateEventPlan.this);
+        wasAccepted = db.requestEvent(attendees, mealType, comboDate, comboDate2, isAlcohol, formal, userID, eventName, eventCategory);
+//        wasAccepted =
 
         return wasAccepted;
     }
