@@ -21,7 +21,7 @@ public class UserActivity extends AppCompatActivity {
         view_events_Button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent request_event_Intent = new Intent(UserActivity.this, RequestEventActivity.class);
+                Intent request_event_Intent = new Intent(UserActivity.this, CreateEventPlan.class);
                 UserActivity.this.startActivity(request_event_Intent);
             }
         });

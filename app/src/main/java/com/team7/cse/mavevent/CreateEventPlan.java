@@ -31,6 +31,7 @@ public class CreateEventPlan extends AppCompatActivity implements AdapterView.On
     String duration;
     String mealType;
     String dateTime;
+    String eventName;
     int hasAlcohol = 0;
     int isFormal = 0;
     boolean setDate=false;
@@ -38,6 +39,8 @@ public class CreateEventPlan extends AppCompatActivity implements AdapterView.On
     boolean validAttendees = false;
     boolean validDuration = false;
     boolean validMeal = false;
+    boolean validName = false;
+    boolean validCategory = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,9 +48,9 @@ public class CreateEventPlan extends AppCompatActivity implements AdapterView.On
         setContentView(R.layout.activity_create_event_plan);
         final Calendar activityCalendar= Calendar.getInstance();
 
-
+        final EditText event_name_field   = (EditText)findViewById(R.id.cep_event_name_id);
+        final EditText event_category_field   = (EditText)findViewById(R.id.cep_event_category_id);
         final EditText attendees_field   = (EditText)findViewById(R.id.cep_attendees_id);
-
         //////////////////////<M E A L - T Y P E - S P I N N E R//////////////////////////////////
         final Spinner cep_meal_spinner = (Spinner) findViewById(R.id.cep_meal_id);
         cep_meal_spinner.setOnItemSelectedListener(this);
@@ -159,6 +162,28 @@ public class CreateEventPlan extends AppCompatActivity implements AdapterView.On
                 String day = Integer.toString(activityCalendar.get(Calendar.DAY_OF_MONTH));
                 String month = Integer.toString(activityCalendar.get(Calendar.MONTH));
                 String year = Integer.toString(activityCalendar.get(Calendar.YEAR)%100);
+
+                if(event_name_field.getText().length() !=0)
+                {
+                    event_name_field.setError(null);
+                    eventName = event_name_field.getText().toString();
+                    validName = true;
+                }
+                else
+                {
+                    event_name_field.setError("You must pick a name");
+                }
+
+                if (event_category_field.getText().length() != 0)
+                {
+                    event_category_field.setError(null);
+                    eventName = event_category_field.getText().toString();
+                    validCategory = true;
+                }
+                else
+                {
+                    event_category_field.setError("Invalid Category");
+                }
                 try
                 {
                     Integer.parseInt(attendees_field.getText().toString());
