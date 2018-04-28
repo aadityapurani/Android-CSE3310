@@ -3,7 +3,8 @@ package com.team7.cse.mavevent;
 import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
 import android.content.Context;
-import android.icu.util.Calendar;
+//import android.icu.util.Calendar;     // Because that fails on my Android Device =(
+import java.util.Calendar;        // This works on my Android Device
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
