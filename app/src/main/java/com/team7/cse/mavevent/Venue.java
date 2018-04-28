@@ -21,24 +21,25 @@ public class Venue extends Food implements Serializable {
         JAPANESE
     }
     public VENUE venue;
+    Venue(){}
     Venue(int venue){
         this.venue = VENUE.values()[venue];
     }
-	Venue(Venue venue){
-		this.price = venue.price;
-		this.name = venue.name;
-		this.venue = venue.venue;
-	}
+    Venue(Venue venue){
+        this.price = venue.price;
+        this.name = venue.name;
+        this.venue = venue.venue;
+    }
     Venue(String name,
           int price,
           int venue){
         super(name,price);
         this.venue = VENUE.values()[venue];
     }
-	Venue(String name,
-		  String price,
-		  String venue){
-		super(name,price);
-		this.venue = VENUE.values()[Integer.parseInt(venue)];
-	}
+    Venue(String name,
+          String price,
+          String venue){
+        super(name,price);
+        this.venue = VENUE.values()[Integer.parseInt(venue)];
+    }
 }

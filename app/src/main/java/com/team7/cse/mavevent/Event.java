@@ -13,7 +13,7 @@ import java.io.Serializable;
 /*
 	time is an intiger that represents the hours (minutes not included)
 */
- 
+
 public class Event implements Serializable{
 	private int id;
 	private String name;
@@ -27,9 +27,10 @@ public class Event implements Serializable{
 	private ArrayList <EntertainmentItem> entertainmentItems;
 	private Food food;
 	private ArrayList <Staff> staffMembers;
+	private boolean alcohol;
 	//public boolean isAccepted;
 	private boolean accepted;
-	
+
 	Event(){
 		drinks = new ArrayList<Drink>();
 		entertainmentItems = new ArrayList<EntertainmentItem>();
@@ -45,19 +46,20 @@ public class Event implements Serializable{
 
 	Event(
 			int id,
-		  String name,
-		  int time,
-		  String date,
-		  int capacity,
-		  Hall hall,
-		  boolean isFormal,
-		  int duration,
-		  ArrayList<Drink>drinks,
-		  ArrayList<EntertainmentItem>entertainmentItems,
-		  Food food,
-		  //ArrayList<Staff> staffMembers,
-		  boolean accepted
-		){
+			String name,
+			int time,
+			String date,
+			int capacity,
+			Hall hall,
+			boolean isFormal,
+			int duration,
+			ArrayList<Drink>drinks,
+			ArrayList<EntertainmentItem>entertainmentItems,
+			Food food,
+			//ArrayList<Staff> staffMembers,
+			boolean accepted,
+			boolean alcohol
+	){
 		this.id = id;
 		this.name = name;
 		this.time = time;
@@ -71,8 +73,9 @@ public class Event implements Serializable{
 		this.food = new Food(food);
 		this.staffMembers = new ArrayList<Staff>();
 		this.accepted = accepted;
+		this.alcohol = alcohol;
 	}
-	
+
 	Event(String id,
 		  String name,
 		  String time,
@@ -86,7 +89,7 @@ public class Event implements Serializable{
 		  //Food food,
 		  //ArrayList<Staff> staffMembers,
 		  String accepted
-		){
+	){
 		this.id = Integer.parseInt(id);
 		this.name = name;
 		this.time = Integer.parseInt(time);
@@ -137,7 +140,7 @@ public class Event implements Serializable{
 		ArrayList x = new ArrayList<Staff>(staffMembers);
 		return x;
 	}
-	
+
 	public void setStaffMembers(ArrayList staffMembers){this.staffMembers = new ArrayList<Staff>(staffMembers);}
 
 	//ACCEPTED
@@ -152,7 +155,7 @@ public class Event implements Serializable{
 	public int getId(){
 		return id;
 	}
-	
+
 	public void setId(int id){
 		this.id = id;
 	}
@@ -161,7 +164,7 @@ public class Event implements Serializable{
 	public String getName(){
 		return name;
 	}
-	
+
 	public void setName(String name){
 		this.name = name;
 	}
@@ -170,7 +173,7 @@ public class Event implements Serializable{
 	public int getTime(){
 		return time;
 	}
-	
+
 	public boolean setTime(int time){
 		if(time>=0&&time<24){
 			this.time = time;
@@ -183,7 +186,7 @@ public class Event implements Serializable{
 	public String getDate(){
 		return date;
 	}
-	
+
 	public boolean setDate(String date){
 		if(date.length()==8){
 			this.date = date;
@@ -196,7 +199,7 @@ public class Event implements Serializable{
 	public int getCapacity(){
 		return capacity;
 	}
-	
+
 	public boolean setCapacity(int capacity){
 		if(capacity>=0){
 			this.capacity = capacity;
@@ -209,7 +212,7 @@ public class Event implements Serializable{
 	public Hall getHall(){
 		return hall;
 	}
-	
+
 	public boolean setHall(Hall hall){
 		if(time==-1 || date.length()==0 || duration == -1){
 			return false;
@@ -220,11 +223,20 @@ public class Event implements Serializable{
 		}
 		return false;
 	}
+
+	public boolean getAlcohol(){
+		return alcohol;
+	}
+
+	public void setAlcohol(boolean alcohol){
+		this.alcohol = alcohol;
+	}
+
 	//DURATION
 	public int getDuration(){
 		return duration;
 	}
-	
+
 	public boolean setDuration(int duration){
 		if(duration>0){
 			this.duration = duration;
@@ -290,7 +302,7 @@ public class Event implements Serializable{
 			if(!date.substring(i,i+1).equals(this.date.substring(i,i+1)))
 				return false;
 		}
-		
+
 		// checks if times overlap
 		if(this.time>time){
 			if(this.time-time>duration)
@@ -303,7 +315,7 @@ public class Event implements Serializable{
 		// it 
 		return false;
 	}
-	
+
 	public boolean timeOverlap(Event e){
 		return this.timeOverlap(e.time,e.date,e.duration);
 	}

@@ -31,12 +31,20 @@ public class DatabaseHelper extends SQLiteOpenHelper{
     private static final String TABLE_USERS = "Users_tbl";
     private static final String TABLE_HALL = "Hall_tbl";
     private static final String TABLE_EVENTS = "Events_tbl";
+    private static final String TABLE_RECOURSE = "event_recourses";
+    private static final String TABLE_MEAL = "meal_tbl";
+    private static final String TABLE_VENUE = "venue_tbl";
+    private static final String TABLE_DRINK = "drinks_tbl";
 
     // Common column names
     private static final String KEY_USERID = "user_id";
     private static final String KEY_CREATED_AT = "created_at";
     private static final String KEY_HALLID = "hall_id";
     private static final String KEY_EVENTSID = "event_id";
+    private static final String KEY_RECOURSEID = "";      // NEED TO UPDATE
+    private static final String KEY_MEALID = "meal_type_id";
+    private static final String KEY_VENUEID = "venue";
+    private static final String KEY_DRINKID = "drink_id";
 
     // Specific Columns for Users table
     private static final String KEY_USERNAME = "username";
@@ -65,8 +73,27 @@ public class DatabaseHelper extends SQLiteOpenHelper{
     private static final String KEY_EVENTALCOHOL = "alco_or_not";
     private static final String KEY_EVENTHID = "hall_id";
     private static final String KEY_EVENTUID = "user_id";
+    private static final String KEY_EVENTCID = "caterer_id";
     private static final String KEY_EVENTFORMALITY = "formality";
     private static final String KEY_EVENTSTATUS = "status";
+
+    // Specific Columns for Event Recourse Table
+    private static final String KEY_RECOURSENAME = "name";
+    private static final String KEY_RECOURSEPRICE = "price";
+    private static final String KEY_RECOURSEDRINK = "drink_id";
+    private static final String KEY_RECOURSEVENUE = "venue_id";
+    private static final String KEY_RECOURSEMEALTYPE = "meal_type_id";
+    private static final String KEY_RECOURSEEVENT = "event_id";
+    private static final String KEY_RECOURSEQUANTITY = "quantity";
+
+    // Specific Columns for Meals Table
+    private static final String KEY_MEALNAME = "name_meal";
+
+    // Specific Columns for Venue Table
+    private static final String KEY_VENUENAME = "name_venue";
+
+    // Specific Columns for Drinks Table
+    private static final String KEY_DRINKNAME = "name_drink";
 
 
     // Just a database creator
@@ -175,25 +202,6 @@ public class DatabaseHelper extends SQLiteOpenHelper{
         DatabaseManager.getInstance().closeDatabase();
     }
 
-    public Hall retrieveHall(int id) {
-        SQLiteDatabase db = DatabaseManager.getInstance().openDatabase();
-        //SQLiteDatabase db = this.getWritableDatabase();
-
-        String query = "SELECT * from " + TABLE_HALL+ " WHERE " + KEY_HALLID+ " = \""
-                + id+"\";";
-        Cursor cursor = db.rawQuery(query, null);
-        if(!cursor.moveToFirst()){
-            return null;
-        }
-        Hall hall = new Hall(cursor.getInt(cursor.getColumnIndex(KEY_HALLID)),
-                cursor.getInt(cursor.getColumnIndex(KEY_HALLCAPACITY)),
-                cursor.getInt(cursor.getColumnIndex(KEY_HALLPRICE)),
-                cursor.getString(cursor.getColumnIndex(KEY_HALLNAME))
-        );
-
-        return hall;
-    }
-
     // Register User Database Logic
     public void addNewUser(UserBaseModel user){
         // SQLiteDatabase db = this.getWritableDatabase();
@@ -213,6 +221,49 @@ public class DatabaseHelper extends SQLiteOpenHelper{
         DatabaseManager.getInstance().closeDatabase();
     }
 
+    public void addNewEvent(Event event,int userID){
+        SQLiteDatabase db = DatabaseManager.getInstance().openDatabase();
+        ContentValues values = new ContentValues();
+        values.put(KEY_EVENTNAME,event.getName());
+        values.put(KEY_EVENTTYPE,"Party");
+        String startDates = event.getDate() + " " + Integer.toString(event.getTime())+":00";
+        values. put(KEY_EVENTSTARTDATE,startDates);
+        String endDates = event.getDate() + " " + Integer.toString(event.getTime()+event.getDuration())+":00";
+        values. put(KEY_EVENTENDDATE,endDates);
+        values.put(KEY_EVENTATTENDEES,event.getCapacity());
+        if(event.getAlcohol())
+            values.put(KEY_EVENTALCOHOL,1);
+        else
+            values.put(KEY_EVENTALCOHOL,0);
+        if(event.getHall()!=null)
+            values.put(KEY_EVENTHID,event.getHall().id);
+
+        values.put(KEY_EVENTUID,userID);
+        if(event.isFormal)
+            values.put(KEY_EVENTFORMALITY,1);
+        else
+            values.put(KEY_EVENTFORMALITY,0);
+        values.put(KEY_EVENTSTATUS,0);
+        DatabaseManager.getInstance().closeDatabase();
+
+    }
+
+    public void addNewEntertainmentItem(Event event, EntertainmentItem entertainmentItem){
+
+    }       // NEED TO CREATE
+
+    public void addNewVenue(Event event,Venue venue){
+
+    }       // NEED TO CREATE
+
+    public void addNewDrink(Event event,Drink drink){
+
+    }       // NEED TO CREATE
+
+    public void addNewMeal(Event event,Food food){
+
+    }       // NEED TO CREATE
+
     public boolean checkExistence(String username,int id,boolean isAUser){
         SQLiteDatabase db = this.getWritableDatabase();
         String query = "SELECT * from " + TABLE_USERS + " WHERE " + KEY_USERNAME + " = \""
@@ -227,14 +278,6 @@ public class DatabaseHelper extends SQLiteOpenHelper{
         return false;
     }
 
-    // Login
-    /*
-        0 is invalid
-        1 is user
-        2 is cater
-        3 is staff
-
-     */
     public int isValidUser(String username, String password){
         SQLiteDatabase db = this.getWritableDatabase();
 
@@ -247,6 +290,14 @@ public class DatabaseHelper extends SQLiteOpenHelper{
         return cursor.getInt(cursor.getColumnIndex(KEY_UTYPE));
     }
 
+<<<<<<< HEAD
+    public boolean eventExists(Event event){
+
+        return false;
+    }           //NEED TO CREATE
+
+    // FOR LOGIN
+=======
 
     /* Hacking it here*/
     public boolean requestEvent(String attendees, String mealType, String comboDate, String comboDate2, String isAlcohol, String formal, String userID, String eventName, String eventCategory){
@@ -273,6 +324,7 @@ public class DatabaseHelper extends SQLiteOpenHelper{
 
 
     // User getter values
+>>>>>>> e08b8e3b45475bd1f0900c38f130a9cf27166af6
     public User getUser(String username, String password) {
         SQLiteDatabase db = this.getWritableDatabase();
 
@@ -329,6 +381,7 @@ public class DatabaseHelper extends SQLiteOpenHelper{
         String query = "SELECT * from " + TABLE_USERS + " WHERE " + KEY_USERNAME + " = \""
                 + username + "\" AND " + KEY_PASSWORD + " = \"" + password + "\";";
         Cursor cursor = db.rawQuery(query, null);
+
         //get the value
         Caterer model = new Caterer();
 
@@ -346,4 +399,294 @@ public class DatabaseHelper extends SQLiteOpenHelper{
         }
         return model;
     }
+
+    // FOR LOOK UP
+    public User getUser(int userId ) {
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        String query = "SELECT * from " + TABLE_USERS + " WHERE " + KEY_USERID + " = \""
+                + userId + "\";";
+        Cursor cursor = db.rawQuery(query, null);
+
+        //get the value
+        User model = new User();
+
+        if(cursor.moveToFirst()) {
+            model.setId(cursor.getInt(cursor.getColumnIndex(KEY_USERID)));
+            model.setFName(cursor.getString(cursor.getColumnIndex(KEY_FNAME)));
+            model.setLName(cursor.getString(cursor.getColumnIndex(KEY_LNAME)));
+            model.setUserName(cursor.getString(cursor.getColumnIndex(KEY_USERNAME)));
+            model.setUtaId(cursor.getInt(cursor.getColumnIndex(KEY_UTAID)));
+            model.setPhone(cursor.getString(cursor.getColumnIndex(KEY_PHONE)));
+            //model.set(cursor.getInt(cursor.getColumnIndex(KEY_UTYPE)));
+            model.setAddress(cursor.getString(cursor.getColumnIndex(KEY_ADDRESS)));
+        } else {
+            model = null;
+        }
+        return model;
+    }
+
+    public Staff getStaff(int userId) {
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        String query = "SELECT * from " + TABLE_USERS + " WHERE " + KEY_USERID + " = \""
+                + userId + "\";";
+        Cursor cursor = db.rawQuery(query, null);
+
+        //get the value
+        Staff model = new Staff();
+
+        if(cursor.moveToFirst()) {
+            model.setId(cursor.getInt(cursor.getColumnIndex(KEY_USERID)));
+            model.setFName(cursor.getString(cursor.getColumnIndex(KEY_FNAME)));
+            model.setLName(cursor.getString(cursor.getColumnIndex(KEY_LNAME)));
+            model.setUserName(cursor.getString(cursor.getColumnIndex(KEY_USERNAME)));
+            //model.setUtaId(cursor.getInt(cursor.getColumnIndex(KEY_UTAID)));
+            model.setPhone(cursor.getString(cursor.getColumnIndex(KEY_PHONE)));
+            //model.set(cursor.getInt(cursor.getColumnIndex(KEY_UTYPE)));
+            model.setAddress(cursor.getString(cursor.getColumnIndex(KEY_ADDRESS)));
+        } else {
+            model = null;
+        }
+        return model;
+    }
+
+    public Caterer getCaterer(int userId) {
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        String query = "SELECT * from " + TABLE_USERS + " WHERE " + KEY_USERID + " = \""
+                + userId + "\";";
+        Cursor cursor = db.rawQuery(query, null);
+
+        //get the value
+        Caterer model = new Caterer();
+
+        if(cursor.moveToFirst()) {
+            model.setId(cursor.getInt(cursor.getColumnIndex(KEY_USERID)));
+            model.setFName(cursor.getString(cursor.getColumnIndex(KEY_FNAME)));
+            model.setLName(cursor.getString(cursor.getColumnIndex(KEY_LNAME)));
+            model.setUserName(cursor.getString(cursor.getColumnIndex(KEY_USERNAME)));
+            //model.setUtaId(cursor.getInt(cursor.getColumnIndex(KEY_UTAID)));
+            model.setPhone(cursor.getString(cursor.getColumnIndex(KEY_PHONE)));
+            //model.set(cursor.getInt(cursor.getColumnIndex(KEY_UTYPE)));
+            model.setAddress(cursor.getString(cursor.getColumnIndex(KEY_ADDRESS)));
+        } else {
+            model = null;
+        }
+        return model;
+    }
+
+    public Event getEvent(int eventId) {
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        String query = "SELECT * from " + TABLE_EVENTS + " WHERE " + KEY_EVENTSID+ " = \""
+                + eventId+ "\";";
+        Cursor cursor = db.rawQuery(query, null);
+        Event event = new Event();
+
+        if(cursor.moveToFirst()){
+            event.setId(cursor.getInt(cursor.getColumnIndex(KEY_EVENTSID)));
+            event.setName(cursor.getString(cursor.getColumnIndex(KEY_EVENTNAME)));
+            String date = cursor.getString(cursor.getColumnIndex(KEY_EVENTSTARTDATE));
+            int mid=0;
+            for(int i=0;i<date.length();i++){
+                if(date.substring(i,i)==" ") {
+                    mid = i;
+                    break;
+                }
+            }
+            event.setDate(date.substring(0,mid-1));
+            int start = Integer.parseInt(date.substring(mid+1));
+            event.setTime(start);
+            date = cursor.getString(cursor.getColumnIndex(KEY_EVENTENDDATE));
+            mid=0;
+            for(int i=0;i<date.length();i++){
+                if(date.substring(i,i)==" ") {
+                    mid = i;
+                    break;
+                }
+            }
+            int end = Integer.parseInt(date.substring(mid+1));
+            event.setDuration(end-start);
+            event.setCapacity(cursor.getInt(cursor.getColumnIndex(KEY_EVENTATTENDEES)));
+            event.setHall(getHall(cursor.getInt(cursor.getColumnIndex(KEY_EVENTHID))));
+            if(cursor.getInt(cursor.getColumnIndex(KEY_EVENTFORMALITY))==1)
+                event.isFormal = true;
+            else
+                event.isFormal = false;
+            if(cursor.getInt(cursor.getColumnIndex(KEY_EVENTSTATUS))==1)
+                event.setAccepted(true);
+            else
+                event.setAccepted(false);
+            return event;
+        }
+        return null;
+    }
+
+    public Hall getHall(int hallId){
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        String query = "SELECT * from " + TABLE_HALL + " WHERE " + KEY_HALLID + " = \""
+                + hallId + "\";";
+        Cursor cursor = db.rawQuery(query, null);
+
+        //get the value
+        Hall hall = new Hall();
+
+        if(cursor.moveToFirst()) {
+            hall.setCapacity(cursor.getInt(cursor.getColumnIndex(KEY_HALLCAPACITY)));
+            hall.setName(cursor.getString(cursor.getColumnIndex(KEY_HALLNAME)));
+            hall.setPrice(cursor.getInt(cursor.getColumnIndex(KEY_HALLPRICE)));
+            return hall;
+        }
+        return null;
+    }
+
+    public void getUserEvents(User user){
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        String query = "SELECT * from " + TABLE_EVENTS + " WHERE " + KEY_EVENTUID+ " = \""
+                + user.getId()+ "\";";
+        Cursor cursor = db.rawQuery(query,null);
+        if(cursor.moveToFirst())
+            user.addEvent(getEvent(cursor.getInt(cursor.getColumnIndex(KEY_EVENTSID))));
+        while(cursor.moveToNext()){
+            user.addEvent(getEvent(cursor.getInt(cursor.getColumnIndex(KEY_EVENTSID))));
+        }
+    }           //NEED TO CREATE    ***
+
+    public void getStaffEvents(Staff staff){
+
+    }        //NEED TO CREATE   ****
+
+    public void getCatererEvents(Caterer caterer){
+
+    }   // NEED TO CREATE   ****
+
+    public EntertainmentItem getEntertainmentItems(int entertainmentItemId,int eventRecourseId){
+        return null;
+    }   //NEEED TO CREATE **** NEED TO PUT IN DATABASE
+
+    public Drink getDrinks(int drinkId,int eventRecourseId){
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        String queryDrink = "SELECT * from " + TABLE_DRINK + " WHERE " + KEY_DRINKID + " = \""
+                + drinkId + "\";";
+        Cursor cursorDrink = db.rawQuery(queryDrink, null);
+        String queryRecourse = "SELECT * from " + TABLE_RECOURSE+ " WHERE " + KEY_RECOURSEID + " = \""
+                + eventRecourseId+ "\";";
+        Cursor cursorRecourse = db.rawQuery(queryRecourse, null);
+        Drink drink = new Drink();
+        if(cursorDrink.moveToFirst() && cursorRecourse.moveToFirst()){
+            drink.name = cursorRecourse.getString(cursorRecourse.getColumnIndex(KEY_RECOURSENAME));
+            drink.price = cursorRecourse.getInt(cursorRecourse.getColumnIndex(KEY_RECOURSEPRICE));
+            drink.quantity = cursorRecourse.getInt(cursorRecourse.getColumnIndex(KEY_RECOURSEQUANTITY));
+            String test = cursorDrink.getString(cursorDrink.getColumnIndex(KEY_DRINKNAME));
+            if(test.equals("Alcoholic"))
+                drink.alcoholic = true;
+            else
+                drink.alcoholic = false;
+
+            return drink;
+        }
+        return null;
+    }
+
+    public Food getMeal(int mealId,int eventRecourseId){
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        String queryDrink = "SELECT * from " + TABLE_MEAL + " WHERE " + KEY_MEALID + " = \""
+                + mealId+ "\";";
+        Cursor cursorDrink = db.rawQuery(queryDrink, null);
+        String queryRecourse = "SELECT * from " + TABLE_RECOURSE+ " WHERE " + KEY_RECOURSEID + " = \""
+                + eventRecourseId+ "\";";
+        Cursor cursorRecourse = db.rawQuery(queryRecourse, null);
+        Food food = new Food();
+        if(cursorDrink.moveToFirst() && cursorRecourse.moveToFirst()){
+            food.name = cursorRecourse.getString(cursorRecourse.getColumnIndex(KEY_RECOURSENAME));
+            food.price = cursorRecourse.getInt(cursorRecourse.getColumnIndex(KEY_RECOURSEPRICE));
+            food.quantity = cursorRecourse.getInt(cursorRecourse.getColumnIndex(KEY_RECOURSEQUANTITY));
+            String test = cursorDrink.getString(cursorDrink.getColumnIndex(KEY_MEALNAME));
+            if(test.equals("Breakfast"))
+                food.mealType = 1;
+            else if(test.equals("Lunch"))
+                food.mealType = 2;
+            else
+                food.mealType = 3;
+            return food;
+        }
+        return null;
+
+    }
+
+    public Venue getVenue(int venueId,int eventRecourseId){
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        String queryDrink = "SELECT * from " + TABLE_VENUE + " WHERE " + KEY_VENUEID+ " = \""
+                + venueId+ "\";";
+        Cursor cursorDrink = db.rawQuery(queryDrink, null);
+        String queryRecourse = "SELECT * from " + TABLE_RECOURSE+ " WHERE " + KEY_RECOURSEID + " = \""
+                + eventRecourseId+ "\";";
+        Cursor cursorRecourse = db.rawQuery(queryRecourse, null);
+        Venue venue = new Venue();
+        if(cursorDrink.moveToFirst() && cursorRecourse.moveToFirst()) {
+            venue.name = cursorRecourse.getString(cursorRecourse.getColumnIndex(KEY_RECOURSENAME));
+            venue.price = cursorRecourse.getInt(cursorRecourse.getColumnIndex(KEY_RECOURSEPRICE));
+            venue.quantity = cursorRecourse.getInt(cursorRecourse.getColumnIndex(KEY_RECOURSEQUANTITY));
+            String test = cursorDrink.getString(cursorDrink.getColumnIndex(KEY_VENUENAME));
+            if(test.equals("Pizza")){
+                venue.venue = Venue.VENUE.PIZZA;
+            }
+            else if(test.equals("French")){
+                venue.venue = Venue.VENUE.FRENCH;
+            }
+            else if(test.equals("Chinese")){
+                venue.venue = Venue.VENUE.CHINESE;
+            }
+            else if(test.equals("MEXICAN")){
+                venue.venue = Venue.VENUE.MEXICAN;
+            }
+            else if(test.equals("Italian")){
+                venue.venue = Venue.VENUE.ITALIAN;
+            }
+            else if(test.equals("American")){
+                venue.venue = Venue.VENUE.AMERICAN;
+            }
+            else if(test.equals("Greek")){
+                venue.venue = Venue.VENUE.GREEK;
+            }
+            else if(test.equals("Indian")){
+                venue.venue = Venue.VENUE.INDIAN;
+            }
+            else{
+                venue.venue = Venue.VENUE.JAPANESE;
+            }
+            return venue;
+
+        }
+        return null;
+    }
+
+    public void getEventStaffs(Event event){
+
+    }       // NEED TO CREATE
+
+    public void getEventRecourses(Event event){
+
+    }   //NEED TO CREATE
+
+    public void getHallEvents(Hall hall){
+
+    }       //NEED TO CREATE
+
+    // FOR UPDATING THE DATABASE
+
+    public void updateHall(Hall hall){
+
+    }       //NEED TO CREATE
+
+    public void updateEvent(Event event){
+
+    }      //NEED TO CREATE
 }
+    
