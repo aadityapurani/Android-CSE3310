@@ -5,7 +5,6 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -18,7 +17,7 @@ public class CatererActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_caterer);
+        setContentView(R.layout.activity_caterer_event_manager);
 
         e = (Event)getIntent().getSerializableExtra("EVENT");
         t=(TextView)findViewById(R.id.textViewEventName);
@@ -28,7 +27,7 @@ public class CatererActivity extends AppCompatActivity {
         caterer_add_resources_Button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent add_resource_Intent = new Intent(CatererActivity.this, AddResourcesActivity.class);
+                Intent add_resource_Intent = new Intent(CatererActivity.this, AddResourcesMainActivity.class);
                 CatererActivity.this.startActivity(add_resource_Intent);
             }
         });
@@ -49,8 +48,8 @@ public class CatererActivity extends AppCompatActivity {
         schedule_venue_Button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent schedule_venue_Intent = new Intent(CatererActivity.this, ScheduleVenueActivity.class);
-                CatererActivity.this.startActivity(schedule_venue_Intent);
+                Intent schedule_hall_Intent = new Intent(CatererActivity.this, ScheduleHallActivity.class);
+                CatererActivity.this.startActivity(schedule_hall_Intent);
             }
         });
 
@@ -121,6 +120,7 @@ public class CatererActivity extends AppCompatActivity {
 
 
         // Caterer Homepage - > Main Page
+        /*
         final Button logout_Button = (Button) findViewById(R.id.caterer_logout_id);
         logout_Button.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -129,6 +129,7 @@ public class CatererActivity extends AppCompatActivity {
                 CatererActivity.this.startActivity(logout_Intent);
             }
         });
+        */
 
     }
 }

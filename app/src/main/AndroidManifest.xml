@@ -43,9 +43,17 @@
             android:label="@string/title_caterer"
             android:theme="@style/AppTheme"></activity>
         <activity
-            android:name=".AddResourcesActivity"
-            android:theme="@style/AppTheme"
-            android:windowSoftInputMode="stateAlwaysHidden"></activity>
+            android:name=".AddEntertainmentItemsActivity"
+            android:label="AddEntertainmentItemsActivity"
+            android:theme="@style/AppTheme"></activity>
+        <activity
+            android:name=".AddDrinkActivity"
+            android:label="AddDrinkActivity"
+            android:theme="@style/AppTheme"></activity>
+        <activity
+            android:name=".AddResourcesMainActivity"
+            android:label="AddResourcesMainActivity"
+            android:theme="@style/AppTheme"></activity>
         <activity
             android:name=".CreateEventPlan"
             android:theme="@style/AppTheme"
@@ -59,7 +67,7 @@
             android:theme="@style/AppTheme"
             android:windowSoftInputMode="stateAlwaysHidden"></activity>
         <activity
-            android:name=".ScheduleVenueActivity"
+            android:name=".ScheduleHallActivity"
             android:theme="@style/AppTheme"
             android:windowSoftInputMode="stateAlwaysHidden"></activity>
         <activity
