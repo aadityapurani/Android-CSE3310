@@ -21,7 +21,7 @@ public class UserBaseModel implements Serializable {
 	private int id;
 	public int type;
 	protected ArrayList<Event> events;
-	private int utaId;
+	private long utaId;
 	UserBaseModel(){
 		events = new ArrayList<Event>();
 	}
@@ -172,11 +172,11 @@ public class UserBaseModel implements Serializable {
 		this.id = id;
 	}
 
-	public int getUtaId(){
+	public long getUtaId(){
 		return utaId;
 	}
 
-	public void setUtaId(int utaId){
+	public void setUtaId(long utaId){
 		this.utaId = utaId;
 	}
 	

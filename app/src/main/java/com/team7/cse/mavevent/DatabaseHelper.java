@@ -266,7 +266,7 @@ public class DatabaseHelper extends SQLiteOpenHelper{
 
     }       // NEED TO CREATE
 
-    public boolean checkExistence(String username,int id,boolean isAUser){
+    public boolean checkExistence(String username,long id,boolean isAUser){
         SQLiteDatabase db = this.getWritableDatabase();
         String query = "SELECT * from " + TABLE_USERS + " WHERE " + KEY_USERNAME + " = \""
                 + username + "\";";

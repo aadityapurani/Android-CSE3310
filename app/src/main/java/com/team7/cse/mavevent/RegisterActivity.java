@@ -123,10 +123,11 @@ public class RegisterActivity extends AppCompatActivity implements OnItemSelecte
             //check if username || utaId exists if it's a already exists
             boolean test=true;
             if(pos==1){
-                test = db. checkExistence(uname,Integer.parseInt(utaidSection.getText().toString()),true);
+                test = db. checkExistence(uname,Long.parseLong(utaidSection.getText().toString()),true);
             }
             else {
-                test = db. checkExistence(uname,Integer.parseInt(utaidSection.getText().toString()),false);
+                //Integer overflow fix
+                test = db. checkExistence(uname,Long.parseLong(utaidSection.getText().toString()),false);
             }
             if (test&&ready) {
                 currentPerson = new UserBaseModel();
@@ -138,7 +139,7 @@ public class RegisterActivity extends AppCompatActivity implements OnItemSelecte
                 currentPerson.type = pos;
                 currentPerson.setPassword(password);
                 if(pos==1)
-                    currentPerson.setUtaId(Integer.parseInt(utaidSection.getText().toString()));
+                    currentPerson.setUtaId(Long.parseLong(utaidSection.getText().toString()));
                 else
                     currentPerson.setUtaId(-1);
                 currentPerson.setPhone(phone);
