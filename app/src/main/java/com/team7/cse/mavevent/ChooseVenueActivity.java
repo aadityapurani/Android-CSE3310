@@ -11,6 +11,6 @@ public class ChooseVenueActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_add_drink);
+        setContentView(R.layout.activity_caterer_add_drink);
     }
 }

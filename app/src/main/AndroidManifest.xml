@@ -47,6 +47,10 @@
             android:label="AddEntertainmentItemsActivity"
             android:theme="@style/AppTheme"></activity>
         <activity
+            android:name=".AddDrinkActivity"
+            android:label="AddDrinkActivity"
+            android:theme="@style/AppTheme"></activity>
+        <activity
             android:name=".AddResourcesMainActivity"
             android:label="AddResourcesMainActivity"
             android:theme="@style/AppTheme"></activity>

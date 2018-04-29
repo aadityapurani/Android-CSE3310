@@ -15,7 +15,7 @@ public class AddResourcesMainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_add_resources_main);
+        setContentView(R.layout.activity_caterer_add_resources_main);
 
         // Resources Main -> Choose Venue
         final Button choose_venue_Button = (Button)findViewById(R.id.arm_choose_venue_id);
