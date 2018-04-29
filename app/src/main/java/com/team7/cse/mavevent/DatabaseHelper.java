@@ -43,7 +43,7 @@ public class DatabaseHelper extends SQLiteOpenHelper{
     private static final String KEY_CREATED_AT = "created_at";
     private static final String KEY_HALLID = "hall_id";
     private static final String KEY_EVENTSID = "event_id";
-    private static final String KEY_RECOURSEID = "";      // NEED TO UPDATE
+    private static final String KEY_EVENTRECOURSEID = "";      // NEED TO UPDATE
     private static final String KEY_MEALID = "meal_type_id";
     private static final String KEY_VENUEID = "venue";
     private static final String KEY_DRINKID = "drink_id";
@@ -80,6 +80,7 @@ public class DatabaseHelper extends SQLiteOpenHelper{
     private static final String KEY_EVENTSTATUS = "status";
 
     // Specific Columns for Event Recourse Table
+    private static final String KEY_RECOURSEID = "event_recourse_id";
     private static final String KEY_RECOURSENAME = "name";
     private static final String KEY_RECOURSEPRICE = "price";
     private static final String KEY_RECOURSEDRINK = "drink_id";
@@ -157,10 +158,32 @@ public class DatabaseHelper extends SQLiteOpenHelper{
             + KEY_EVENTUID + " INTEGER,"
             + KEY_EVENTFORMALITY + " INTEGER,"
             + KEY_EVENTSTATUS + " INTEGER,"
-            + "CONSTRAINT fk_hall FOREIGN KEY ("+KEY_EVENTHID+") REFERENCES "+TABLE_HALL+"("+KEY_HALLID+"),"
-            + "CONSTRAINT fk_user FOREIGN KEY ("+KEY_EVENTUID+") REFERENCES "+TABLE_HALL+"("+KEY_USERID+"))";
+            + "CONSTRAINT fk_hall FOREIGN KEY ("+KEY_EVENTHID+") REFERENCES "+TABLE_HALL+"("+KEY_HALLID+"),"//+ KEY_EVENTHID + "INTEGER,"//+ "CONSTRAINT fk_hall FOREIGN KEY ("+KEY_EVENTHID+") REFERENCES "+TABLE_HALL+"("+KEY_HALLID+"),"
+            +"CONSTRAINT fk_user FOREIGN KEY ("+KEY_EVENTUID+") REFERENCES "+TABLE_HALL+"("+KEY_USERID+"))";//+ KEY_EVENTUID + "INTEGER"//"CONSTRAINT fk_user FOREIGN KEY ("+KEY_EVENTUID+") REFERENCES "+TABLE_HALL+"("+KEY_USERID+"))";
+            //+ ")";
+    // Create table recourse/*
+    /*
+    private static String CREATE_TABLE_RECOURSE = "CREATE TABLE "
+            + TABLE_RECOURSE + "(" + KEY_RECOURSEID + " INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,"
+            + KEY_RECOURSENAME + " TEXT,"
+            + KEY_RECOURSEPRICE + " INTEGER,"
+            + KEY_RECOURSEDRINK + " INTEGER,"
+            + KEY_RECOURSEVENUE + " INTEGER,"
+            + KEY_RECOURSEMEALTYPE + " INTEGER,"
+            + KEY_RECOURSEEVENT + " INTEGER,"
+            + KEY_RECOURSEQUANTITY = " INTEGER";
+    */
+    /*
+        private static final String KEY_RECOURSEID = "event_recourse_id";
+    private static final String KEY_RECOURSENAME = "name";
+    private static final String KEY_RECOURSEPRICE = "price";
+    private static final String KEY_RECOURSEDRINK = "drink_id";
+    private static final String KEY_RECOURSEVENUE = "venue_id";
+    private static final String KEY_RECOURSEMEALTYPE = "meal_type_id";
+    private static final String KEY_RECOURSEEVENT = "event_id";
+    private static final String KEY_RECOURSEQUANTITY = "quantity";
 
-
+     */
 
     // Will execute the query
     @Override
@@ -195,7 +218,7 @@ public class DatabaseHelper extends SQLiteOpenHelper{
         SQLiteDatabase db = DatabaseManager.getInstance().openDatabase();
         // SQLiteDatabase db = this.getWritableDatabase();
         ContentValues values = new ContentValues();
-        values.put(KEY_HALLID, id);
+        //values.put(KEY_HALLID, id);
         values.put(KEY_HALLNAME, hallName);
         values.put(KEY_HALLPRICE, price);
         values.put(KEY_HALLCAPACITY, capacity);
@@ -648,17 +671,13 @@ public class DatabaseHelper extends SQLiteOpenHelper{
         }
     }           //NEED TO CREATE    ***
 
-    public void getStaffEvents(Staff staff){
-
-    }        //NEED TO CREATE   ****
-
     public void getCatererEvents(Caterer caterer){
 
     }   // NEED TO CREATE   ****
 
     public EntertainmentItem getEntertainmentItems(int entertainmentItemId,int eventRecourseId){
         return null;
-    }   //NEEED TO CREATE **** NEED TO PUT IN DATABASE
+    }   //NEED TO CREATE **** NEED TO PUT IN DATABASE
 
     public Drink getDrinks(int drinkId,int eventRecourseId){
         SQLiteDatabase db = this.getWritableDatabase();
@@ -764,22 +783,43 @@ public class DatabaseHelper extends SQLiteOpenHelper{
 
     }       // NEED TO CREATE
 
-    public void getEventRecourses(Event event){
+    public void getStaffEvents(Staff statff){
 
     }   //NEED TO CREATE
 
-    public void getHallEvents(Hall hall){
+
+    public boolean getEventRecourses(Event event){
+        if(getEvent(event.getId())==null){
+            return false;
+        }
+
+
+        return true;
+
+    }   //NEED TO CREATE
+
+    public boolean getHallEvents(Hall hall){
+        if(getHall(hall.id)==null)
+            return false;
+
+        return true;
 
     }       //NEED TO CREATE
 
     // FOR UPDATING THE DATABASE
 
-    public void updateHall(Hall hall){
+    public boolean updateEvent(Event event){
+        if(getEvent(event.getId())==null)
+            return false;
 
-    }       //NEED TO CREATE
+        return true;
 
-    public void updateEvent(Event event){
+    }   //NEED TO CREATE
 
-    }      //NEED TO CREATE
+    public boolean removeStaffFromEvent(Event event,Staff staff){
+        if(getEvent(event.getId())==null||getStaff(staff.getId())==null)
+            return false;
+        return true;
+    }   //NEED TO CREATE
 }
     
