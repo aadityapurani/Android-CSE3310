@@ -21,13 +21,18 @@ public class CatererActivity extends AppCompatActivity {
 
         e = (Event)getIntent().getSerializableExtra("EVENT");
         t=(TextView)findViewById(R.id.textViewEventName);
-        t.setText(e.getName());
+
+      //  t.setText(e.getId()+"");
+       t.setText(e.getName());
+
+
         // Caterer Homepage - > Add Resources Page
         final Button caterer_add_resources_Button = (Button) findViewById(R.id.caterer_add_resources_id);
         caterer_add_resources_Button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent add_resource_Intent = new Intent(CatererActivity.this, AddResourcesMainActivity.class);
+                add_resource_Intent.putExtra("EVENT", e);
                 CatererActivity.this.startActivity(add_resource_Intent);
             }
         });
@@ -39,6 +44,7 @@ public class CatererActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent assign_staff_Intent = new Intent(CatererActivity.this, AssignStaffActivity.class);
+                assign_staff_Intent.putExtra("EVENT", e);
                 CatererActivity.this.startActivity(assign_staff_Intent);
             }
         });
@@ -60,6 +66,7 @@ public class CatererActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent view_event_details_Intent = new Intent(CatererActivity.this, ViewEventDetailsActivity.class);
+                view_event_details_Intent.putExtra("EVENT", e);
                 CatererActivity.this.startActivity(view_event_details_Intent);
             }
         });

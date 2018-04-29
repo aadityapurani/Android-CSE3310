@@ -23,7 +23,8 @@ public class ScheduleHallActivity extends AppCompatActivity {
         setContentView(R.layout.activity_schedule_hall);
 
         e = (Event)getIntent().getSerializableExtra("EVENT");
-        final String eventNameOfcourse = e.getName();
+        //final String eventNameOfcourse = e.getName();
+        final Integer eventIDofCourse = e.getId();
 
         // Database Helper as needed
         final DatabaseHelper db = new DatabaseHelper(ScheduleHallActivity.this);
@@ -44,7 +45,7 @@ public class ScheduleHallActivity extends AppCompatActivity {
             public void onItemClick(AdapterView<?> parent, View view,
                                     int position, long id) {
                 // TODO Auto-generated method stub
-                db.allocateHall(position+1, eventNameOfcourse);
+                db.allocateHall(position+1, eventIDofCourse);
 
                 Toast.makeText(ScheduleHallActivity.this, testArray[position], Toast.LENGTH_SHORT).show();
                 //add code here to update hall given event
