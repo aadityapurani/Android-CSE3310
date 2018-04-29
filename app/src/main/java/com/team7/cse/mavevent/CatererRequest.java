@@ -77,7 +77,7 @@ public class CatererRequest extends AppCompatActivity {
                         finish();
                         startActivity(getIntent());
                     }
-                });
+                } );
 
                 //No Button
                 builder.setNegativeButton("Decline", new DialogInterface.OnClickListener() {

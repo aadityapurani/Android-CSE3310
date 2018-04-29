@@ -816,6 +816,21 @@ public class DatabaseHelper extends SQLiteOpenHelper{
         return null;
     }
 
+    public ArrayList<Event> getAllEvents(){
+        ArrayList<Event> events = new ArrayList<Event>();
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        String query = "SELECT * from " + TABLE_EVENTS + "\";";
+        Cursor cursor = db.rawQuery(query,null);
+        if(cursor.moveToFirst())
+            events.add(getEvent(cursor.getInt(cursor.getColumnIndex(KEY_EVENTSID))));
+        while(cursor.moveToNext()){
+            events.add(getEvent(cursor.getInt(cursor.getColumnIndex(KEY_EVENTSID))));
+        }
+
+        return events;
+    }
+
     public void getEventStaffs(Event event){
 
     }       // NEED TO CREATE
