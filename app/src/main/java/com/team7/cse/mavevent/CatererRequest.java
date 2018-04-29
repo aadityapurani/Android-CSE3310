@@ -75,7 +75,7 @@ public class CatererRequest extends AppCompatActivity {
 
                         Toast.makeText(getApplicationContext(),"Event Approved",Toast.LENGTH_LONG).show();
                         finish();
-                        //startActivity(getIntent());
+                        startActivity(getIntent());
                     }
                 });
 
@@ -89,8 +89,8 @@ public class CatererRequest extends AppCompatActivity {
 
                         Toast.makeText(getApplicationContext(),"Event Declined",Toast.LENGTH_LONG).show();
                         dialog.dismiss();
-                        //finish();
-                        //startActivity(getIntent());
+                        finish();
+                        startActivity(getIntent());
                     }
                 });
 
