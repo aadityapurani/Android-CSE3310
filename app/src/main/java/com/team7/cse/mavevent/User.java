@@ -66,15 +66,6 @@ public class User extends UserBaseModel implements Serializable {
 		return false;
 	}
 
-	public boolean updateEvent(Event e){
-		if(removeEvent(e)){
-			this.addEvent(e);
-			return true;
-		}
-		return false;
-	}
-
-
 	public void addEvent(Event e){
 		events.add(e);
 	}

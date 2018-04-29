@@ -33,7 +33,7 @@ public class DatabaseHelper extends SQLiteOpenHelper{
     private static final String TABLE_USERS = "Users_tbl";
     private static final String TABLE_HALL = "Hall_tbl";
     private static final String TABLE_EVENTS = "Events_tbl";
-    private static final String TABLE_RECOURSE = "event_recourses";
+    private static final String TABLE_RECOURSE = "event_resources";
     private static final String TABLE_MEAL = "meal_tbl";
     private static final String TABLE_VENUE = "venue_tbl";
     private static final String TABLE_DRINK = "drinks_tbl";
@@ -466,6 +466,16 @@ public class DatabaseHelper extends SQLiteOpenHelper{
     }
 
 
+    // Allocate Hall to Event
+    public void allocateHall(int hallid, int EventID){
+        SQLiteDatabase db = DatabaseManager.getInstance().openDatabase();
+        String query = "UPDATE "+TABLE_EVENTS+" SET "+KEY_EVENTHID+"="+hallid+" WHERE "+KEY_EVENTNAME+"="+EventID+";";
+        Cursor cursor=db.rawQuery(query,null);
+        cursor.moveToFirst();
+        DatabaseManager.getInstance().closeDatabase();
+        //return true;
+    }
+
 
     // User getter values
     public User getUser(String username, String password) {
@@ -806,11 +816,26 @@ public class DatabaseHelper extends SQLiteOpenHelper{
         return null;
     }
 
+    public ArrayList<Event> getAllEvents(){
+        ArrayList<Event> events = new ArrayList<Event>();
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        String query = "SELECT * from " + TABLE_EVENTS + ";";
+        Cursor cursor = db.rawQuery(query,null);
+        if(cursor.moveToFirst())
+            events.add(getEvent(cursor.getInt(cursor.getColumnIndex(KEY_EVENTSID))));
+        while(cursor.moveToNext()){
+            events.add(getEvent(cursor.getInt(cursor.getColumnIndex(KEY_EVENTSID))));
+        }
+
+        return events;
+    }
+
     public void getEventStaffs(Event event){
 
     }       // NEED TO CREATE
 
-    public void getStaffEvents(Staff statff){
+    public void getStaffEvents(Staff staff){
 
     }   //NEED TO CREATE
 

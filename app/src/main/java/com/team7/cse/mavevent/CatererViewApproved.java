@@ -33,9 +33,11 @@ public class CatererViewApproved extends AppCompatActivity {
         listView = (ListView) findViewById(R.id.approvedList);
         pb=db.getApprovedEvents();
         final String[] testArray1 =new String[pb.size()];
+        final Integer[] testArray2 =new Integer[pb.size()];
         int i=0;
         for(PendingEventBean p : pb ){
-            testArray1[i]=p.getEventName();
+            testArray1[i]= p.getEventName();
+            testArray2[i] = p.getId();
             i++;
         }
         List<String> testList = Arrays.asList(testArray1);
@@ -53,6 +55,7 @@ public class CatererViewApproved extends AppCompatActivity {
                 // Need to pass Event Object to the Intent Itself.
                 Intent view_approved_Intent = new Intent(CatererViewApproved.this, CatererActivity.class);
                 e.setName(testArray1[position]);
+                e.setId(testArray2[position]);
                 view_approved_Intent.putExtra("EVENT", e);
                 CatererViewApproved.this.startActivity(view_approved_Intent);
             }

@@ -79,9 +79,9 @@ public class AddDrinkActivity extends AppCompatActivity {
 
                     e = (Event)getIntent().getSerializableExtra("EVENT");
 
-                    //>>>>>>>>>>>>>>>>>>>>>>>>>>>int eventID = e.getId();
+                    int eventID = e.getId();
 
-                    //wasValid = addDrinkDB(userID, eventID, name, quantity);
+                    wasValid = addDrinkDB(userID, eventID, name, quantity);
                     if (wasValid) finish();
 
                 }

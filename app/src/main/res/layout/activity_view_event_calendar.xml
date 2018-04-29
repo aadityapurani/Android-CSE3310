@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/gradient">
@@ -8,32 +9,12 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@drawable/gradient"
-        android:orientation="vertical">
-
-        <TextView
-            android:id="@+id/textView5"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="50dp"
-            android:text="Specifications"
-            android:textColor="#ffffffff"
-            android:textSize="25sp" />
-
-        <DatePicker
-            android:id="@+id/datePicker"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="50dp"
-            android:layout_marginRight="50dp"
-            android:calendarTextColor="#ffffffff"
-            android:dayOfWeekBackground="#3a7ce8"
-            android:headerBackground="#3a7ce8"
-            android:imeOptions="actionDone"
-            android:isScrollContainer="false"
-            android:nestedScrollingEnabled="true" />
+        android:orientation="vertical"
+        tools:layout_editor_absoluteX="16dp"
+        tools:layout_editor_absoluteY="478dp">
 
         <Button
-            android:id="@+id/button4"
+            android:id="@+id/vec_exit_id"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="50dp"
@@ -42,7 +23,14 @@
             android:layout_weight="1"
             android:background="#3a7ce8"
             android:imeOptions="actionDone"
-            android:text="Submit" />
+            android:text="Exit" />
 
     </LinearLayout>
+
+    <ListView
+        android:id="@+id/vec_calendar_id"
+        android:layout_width="wrap_content"
+        android:layout_height="462dp"
+        tools:layout_editor_absoluteX="8dp"
+        tools:layout_editor_absoluteY="8dp" />
 </android.support.constraint.ConstraintLayout>
