@@ -1,124 +1,328 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
+<LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/gradient"
+    android:orientation="vertical"
     tools:context="com.team7.cse.mavevent.MainActivity">
 
     <ImageView
         android:id="@+id/imageView4"
         android:layout_width="match_parent"
-        android:layout_height="86dp"
+        android:layout_height="0px"
+        android:layout_weight="3"
+        android:scaleX=".6"
+        android:scaleY=".6"
         app:srcCompat="@drawable/uta1" />
 
     <TextView
         android:id="@+id/textView"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="0px"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:layout_below="@+id/imageView4"
-        android:layout_marginLeft="11dp"
-        android:layout_marginStart="11dp"
-        android:layout_marginTop="14dp"
+        android:layout_marginLeft="50dp"
+        android:layout_marginRight="50dp"
+        android:layout_weight="1"
+        android:gravity="center_vertical"
         android:text="Event Details"
+        android:textAlignment="center"
         android:textColor="#ffffff"
         android:textSize="22sp" />
 
-    <EditText
-        android:id="@+id/detail_time"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_below="@+id/textView"
-        android:layout_marginTop="144dp"
-        android:ems="15"
-        android:inputType="textPersonName"
-        android:text="Time: "
-        android:layout_alignLeft="@+id/textView" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0px"
+        android:layout_marginLeft="50dp"
+        android:layout_marginRight="50dp"
+        android:layout_marginTop="50dp"
+        android:layout_weight="1"
+        android:background="#22FFFFFF"
+        android:gravity="center"
+        android:orientation="horizontal">
 
-    <EditText
-        android:id="@+id/detail_date"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/detail_time"
-        android:ems="15"
-        android:inputType="textPersonName"
-        android:text="Date: "
-        android:layout_alignLeft="@+id/textView" />
+        <TextView
+            android:id="@+id/textView9"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical|center"
+            android:layout_marginLeft="10dp"
+            android:layout_weight="1"
+            android:text="When:"
+            android:textAlignment="viewStart"
+            android:textColor="#FFFFFFFF" />
 
-    <EditText
-        android:id="@+id/detail_attendes"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/detail_date"
-        android:ems="15"
-        android:inputType="textPersonName"
-        android:text="Number of Attendes: "
-        android:layout_alignLeft="@+id/textView" />
+        <TextView
+            android:id="@+id/textView8"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical|center"
+            android:layout_marginRight="10dp"
+            android:layout_weight="1"
+            android:text="TextView"
+            android:textAlignment="center"
+            android:textColor="#FFFFFFFF" />
+    </LinearLayout>
 
-    <EditText
-        android:id="@+id/detail_hall"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/detail_attendes"
-        android:ems="15"
-        android:inputType="textPersonName"
-        android:text="Hall: "
-        android:layout_alignLeft="@+id/textView" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0px"
+        android:layout_marginLeft="50dp"
+        android:layout_marginRight="50dp"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:orientation="horizontal">
 
-    <EditText
-        android:id="@+id/detail_formality"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/detail_hall"
-        android:ems="15"
-        android:inputType="textPersonName"
-        android:text="Formality: "
-        android:layout_alignLeft="@+id/textView" />
+        <TextView
+            android:id="@+id/detail_date"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_weight="1"
+            android:ems="15"
+            android:gravity="center_vertical"
+            android:text="Where:"
+            android:textAlignment="viewStart"
+            android:textColor="#FFFFFFFF" />
 
-    <EditText
-        android:id="@+id/detail_duration"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/detail_formality"
-        android:ems="15"
-        android:inputType="textPersonName"
-        android:text="Duration: "
-        android:layout_alignLeft="@+id/textView" />
+        <TextView
+            android:id="@+id/textView10"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="10dp"
+            android:layout_weight="1"
+            android:gravity="center_vertical|center"
+            android:text="TextView"
+            android:textAlignment="center"
+            android:textColor="#FFFFFFFF" />
+    </LinearLayout>
 
-    <EditText
-        android:id="@+id/editText6"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/detail_duration"
-        android:ems="15"
-        android:inputType="textPersonName"
-        android:text="Name"
-        android:layout_alignLeft="@+id/textView" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0px"
+        android:layout_marginLeft="50dp"
+        android:layout_marginRight="50dp"
+        android:layout_weight="1"
+        android:background="#22FFFFFF"
+        android:gravity="center"
+        android:orientation="horizontal">
 
-    <EditText
-        android:id="@+id/editText5"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/editText6"
-        android:ems="15"
-        android:inputType="textPersonName"
-        android:text="Name"
-        android:layout_alignLeft="@+id/textView" />
+        <TextView
+            android:id="@+id/detail_attendees"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_weight="1"
+            android:ems="15"
+            android:text="Number of Attendes: "
+            android:textAlignment="viewStart"
+            android:textColor="#FFFFFFFF" />
 
-    <EditText
-        android:id="@+id/editText3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/editText5"
-        android:ems="15"
-        android:inputType="textPersonName"
-        android:text="Name"
-        android:layout_alignLeft="@+id/textView" />
+        <TextView
+            android:id="@+id/textView11"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="10dp"
+            android:layout_weight="1"
+            android:text="TextView"
+            android:textAlignment="center"
+            android:textColor="#FFFFFFFF" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0px"
+        android:layout_marginLeft="50dp"
+        android:layout_marginRight="50dp"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/detail_hall"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_weight="1"
+            android:ems="15"
+            android:text="Venue:"
+            android:textAlignment="viewStart"
+            android:textColor="#FFFFFFFF" />
+
+        <TextView
+            android:id="@+id/textView13"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="10dp"
+            android:layout_weight="1"
+            android:text="TextView"
+            android:textAlignment="center"
+            android:textColor="#FFFFFFFF" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0px"
+        android:layout_marginLeft="50dp"
+        android:layout_marginRight="50dp"
+        android:layout_weight="1"
+        android:background="#22FFFFFF"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/detail_formality"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_weight="1"
+            android:ems="15"
+            android:text="Formality: "
+            android:textAlignment="viewStart"
+            android:textColor="#FFFFFFFF" />
+
+        <TextView
+            android:id="@+id/textView14"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="10dp"
+            android:layout_weight="1"
+            android:text="TextView"
+            android:textAlignment="center"
+            android:textColor="#FFFFFFFF" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0px"
+        android:layout_marginLeft="50dp"
+        android:layout_marginRight="50dp"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/detail_duration"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_weight="1"
+            android:ems="15"
+            android:text="Duration: "
+            android:textAlignment="viewStart"
+            android:textColor="#FFFFFFFF" />
+
+        <TextView
+            android:id="@+id/textView15"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="10dp"
+            android:layout_weight="1"
+            android:text="TextView"
+            android:textAlignment="center"
+            android:textColor="#FFFFFFFF" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0px"
+        android:layout_marginLeft="50dp"
+        android:layout_marginRight="50dp"
+        android:layout_weight="1"
+        android:background="#22FFFFFF"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/editText6"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_weight="1"
+            android:ems="15"
+            android:text="Name"
+            android:textAlignment="viewStart"
+            android:textColor="#FFFFFFFF" />
+
+        <TextView
+            android:id="@+id/textView16"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="10dp"
+            android:layout_weight="1"
+            android:text="TextView"
+            android:textAlignment="center"
+            android:textColor="#FFFFFFFF" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0px"
+        android:layout_marginLeft="50dp"
+        android:layout_marginRight="50dp"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <TextView
+
+            android:id="@+id/editText5"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_weight="1"
+            android:ems="15"
+            android:text="Name"
+            android:textAlignment="viewStart"
+            android:textColor="#FFFFFFFF" />
+
+        <TextView
+            android:id="@+id/textView17"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="TextView"
+            android:textAlignment="center"
+            android:textColor="#FFFFFFFF"
+            android:layout_marginRight="10dp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0px"
+        android:layout_marginBottom="100dp"
+        android:layout_marginLeft="50dp"
+        android:layout_marginRight="50dp"
+        android:layout_weight="1"
+        android:background="#22FFFFFF"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/editText3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_weight="1"
+            android:ems="15"
+            android:text="Name"
+            android:textAlignment="viewStart"
+            android:textColor="#FFFFFFFF" />
+
+        <TextView
+            android:id="@+id/textView18"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="10dp"
+            android:layout_weight="1"
+            android:text="TextView"
+            android:textAlignment="center"
+            android:textColor="#FFFFFFFF" />
+    </LinearLayout>
 
 
-</RelativeLayout>
+</LinearLayout>

@@ -22,6 +22,6 @@ public class ViewEventDetailsActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_delete_event);
+        setContentView(R.layout.activity_view_event_details);
     }
 }

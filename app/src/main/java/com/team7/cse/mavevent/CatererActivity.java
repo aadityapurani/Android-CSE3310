@@ -28,7 +28,7 @@ public class CatererActivity extends AppCompatActivity {
         caterer_add_resources_Button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent add_resource_Intent = new Intent(CatererActivity.this, AddResourcesActivity.class);
+                Intent add_resource_Intent = new Intent(CatererActivity.this, AddResourcesMainActivity.class);
                 CatererActivity.this.startActivity(add_resource_Intent);
             }
         });
@@ -49,8 +49,8 @@ public class CatererActivity extends AppCompatActivity {
         schedule_venue_Button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent schedule_venue_Intent = new Intent(CatererActivity.this, ScheduleVenueActivity.class);
-                CatererActivity.this.startActivity(schedule_venue_Intent);
+                Intent schedule_hall_Intent = new Intent(CatererActivity.this, ScheduleHallActivity.class);
+                CatererActivity.this.startActivity(schedule_hall_Intent);
             }
         });
 
