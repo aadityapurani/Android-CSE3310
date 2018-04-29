@@ -14,7 +14,7 @@
         tools:layout_editor_absoluteY="478dp">
 
         <Button
-            android:id="@+id/button4"
+            android:id="@+id/vec_exit_id"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="50dp"
@@ -23,13 +23,13 @@
             android:layout_weight="1"
             android:background="#3a7ce8"
             android:imeOptions="actionDone"
-            android:text="Submit" />
+            android:text="Exit" />
 
     </LinearLayout>
 
     <ListView
         android:id="@+id/vec_calendar_id"
-        android:layout_width="344dp"
+        android:layout_width="wrap_content"
         android:layout_height="462dp"
         tools:layout_editor_absoluteX="8dp"
         tools:layout_editor_absoluteY="8dp" />

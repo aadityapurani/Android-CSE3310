@@ -28,13 +28,14 @@ public class ViewEventCalendarActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_pending_request);
+        setContentView(R.layout.activity_view_event_calendar);
 
         final DatabaseHelper db = new DatabaseHelper(ViewEventCalendarActivity.this);
 
-        listView = (ListView) findViewById(R.id.pendingList);
+        listView = (ListView) findViewById(R.id.vec_calendar_id);
         pb = db.getAllEvents();
-        String[] testArray1 = new String[pb.size()];
+
+        String[] testArray1 = new String[5];
         int i = 0;
         for (Event p : pb) {
             testArray1[i] = p.getName();
@@ -46,8 +47,15 @@ public class ViewEventCalendarActivity extends AppCompatActivity {
                 R.layout.custom_list_view, testList);
 
         // setting adapter on listview
-        listView.setAdapter(adapter);
+        final Button view_calender_Button = (Button) findViewById(R.id.vec_exit_id);
+        view_calender_Button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
 
+        listView.setAdapter(adapter);
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view,

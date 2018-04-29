@@ -33,7 +33,7 @@ public class DatabaseHelper extends SQLiteOpenHelper{
     private static final String TABLE_USERS = "Users_tbl";
     private static final String TABLE_HALL = "Hall_tbl";
     private static final String TABLE_EVENTS = "Events_tbl";
-    private static final String TABLE_RECOURSE = "event_recourses";
+    private static final String TABLE_RECOURSE = "event_resources";
     private static final String TABLE_MEAL = "meal_tbl";
     private static final String TABLE_VENUE = "venue_tbl";
     private static final String TABLE_DRINK = "drinks_tbl";
@@ -820,7 +820,7 @@ public class DatabaseHelper extends SQLiteOpenHelper{
         ArrayList<Event> events = new ArrayList<Event>();
         SQLiteDatabase db = this.getWritableDatabase();
 
-        String query = "SELECT * from " + TABLE_EVENTS + "\";";
+        String query = "SELECT * from " + TABLE_EVENTS + ";";
         Cursor cursor = db.rawQuery(query,null);
         if(cursor.moveToFirst())
             events.add(getEvent(cursor.getInt(cursor.getColumnIndex(KEY_EVENTSID))));
@@ -835,7 +835,7 @@ public class DatabaseHelper extends SQLiteOpenHelper{
 
     }       // NEED TO CREATE
 
-    public void getStaffEvents(Staff statff){
+    public void getStaffEvents(Staff staff){
 
     }   //NEED TO CREATE
 
