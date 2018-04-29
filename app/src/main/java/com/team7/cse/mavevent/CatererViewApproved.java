@@ -1,5 +1,6 @@
 package com.team7.cse.mavevent;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -48,7 +49,8 @@ public class CatererViewApproved extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view,
                                     final int position, long id) {
-                //  Event magic appears
+                Intent view_approved_Intent = new Intent(CatererViewApproved.this, CatererActivity.class);
+                CatererViewApproved.this.startActivity(view_approved_Intent);
             }
         });
     }

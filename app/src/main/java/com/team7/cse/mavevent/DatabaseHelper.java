@@ -390,6 +390,31 @@ public class DatabaseHelper extends SQLiteOpenHelper{
     }
 
 
+    /* View Reserved Events at the end of User */
+    /* Will retrieve the first event */
+
+    public String[] viewReservedEvents(int id){
+        SQLiteDatabase db = DatabaseManager.getInstance().openDatabase();
+        String query = "SELECT * FROM "+TABLE_EVENTS+" WHERE "+KEY_EVENTUID+"="+id+";";
+        String[] resEvents = new String[4];
+        Cursor cursor = db.rawQuery(query, null);
+        if(cursor.moveToFirst()){
+            resEvents[0] = cursor.getString(cursor.getColumnIndex(KEY_EVENTNAME));
+            resEvents[1] = cursor.getString(cursor.getColumnIndex(KEY_EVENTSTARTDATE));
+            resEvents[2] = cursor.getString(cursor.getColumnIndex(KEY_EVENTENDDATE));
+            resEvents[3] = Integer.toString(cursor.getInt(cursor.getColumnIndex(KEY_EVENTSTATUS))); // Cuz it's string array
+
+        }else{
+            resEvents[0] = "N/A";
+            resEvents[1] = "N/A";
+            resEvents[2] = "N/A";
+            resEvents[3] = "N/A";
+        }
+
+        return resEvents;
+
+    }
+
 
 
     // User getter values
