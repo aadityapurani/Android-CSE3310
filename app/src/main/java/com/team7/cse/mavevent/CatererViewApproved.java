@@ -21,6 +21,7 @@ public class CatererViewApproved extends AppCompatActivity {
     ListView listView;
     DatabaseHelper handler;
     ArrayList<PendingEventBean> pb;
+    Event e = new Event();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,7 +32,7 @@ public class CatererViewApproved extends AppCompatActivity {
         final DatabaseHelper db = new DatabaseHelper(CatererViewApproved.this);
         listView = (ListView) findViewById(R.id.approvedList);
         pb=db.getApprovedEvents();
-        String[] testArray1 =new String[pb.size()];
+        final String[] testArray1 =new String[pb.size()];
         int i=0;
         for(PendingEventBean p : pb ){
             testArray1[i]=p.getEventName();
@@ -49,7 +50,10 @@ public class CatererViewApproved extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view,
                                     final int position, long id) {
+                // Need to pass Event Object to the Intent Itself.
                 Intent view_approved_Intent = new Intent(CatererViewApproved.this, CatererActivity.class);
+                e.setName(testArray1[position]);
+                view_approved_Intent.putExtra("EVENT", e);
                 CatererViewApproved.this.startActivity(view_approved_Intent);
             }
         });

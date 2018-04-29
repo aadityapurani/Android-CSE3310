@@ -6,15 +6,20 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 
 public class CatererActivity extends AppCompatActivity {
 
+    Event e;
+    TextView t;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_caterer);
 
-
+        e = (Event)getIntent().getSerializableExtra("EVENT");
+        t=(TextView)findViewById(R.id.textViewEventName);
+        t.setText(e.getName());
         // Caterer Homepage - > Add Resources Page
         final Button caterer_add_resources_Button = (Button) findViewById(R.id.caterer_add_resources_id);
         caterer_add_resources_Button.setOnClickListener(new View.OnClickListener() {
