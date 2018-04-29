@@ -49,6 +49,7 @@ public class CatererActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent schedule_hall_Intent = new Intent(CatererActivity.this, ScheduleHallActivity.class);
+                schedule_hall_Intent.putExtra("EVENT", e);
                 CatererActivity.this.startActivity(schedule_hall_Intent);
             }
         });

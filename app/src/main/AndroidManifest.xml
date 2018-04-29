@@ -46,6 +46,10 @@
             android:label="@string/title_caterer"
             android:theme="@style/AppTheme"></activity>
         <activity
+            android:name=".ChooseVenueActivity"
+            android:label="ChooseVenueActivity"
+            android:theme="@style/AppTheme"></activity>
+        <activity
             android:name=".AddEntertainmentItemsActivity"
             android:label="AddEntertainmentItemsActivity"
             android:theme="@style/AppTheme"></activity>

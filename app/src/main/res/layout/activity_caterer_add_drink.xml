@@ -24,9 +24,10 @@
             android:textSize="24sp" />
 
         <EditText
-            android:id="@+id/editText"
+            android:id="@+id/cad_name_id"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="25dp"
             android:layout_marginTop="100dp"
             android:ems="10"
             android:gravity="center"
@@ -36,19 +37,23 @@
             android:textColorHint="#FFFFFFFF" />
 
         <EditText
-            android:id="@+id/editText11"
+            android:id="@+id/cad_quantity_id"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="25dp"
             android:ems="10"
             android:gravity="center"
             android:hint="Quantity"
             android:inputType="number"
+            android:textColor="#ffffffff"
             android:textColorHint="#FFFFFFFF" />
 
         <Button
-            android:id="@+id/button"
+            android:id="@+id/cad_submit_id"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="100dp"
+            android:background="#3a7ce8"
             android:text="Submit" />
     </LinearLayout>
 </android.support.constraint.ConstraintLayout>

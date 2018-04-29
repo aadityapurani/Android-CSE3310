@@ -14,14 +14,19 @@ import java.util.List;
 public class ScheduleHallActivity extends AppCompatActivity {
 
     ListView listView;
-
-
+    Event e;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_schedule_hall);
+
+        e = (Event)getIntent().getSerializableExtra("EVENT");
+        final String eventNameOfcourse = e.getName();
+
+        // Database Helper as needed
+        final DatabaseHelper db = new DatabaseHelper(ScheduleHallActivity.this);
 
         listView = (ListView) findViewById(R.id.venueList);
         final String[] testArray = getResources().getStringArray(R.array.hallnames);
@@ -39,6 +44,8 @@ public class ScheduleHallActivity extends AppCompatActivity {
             public void onItemClick(AdapterView<?> parent, View view,
                                     int position, long id) {
                 // TODO Auto-generated method stub
+                db.allocateHall(position+1, eventNameOfcourse);
+
                 Toast.makeText(ScheduleHallActivity.this, testArray[position], Toast.LENGTH_SHORT).show();
                 //add code here to update hall given event
                 finish();

@@ -85,7 +85,7 @@ public class CreateEventPlan extends AppCompatActivity implements AdapterView.On
         final DatePickerDialog  datePickerDialog = new DatePickerDialog(this, new DatePickerDialog.OnDateSetListener() {
             public void onDateSet(DatePicker view, int year, int month, int day) {
 
-                activityCalendar.set(year, month, year);
+                activityCalendar.set(year, month, day);
                 setDate = true;
 
             }
@@ -171,7 +171,7 @@ public class CreateEventPlan extends AppCompatActivity implements AdapterView.On
                 String hour = Integer.toString(activityCalendar.get(Calendar.HOUR_OF_DAY));
                 String minute = Integer.toString(activityCalendar.get(Calendar.MINUTE));
                 String day = Integer.toString(activityCalendar.get(Calendar.DAY_OF_MONTH));
-                String month = Integer.toString(activityCalendar.get(Calendar.MONTH));
+                String month = Integer.toString(activityCalendar.get(Calendar.MONTH)+1);
                 String year = Integer.toString(activityCalendar.get(Calendar.YEAR));
                 String comboDate = year + '-' + month + '-' + day + ' ' + hour + ':' + minute + ":" + "00";
                 String formal = Integer.toString(isFormal);
