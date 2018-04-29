@@ -390,6 +390,33 @@ public class DatabaseHelper extends SQLiteOpenHelper{
 
     }
 
+
+    /* User Accept Events */
+
+    /* User can see his Events too */
+    public ArrayList<PendingEventBean> getuEvents(int uid){
+        SQLiteDatabase db = DatabaseManager.getInstance().openDatabase();
+
+        String query = "SELECT * FROM "+TABLE_EVENTS+" WHERE "+KEY_EVENTUID+"="+uid+";";
+        Cursor cursor = db.rawQuery(query, null);
+        ArrayList<PendingEventBean> eventObj=new ArrayList<PendingEventBean>();
+        cursor.moveToFirst();
+        int i=0;
+        while (!cursor.isAfterLast()) {
+            PendingEventBean peb=new PendingEventBean();
+            peb.setId(cursor.getInt(cursor.getColumnIndex(KEY_EVENTSID)));
+            peb.setEventName(cursor.getString(cursor.getColumnIndex(KEY_EVENTNAME)));
+            eventObj.add(peb);
+            i++;
+            cursor.moveToNext();
+        }
+        DatabaseManager.getInstance().closeDatabase();
+        return eventObj;
+
+    }
+
+
+
     /* Accept */
     public ArrayList<PendingEventBean> acceptPendingEvents(int id){
         SQLiteDatabase db = DatabaseManager.getInstance().openDatabase();
@@ -416,9 +443,9 @@ public class DatabaseHelper extends SQLiteOpenHelper{
     /* View Reserved Events at the end of User */
     /* Will retrieve the first event */
 
-    public String[] viewReservedEvents(int id){
+    public String[] viewReservedEvents(int id, String evName){
         SQLiteDatabase db = DatabaseManager.getInstance().openDatabase();
-        String query = "SELECT * FROM "+TABLE_EVENTS+" WHERE "+KEY_EVENTUID+"="+id+";";
+        String query = "SELECT * FROM "+TABLE_EVENTS+" WHERE "+KEY_EVENTUID+"="+id+" AND "+KEY_EVENTNAME+"=\""+evName+"\";";
         String[] resEvents = new String[4];
         Cursor cursor = db.rawQuery(query, null);
         if(cursor.moveToFirst()){

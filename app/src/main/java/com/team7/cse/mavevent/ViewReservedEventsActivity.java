@@ -12,11 +12,16 @@ import static java.lang.Integer.parseInt;
 public class ViewReservedEventsActivity extends AppCompatActivity {
 
     DatabaseHelper handler;
+    Event e;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_view_reserved_events);
+
+        // Let's get serializable data
+        e = (Event)getIntent().getSerializableExtra("EVENT");
+        String gettname = e.getName();
 
         // Database Helper
         final DatabaseHelper db = new DatabaseHelper(ViewReservedEventsActivity.this);
@@ -27,7 +32,7 @@ public class ViewReservedEventsActivity extends AppCompatActivity {
         String json = mPrefs.getString("User", "");
         UserBaseModel user = gson.fromJson(json, UserBaseModel.class);
         int userID=user.getId();
-        String[] updatedView = db.viewReservedEvents(userID);
+        String[] updatedView = db.viewReservedEvents(userID, gettname);
         updateTextView(updatedView);
 
 

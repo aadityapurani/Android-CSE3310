@@ -31,7 +31,8 @@ public class UserActivity extends AppCompatActivity {
         view_reserved_event_Button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent view_reserved_event_Intent = new Intent(UserActivity.this, ViewReservedEventsActivity.class);
+              //  Intent view_reserved_event_Intent = new Intent(UserActivity.this, ViewReservedEventsActivity.class);
+                Intent view_reserved_event_Intent = new Intent(UserActivity.this, UserViewReservedEvents.class);
                 UserActivity.this.startActivity(view_reserved_event_Intent);
             }
         });
