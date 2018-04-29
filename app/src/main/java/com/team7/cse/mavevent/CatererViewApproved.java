@@ -39,9 +39,9 @@ public class CatererViewApproved extends AppCompatActivity {
             i++;
         }
         List<String> testList = Arrays.asList(testArray1);
-        // Instanciating Adapter
+        // Instantiating Adapter
         ArrayAdapter<String> adapter = new ArrayAdapter<>(getBaseContext(),
-                android.R.layout.simple_list_item_1, testList);
+                R.layout.custom_list_view, testList);
 
         // setting adapter on listview
         listView.setAdapter(adapter);

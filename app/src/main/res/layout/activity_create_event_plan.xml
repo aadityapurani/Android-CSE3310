@@ -6,15 +6,15 @@
     android:layout_height="match_parent">
 
     <LinearLayout
-        android:layout_width="395dp"
-        android:layout_height="643dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         android:background="@drawable/gradient"
         android:clickable="true"
         android:focusable="true"
         android:focusableInTouchMode="true"
         android:orientation="vertical"
-        tools:layout_editor_absoluteY="8dp"
-        tools:layout_editor_absoluteX="8dp">
+        tools:layout_editor_absoluteX="8dp"
+        tools:layout_editor_absoluteY="8dp">
 
         <TextView
             android:id="@+id/cep_header_id"

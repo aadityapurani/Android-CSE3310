@@ -173,6 +173,8 @@ public class CreateEventPlan extends AppCompatActivity implements AdapterView.On
                 String day = Integer.toString(activityCalendar.get(Calendar.DAY_OF_MONTH));
                 String month = Integer.toString(activityCalendar.get(Calendar.MONTH));
                 String year = Integer.toString(activityCalendar.get(Calendar.YEAR));
+                String comboDate = year + '-' + month + '-' + day + ' ' + hour + ':' + minute + ":" + "00";
+                String formal = Integer.toString(isFormal);
 
                 if(event_name_field.getText().length() !=0)
                 {
@@ -195,28 +197,47 @@ public class CreateEventPlan extends AppCompatActivity implements AdapterView.On
                 {
                     event_category_field.setError("Invalid Category");
                 }
-                try
+                ///////////////////// <<A T T E N D E E S  V A L I D A T I O N ////////////////////
+                if (attendees_field.getText().length() !=0)
                 {
-                    Integer.parseInt(attendees_field.getText().toString());
-                    attendees_field.setError(null);
-                    attendees = attendees_field.getText().toString();
-                    validAttendees = true;
+                    try
+                    {
+                        Integer.parseInt(attendees_field.getText().toString());
+                        attendees_field.setError(null);
+                        attendees = attendees_field.getText().toString();
+                        validAttendees = true;
+                    }
+                    catch (Exception e)
+                    {
+                        attendees_field.setError("Invalid number of attendees");
+                    }
                 }
-                catch (Exception e)
+                else
                 {
-                    attendees_field.setError("Invalid number of attendees");
+                    attendees_field.setError("You must enter the number of attendees");
                 }
-                try
+                ///////////////////// A T T E N D E E S  V A L I D A T I O N>> ////////////////////
+
+                ///////////////////// <<D U R A T I O N  V A L I D A T I O N ////////////////////
+                if (duration_field.getText().length() !=0)
                 {
-                    Integer.parseInt(duration_field.getText().toString());
-                    duration_field.setError(null);
-                    duration = duration_field.getText().toString();
-                    validDuration = true;
+                    try
+                    {
+                        Integer.parseInt(duration_field.getText().toString());
+                        duration_field.setError(null);
+                        duration = duration_field.getText().toString();
+                        validDuration = true;
+                    }
+                    catch (Exception e)
+                    {
+                        duration_field.setError("Invalid duration");
+                    }
                 }
-                catch (Exception e)
+                else
                 {
-                    duration_field.setError("Invalid duration");
+                    duration_field.setError("You must enter a duration");
                 }
+
                 if(rowSelected == 0)
                 {
                     Context context = getApplicationContext();
@@ -231,40 +252,38 @@ public class CreateEventPlan extends AppCompatActivity implements AdapterView.On
                 {
                     mealType = Integer.toString(rowSelected);
                     validMeal = true;
-                    String comboDate = year + '-' + month + '-' + day + ' ' + hour + ':' + minute + ":" + "00";
-                    String isAlcohol = Integer.toString(hasAlcohol);
+                }
+                String isAlcohol = Integer.toString(hasAlcohol);
+
+
+
+                //need userID from somewhere
+                SharedPreferences mPrefs = getSharedPreferences("GLOBAL",MODE_PRIVATE);
+                Gson gson = new Gson();
+                String json = mPrefs.getString("User", "");
+                UserBaseModel user = gson.fromJson(json, UserBaseModel.class);
+                String userID=user.getId()+"";//this is just temporary so that the request code works, remove it once you get the session version
+                boolean wasAccepted=false;
+
+
+                if (setDate && setTime && validAttendees && validDuration && validMeal && validCategory && validName) {
                     int hr_int = Integer.parseInt(hour);
                     int duration_int = Integer.parseInt(duration);
                     int final_int = hr_int + duration_int;
                     String comboDate2 = year + '-' + month + '-' + day + ' ' + Integer.toString(final_int) + ':' + minute + ":" + "00";
-                    String formal = Integer.toString(isFormal);
-                    //need userID from somewhere
-                    SharedPreferences mPrefs = getSharedPreferences("GLOBAL",MODE_PRIVATE);
-                    Gson gson = new Gson();
-                    String json = mPrefs.getString("User", "");
-                    UserBaseModel user = gson.fromJson(json, UserBaseModel.class);
-                    String userID=user.getId()+"";//this is just temporary so that the request code works, remove it once you get the session version
-                    boolean wasAccepted=false;
+                    wasAccepted = createPlanDB(attendees, mealType, comboDate, comboDate2, isAlcohol, formal, userID, eventName, eventCategory, duration);//call to attempt to write to the database
+                    if (wasAccepted) finish();
 
+                    else {
+                        //let them know
+                        Context context = getApplicationContext();
+                        CharSequence text = "There was an error making the request";
+                        int duration = Toast.LENGTH_SHORT;
 
-                    if (setDate && setTime && validDuration && validDuration && validMeal && validCategory && validName) {
-                        wasAccepted = createPlanDB(attendees, mealType, comboDate, comboDate2, isAlcohol, formal, userID, eventName, eventCategory, duration);//call to attempt to write to the database
-                        if (wasAccepted) finish();
-
-                        else {
-                            //let them know
-                            Context context = getApplicationContext();
-                            CharSequence text = "There was an error making the request";
-                            int duration = Toast.LENGTH_SHORT;
-
-                            Toast toast = Toast.makeText(context, text, duration);
-                            toast.show();
-                        }
+                        Toast toast = Toast.makeText(context, text, duration);
+                        toast.show();
                     }
-
-
                 }
-
 
             }
         });

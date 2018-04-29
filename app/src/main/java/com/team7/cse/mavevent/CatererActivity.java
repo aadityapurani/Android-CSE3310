@@ -1,5 +1,7 @@
 package com.team7.cse.mavevent;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -7,6 +9,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class CatererActivity extends AppCompatActivity {
 
@@ -66,8 +69,53 @@ public class CatererActivity extends AppCompatActivity {
         delete_event_Button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent delete_event_Intent = new Intent(CatererActivity.this, DeleteEventActivity.class);
-                CatererActivity.this.startActivity(delete_event_Intent);
+                AlertDialog.Builder builder = new AlertDialog.Builder(CatererActivity.this);
+
+
+                builder.setTitle("Attention");
+
+
+                builder.setMessage("Do you want to delete this event or drop it? ");
+
+
+                //Yes Button
+                builder.setPositiveButton("Drop", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        //code to delete the event from the DB goes here
+
+                        Toast.makeText(getApplicationContext(),"Event Deleted",Toast.LENGTH_LONG).show();
+                        finish();
+
+                    }
+                });
+
+                //No Button
+                builder.setNegativeButton("Delete", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+
+                        //code to move event back to unapproved column goes here
+
+                        Toast.makeText(getApplicationContext(),"Event Dropped",Toast.LENGTH_LONG).show();
+                        dialog.dismiss();
+                        finish();
+                    }
+                });
+
+
+                //Cancel Button
+                builder.setNeutralButton("Cancel", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        Toast.makeText(getApplicationContext(),"Cancel button Clicked",Toast.LENGTH_LONG).show();
+                        dialog.dismiss();
+                    }
+                });
+
+
+                AlertDialog alertDialog = builder.create();
+                alertDialog.show();
             }
         });
 

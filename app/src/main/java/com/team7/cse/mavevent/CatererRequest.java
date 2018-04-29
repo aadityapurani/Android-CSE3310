@@ -45,7 +45,7 @@ public class CatererRequest extends AppCompatActivity {
         List<String> testList = Arrays.asList(testArray1);
         // Instanciating Adapter
         ArrayAdapter<String> adapter = new ArrayAdapter<>(getBaseContext(),
-                android.R.layout.simple_list_item_1, testList);
+                R.layout.custom_list_view, testList);
 
         // setting adapter on listview
         listView.setAdapter(adapter);
@@ -75,7 +75,7 @@ public class CatererRequest extends AppCompatActivity {
 
                         Toast.makeText(getApplicationContext(),"Event Approved",Toast.LENGTH_LONG).show();
                         finish();
-                        startActivity(getIntent());
+                        //startActivity(getIntent());
                     }
                 });
 
@@ -89,8 +89,8 @@ public class CatererRequest extends AppCompatActivity {
 
                         Toast.makeText(getApplicationContext(),"Event Declined",Toast.LENGTH_LONG).show();
                         dialog.dismiss();
-                        finish();
-                        startActivity(getIntent());
+                        //finish();
+                        //startActivity(getIntent());
                     }
                 });
 
