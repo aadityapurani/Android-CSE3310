@@ -466,6 +466,16 @@ public class DatabaseHelper extends SQLiteOpenHelper{
     }
 
 
+    // Allocate Hall to Event
+    public void allocateHall(int hallid, String EventName){
+        SQLiteDatabase db = DatabaseManager.getInstance().openDatabase();
+        String query = "UPDATE "+TABLE_EVENTS+" SET "+KEY_EVENTHID+"="+hallid+" WHERE "+KEY_EVENTNAME+"= \""+EventName+"\";";
+        Cursor cursor=db.rawQuery(query,null);
+        cursor.moveToFirst();
+        DatabaseManager.getInstance().closeDatabase();
+        //return true;
+    }
+
 
     // User getter values
     public User getUser(String username, String password) {
