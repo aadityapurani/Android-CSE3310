@@ -29,29 +29,30 @@ public class AddEntertainmentItemsActivity extends AppCompatActivity {
 
                 if (!item.matches(""))
                 {
-                    try
-                    {
-                        int quantity = Integer.parseInt(quantity_field.getText().toString());
-                        try
-                        {
-                            double cost = Double.parseDouble(cost_field.getText().toString());
-                        }
-                        catch (Exception e)
-                        {
-                            cost_field.setError("Please enter a valid cost");
-                        }
-                    }
-                    catch(Exception e)
-                    {
-                        quantity_field.setError("Please enter a valid quantity");
-                    }
+
 
                 }
                 else
                 {
                     name_field.setError("Please enter a valid name");
                 }
+                try
+                {
+                    int quantity = Integer.parseInt(quantity_field.getText().toString());
 
+                }
+                catch(Exception e)
+                {
+                    quantity_field.setError("Please enter a valid quantity");
+                }
+                try
+                {
+                    double cost = Double.parseDouble(cost_field.getText().toString());
+                }
+                catch (Exception e)
+                {
+                    cost_field.setError("Please enter a valid cost");
+                }
             }
         });
 

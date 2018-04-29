@@ -19,8 +19,8 @@
 
             <Button
                 android:id="@+id/user_logout_id"
-                android:layout_width="80dp"
-                android:layout_height="25dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
                 android:background="?android:attr/colorActivatedHighlight"
                 android:text="Logout"
                 tools:layout_editor_absoluteX="8dp" />
@@ -29,6 +29,7 @@
                 android:id="@+id/imageView3"
                 android:layout_width="match_parent"
                 android:layout_height="140dp"
+                android:layout_marginTop="30dp"
                 android:scaleType="fitCenter"
                 android:scaleX=".6"
                 android:scaleY=".6"
@@ -37,6 +38,7 @@
             <TableLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:layout_marginTop="50dp"
                 tools:layout_editor_absoluteY="100dp">
 
                 <TableRow
