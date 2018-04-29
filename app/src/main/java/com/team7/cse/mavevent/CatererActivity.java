@@ -120,6 +120,7 @@ public class CatererActivity extends AppCompatActivity {
 
 
         // Caterer Homepage - > Main Page
+        /*
         final Button logout_Button = (Button) findViewById(R.id.caterer_logout_id);
         logout_Button.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -128,6 +129,7 @@ public class CatererActivity extends AppCompatActivity {
                 CatererActivity.this.startActivity(logout_Intent);
             }
         });
+        */
 
     }
 }
