@@ -41,4 +41,8 @@ public class MealType extends Food implements Serializable {
 
     MealType(){}
 
+    void setMealType(int mealType){
+        this.mealType =MEAL_TYPE.values()[mealType];
+    }
+
 }

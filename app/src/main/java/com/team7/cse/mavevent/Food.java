@@ -5,10 +5,7 @@ import java.io.Serializable;
 /**
  * Created by Jonathon Kirkpatrick on 4/24/2018.
  */
-enum MEAL_TYPES{
-    BREAKFAST, LUNCH, DINNER
 
-}
 public class Food extends EventRecourse implements Serializable {
     public int mealType;
     Food(){}
