@@ -85,7 +85,7 @@ public class CreateEventPlan extends AppCompatActivity implements AdapterView.On
         final DatePickerDialog  datePickerDialog = new DatePickerDialog(this, new DatePickerDialog.OnDateSetListener() {
             public void onDateSet(DatePicker view, int year, int month, int day) {
 
-                activityCalendar.set(year, month, year);
+                activityCalendar.set(year, month, day);
                 setDate = true;
 
             }

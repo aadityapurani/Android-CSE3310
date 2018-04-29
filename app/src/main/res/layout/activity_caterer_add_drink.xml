@@ -27,6 +27,7 @@
             android:id="@+id/editText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="25dp"
             android:layout_marginTop="100dp"
             android:ems="10"
             android:gravity="center"
@@ -39,6 +40,7 @@
             android:id="@+id/editText11"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="25dp"
             android:ems="10"
             android:gravity="center"
             android:hint="Quantity"
@@ -49,6 +51,8 @@
             android:id="@+id/button"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="100dp"
+            android:background="#3a7ce8"
             android:text="Submit" />
     </LinearLayout>
 </android.support.constraint.ConstraintLayout>
