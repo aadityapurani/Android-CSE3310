@@ -46,7 +46,7 @@
         android:orientation="horizontal">
 
         <TextView
-            android:id="@+id/textView9"
+            android:id="@+id/date_when"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical|center"
@@ -57,7 +57,7 @@
             android:textColor="#FFFFFFFF" />
 
         <TextView
-            android:id="@+id/textView8"
+            android:id="@+id/date_when1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical|center"
@@ -79,7 +79,7 @@
         android:orientation="horizontal">
 
         <TextView
-            android:id="@+id/detail_date"
+            android:id="@+id/detail_hall"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
@@ -91,7 +91,7 @@
             android:textColor="#FFFFFFFF" />
 
         <TextView
-            android:id="@+id/textView10"
+            android:id="@+id/detail_hall1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginRight="10dp"
@@ -124,7 +124,7 @@
             android:textColor="#FFFFFFFF" />
 
         <TextView
-            android:id="@+id/textView11"
+            android:id="@+id/detail_attendees1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginRight="10dp"
@@ -144,7 +144,7 @@
         android:orientation="horizontal">
 
         <TextView
-            android:id="@+id/detail_hall"
+            android:id="@+id/detail_venue"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
@@ -155,7 +155,7 @@
             android:textColor="#FFFFFFFF" />
 
         <TextView
-            android:id="@+id/textView13"
+            android:id="@+id/detail_venue1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginRight="10dp"
@@ -187,7 +187,7 @@
             android:textColor="#FFFFFFFF" />
 
         <TextView
-            android:id="@+id/textView14"
+            android:id="@+id/detail_formality1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginRight="10dp"
@@ -218,7 +218,7 @@
             android:textColor="#FFFFFFFF" />
 
         <TextView
-            android:id="@+id/textView15"
+            android:id="@+id/detail_duration1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginRight="10dp"
@@ -250,7 +250,7 @@
             android:textColor="#FFFFFFFF" />
 
         <TextView
-            android:id="@+id/textView16"
+            android:id="@+id/detail_price1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginRight="10dp"
@@ -282,14 +282,14 @@
             android:textColor="#FFFFFFFF" />
 
         <TextView
-            android:id="@+id/textView17"
+            android:id="@+id/detail_staffass1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginRight="10dp"
             android:layout_weight="1"
             android:text="TextView"
             android:textAlignment="center"
-            android:textColor="#FFFFFFFF"
-            android:layout_marginRight="10dp" />
+            android:textColor="#FFFFFFFF" />
     </LinearLayout>
 
     <LinearLayout
@@ -315,7 +315,7 @@
             android:textColor="#FFFFFFFF" />
 
         <TextView
-            android:id="@+id/textView18"
+            android:id="@+id/detail_bookedby1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginRight="10dp"

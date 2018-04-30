@@ -502,7 +502,7 @@ public class DatabaseHelper extends SQLiteOpenHelper{
     // Allocate Hall to Event
     public void allocateHall(int hallid, int EventID){
         SQLiteDatabase db = DatabaseManager.getInstance().openDatabase();
-        String query = "UPDATE "+TABLE_EVENTS+" SET "+KEY_EVENTHID+"="+hallid+" WHERE "+KEY_EVENTNAME+"="+EventID+";";
+        String query = "UPDATE "+TABLE_EVENTS+" SET "+KEY_EVENTHID+"="+hallid+" WHERE "+KEY_EVENTSID+"="+EventID+";";
         Cursor cursor=db.rawQuery(query,null);
         cursor.moveToFirst();
         DatabaseManager.getInstance().closeDatabase();
@@ -876,49 +876,52 @@ public class DatabaseHelper extends SQLiteOpenHelper{
         return events;
     }
 
-    public void getEventStaffs(Event event){
 
-    }       // NEED TO CREATE
+    /* Final Summary for Caterer */
+    public String[] viewFinalSumm(int eventId){
+        SQLiteDatabase db = DatabaseManager.getInstance().openDatabase();
+        String query ="select * from Events_tbl INNER JOIN Hall_tbl ON Events_tbl.hall_id=Hall_tbl.hall_id INNER JOIN Users_tbl ON Events_tbl.user_id=Users_tbl.user_id INNER JOIN event_resources ON Events_tbl.event_id=event_resources.event_id="+eventId+";";
+        String[] resEvents = new String[7];
+        Cursor cursor = db.rawQuery(query, null);
+        if(cursor.moveToFirst()){
+            resEvents[0] = cursor.getInt(cursor.getColumnIndex(KEY_EVENTATTENDEES))+""; //Desired Attendees casted
+            resEvents[1] = cursor.getString(cursor.getColumnIndex(KEY_HALLNAME));    // Where
+            resEvents[2] = cursor.getInt(cursor.getColumnIndex(KEY_EVENTFORMALITY))+""; // Formality
+            resEvents[3] = cursor.getString(cursor.getColumnIndex(KEY_FNAME)); // Booked By
+            resEvents[4] = cursor.getString(cursor.getColumnIndex(KEY_RECOURSEVENUE)); // Like Venue fetching
+            resEvents[5] = cursor.getString(cursor.getColumnIndex(KEY_EVENTSTARTDATE)); // Start Date
+            resEvents[6] = cursor.getString(cursor.getColumnIndex(KEY_EVENTENDDATE)); // End Date
 
-    public void getStaffEvents(Staff staff){
-
-    }   //NEED TO CREATE
-
-
-
-    public boolean getEventRecourses(Event event){
-        if(getEvent(event.getId())==null){
-            return false;
+        }else{
+            resEvents[0] = "N/A";
+            resEvents[1] = "N/A";
+            resEvents[2] = "N/A";
+            resEvents[3] = "N/A";
+            resEvents[4] = "N/A";
+            resEvents[5] = "N/A";
+            resEvents[6] = "N/A";
         }
+        DatabaseManager.getInstance().closeDatabase();
+        return resEvents;
+
+    }
+
+    public String[] viewFinalSumm2(int eventId){
+        SQLiteDatabase db = DatabaseManager.getInstance().openDatabase();
+        String query ="SELECT * from Events_tbl INNER JOIN staffass_tbl ON Events_tbl.event_id=staffass_tbl.event_id="+eventId+" INNER JOIN users_tbl ON staffass_tbl.staff_id=users_tbl.user_id;";
+        String[] resEvents = new String[1];
+        Cursor cursor = db.rawQuery(query, null);
+        if(cursor.moveToFirst()){
+            resEvents[0] = cursor.getString(cursor.getColumnIndex(KEY_FNAME))+""; //Staff First Name
+        }else{
+            resEvents[0] = "N/A";
+        }
+        DatabaseManager.getInstance().closeDatabase();
+        return resEvents;
+
+    }
 
 
-        return true;
-
-    }   //NEED TO CREATE
-
-    public boolean getHallEvents(Hall hall){
-        if(getHall(hall.id)==null)
-            return false;
-
-        return true;
-
-    }       //NEED TO CREATE
-
-    // FOR UPDATING THE DATABASE
-
-    public boolean updateEvent(Event event){
-        if(getEvent(event.getId())==null)
-            return false;
-
-        return true;
-
-    }   //NEED TO CREATE
-
-    public boolean removeStaffFromEvent(Event event,Staff staff){
-        if(getEvent(event.getId())==null||getStaff(staff.getId())==null)
-            return false;
-        return true;
-    }   //NEED TO CREATE
 
     /* GetStaff as well as it's uid */
 
