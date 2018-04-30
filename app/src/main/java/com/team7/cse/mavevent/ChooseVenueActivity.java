@@ -42,7 +42,8 @@ public class ChooseVenueActivity extends AppCompatActivity {
         venue.add("Indian");
         venue.add("Japanese");
 
-
+        e = (Event)getIntent().getSerializableExtra("EVENT");
+        final Integer niceId= e.getId();
 
 
 
@@ -58,7 +59,10 @@ public class ChooseVenueActivity extends AppCompatActivity {
             public void onItemClick(AdapterView<?> parent, View view,
                                     final int position, long id) {
                 // Need to pass Event Object to the Intent Itself.
-                selectedPos = position + 1;
+               // selectedPos = position + 1;
+                String food = venue.get(position);
+                db.addNewVenue(food, niceId);
+
                 finish();
             }
         });

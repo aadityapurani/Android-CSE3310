@@ -10,6 +10,12 @@ import java.lang.String;
 
 public class AddEntertainmentItemsActivity extends AppCompatActivity {
 
+    Event e = new Event();
+    int quantity;
+    String item;
+    double cost;
+    boolean wasValid = false;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -25,7 +31,7 @@ public class AddEntertainmentItemsActivity extends AppCompatActivity {
         add_resources_submit_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String item = name_field.getText().toString();
+                item = name_field.getText().toString();
 
                 if (!item.matches(""))
                 {
@@ -38,7 +44,7 @@ public class AddEntertainmentItemsActivity extends AppCompatActivity {
                 }
                 try
                 {
-                    int quantity = Integer.parseInt(quantity_field.getText().toString());
+                    quantity = Integer.parseInt(quantity_field.getText().toString());
 
                 }
                 catch(Exception e)
@@ -47,16 +53,29 @@ public class AddEntertainmentItemsActivity extends AppCompatActivity {
                 }
                 try
                 {
-                    double cost = Double.parseDouble(cost_field.getText().toString());
+                    cost = Double.parseDouble(cost_field.getText().toString());
                 }
                 catch (Exception e)
                 {
                     cost_field.setError("Please enter a valid cost");
                 }
+                e = (Event)getIntent().getSerializableExtra("EVENT");
+                int eventID = e.getId();
+                wasValid = addEnt(eventID, cost, item, quantity);
+                if (wasValid) finish();
+
             }
         });
 
         }
 
+    public boolean addEnt(int eventID, double cost, String name, int quantity)
+    {
+        boolean wasAccepted = false;
+        final DatabaseHelper db = new DatabaseHelper(AddEntertainmentItemsActivity.this);
+        //wasAccepted = db.requestEvent(attendees, mealType, comboDate, comboDate2, isAlcohol, formal, userID, eventName, eventCategory);
+        wasAccepted = db.addNewEntertainmentItem(name,quantity,cost,eventID);
+        return wasAccepted;
+    }
 
 }

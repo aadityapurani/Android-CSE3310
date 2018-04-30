@@ -93,7 +93,7 @@ public class AddDrinkActivity extends AppCompatActivity {
         boolean wasAccepted = false;
         final DatabaseHelper db = new DatabaseHelper(AddDrinkActivity.this);
         //wasAccepted = db.requestEvent(attendees, mealType, comboDate, comboDate2, isAlcohol, formal, userID, eventName, eventCategory);
-
+        wasAccepted = db.addNewDrink(name, quantity, eventID);
         return wasAccepted;
     }
 }
