@@ -43,7 +43,7 @@ public class DatabaseHelper extends SQLiteOpenHelper{
     private static final String KEY_CREATED_AT = "created_at";
     private static final String KEY_HALLID = "hall_id";
     private static final String KEY_EVENTSID = "event_id";
-    private static final String KEY_EVENTRECOURSEID = "";      // NEED TO UPDATE
+    private static final String KEY_EVENTRECOURSEID = "event_resource_id";      // NEED TO UPDATE
     private static final String KEY_MEALID = "meal_type_id";
     private static final String KEY_VENUEID = "venue";
     private static final String KEY_DRINKID = "drink_id";
@@ -79,13 +79,13 @@ public class DatabaseHelper extends SQLiteOpenHelper{
     private static final String KEY_EVENTFORMALITY = "formality";
     private static final String KEY_EVENTSTATUS = "status";
 
-    // Specific Columns for Event Recourse Table
+    // Specific Columns for Event Resource Table
     private static final String KEY_RECOURSEID = "event_recourse_id";
     private static final String KEY_RECOURSENAME = "name";
     private static final String KEY_RECOURSEPRICE = "price";
-    private static final String KEY_RECOURSEDRINK = "drink_id";
+    private static final String KEY_RECOURSEDRINK = "drink_name";
     private static final String KEY_RECOURSEVENUE = "venue_id";
-    private static final String KEY_RECOURSEMEALTYPE = "meal_type_id";
+    private static final String KEY_RECOURSEMEALTYPE = "meal_name";
     private static final String KEY_RECOURSEEVENT = "event_id";
     private static final String KEY_RECOURSEQUANTITY = "quantity";
 
@@ -161,29 +161,18 @@ public class DatabaseHelper extends SQLiteOpenHelper{
             + "CONSTRAINT fk_hall FOREIGN KEY ("+KEY_EVENTHID+") REFERENCES "+TABLE_HALL+"("+KEY_HALLID+"),"//+ KEY_EVENTHID + "INTEGER,"//+ "CONSTRAINT fk_hall FOREIGN KEY ("+KEY_EVENTHID+") REFERENCES "+TABLE_HALL+"("+KEY_HALLID+"),"
             +"CONSTRAINT fk_user FOREIGN KEY ("+KEY_EVENTUID+") REFERENCES "+TABLE_HALL+"("+KEY_USERID+"))";//+ KEY_EVENTUID + "INTEGER"//"CONSTRAINT fk_user FOREIGN KEY ("+KEY_EVENTUID+") REFERENCES "+TABLE_HALL+"("+KEY_USERID+"))";
             //+ ")";
-    // Create table recourse/*
-    /*
-    private static String CREATE_TABLE_RECOURSE = "CREATE TABLE "
-            + TABLE_RECOURSE + "(" + KEY_RECOURSEID + " INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,"
-            + KEY_RECOURSENAME + " TEXT,"
-            + KEY_RECOURSEPRICE + " INTEGER,"
-            + KEY_RECOURSEDRINK + " INTEGER,"
-            + KEY_RECOURSEVENUE + " INTEGER,"
-            + KEY_RECOURSEMEALTYPE + " INTEGER,"
-            + KEY_RECOURSEEVENT + " INTEGER,"
-            + KEY_RECOURSEQUANTITY = " INTEGER";
-    */
-    /*
-        private static final String KEY_RECOURSEID = "event_recourse_id";
-    private static final String KEY_RECOURSENAME = "name";
-    private static final String KEY_RECOURSEPRICE = "price";
-    private static final String KEY_RECOURSEDRINK = "drink_id";
-    private static final String KEY_RECOURSEVENUE = "venue_id";
-    private static final String KEY_RECOURSEMEALTYPE = "meal_type_id";
-    private static final String KEY_RECOURSEEVENT = "event_id";
-    private static final String KEY_RECOURSEQUANTITY = "quantity";
 
-     */
+   /* Creating Resource Table */
+    private static final String CREATE_TABLE_RECOURSE = "CREATE TABLE "
+            + TABLE_RECOURSE + "(" + KEY_RECOURSEID + " INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "
+            + KEY_RECOURSEPRICE + " REAL, "
+            + KEY_RECOURSEQUANTITY + " INTEGER, "
+            + KEY_RECOURSEDRINK + " TEXT, "
+            + KEY_RECOURSEVENUE + " TEXT, "
+            + KEY_RECOURSEMEALTYPE + " TEXT, "
+            + KEY_RECOURSEEVENT + " INTEGER, "
+            + "CONSTRAINT fk_hall FOREIGN KEY ("+KEY_RECOURSEEVENT+") REFERENCES "+TABLE_HALL+"("+KEY_HALLID+"))";
+
 
     // Will execute the query
     @Override
@@ -192,6 +181,7 @@ public class DatabaseHelper extends SQLiteOpenHelper{
         db.execSQL(CREATE_TABLE_USERS);
         db.execSQL(CREATE_TABLE_HALL);
         db.execSQL(CREATE_TABLE_EVENT);
+        db.execSQL(CREATE_TABLE_RECOURSE);
 
 
     }
@@ -210,6 +200,7 @@ public class DatabaseHelper extends SQLiteOpenHelper{
         sqLiteDatabase.execSQL("DROP TABLE IF EXISTS " + TABLE_USERS);
         sqLiteDatabase.execSQL("DROP TABLE IF EXISTS " + TABLE_HALL);
         sqLiteDatabase.execSQL("DROP TABLE IF EXISTS " + TABLE_EVENTS);
+        sqLiteDatabase.execSQL("DROP TABLE IF EXISTS " + TABLE_RECOURSE);
         onCreate(sqLiteDatabase);
     }
 
@@ -273,21 +264,48 @@ public class DatabaseHelper extends SQLiteOpenHelper{
 
     }
 
-    public void addNewEntertainmentItem(Event event, EntertainmentItem entertainmentItem){
+    public boolean addNewEntertainmentItem(String name, int quant, double price, int eventId){
+        SQLiteDatabase db = DatabaseManager.getInstance().openDatabase();
+        ContentValues values = new ContentValues();
+        values.put(KEY_RECOURSEMEALTYPE, name);
+        values.put(KEY_RECOURSEQUANTITY, quant);
+        values.put(KEY_RECOURSEPRICE, price);
+        values.put(KEY_RECOURSEEVENT, eventId);
+        db.insert(TABLE_RECOURSE, null, values);
+        DatabaseManager.getInstance().closeDatabase();
+        return true;
+    }
 
-    }       // NEED TO CREATE
+    public void addNewVenue(String food, int eventId){
+        SQLiteDatabase db = DatabaseManager.getInstance().openDatabase();
 
-    public void addNewVenue(Event event,Venue venue){
+        String query = "SELECT * from "+TABLE_RECOURSE+" WHERE "+KEY_RECOURSEVENUE +" IS NOT NULL AND "+KEY_RECOURSEEVENT+"="+eventId+";";
+        Cursor cursor = db.rawQuery(query, null);
+        if(!cursor.moveToFirst()) {
+            ContentValues values = new ContentValues();
+            values.put(KEY_RECOURSEVENUE, food);
+            values.put(KEY_RECOURSEEVENT, eventId);
+            db.insert(TABLE_RECOURSE, null, values);
+        }else{
+            String query1 = "UPDATE "+TABLE_RECOURSE+" SET "+KEY_RECOURSEVENUE+"=\""+food+"\" WHERE "+KEY_RECOURSEEVENT+"="+eventId+";";
+            Cursor cursor1 = db.rawQuery(query1, null);
+            cursor1.moveToFirst();
+        }
+        DatabaseManager.getInstance().closeDatabase();
+    }
 
-    }       // NEED TO CREATE
+    public boolean addNewDrink(String name,int quant, int eventId){
+        SQLiteDatabase db = DatabaseManager.getInstance().openDatabase();
+        ContentValues values = new ContentValues();
+        values.put(KEY_RECOURSEDRINK, name);
+        values.put(KEY_RECOURSEQUANTITY, quant);
+        values.put(KEY_RECOURSEEVENT, eventId);
+        db.insert(TABLE_RECOURSE, null, values);
+        DatabaseManager.getInstance().closeDatabase();
+        return true;
 
-    public void addNewDrink(Event event,Drink drink){
+    }
 
-    }       // NEED TO CREATE
-
-    public void addNewMeal(Event event,Food food){
-
-    }       // NEED TO CREATE
 
     public boolean checkExistence(String username,long id,boolean isAUser){
         SQLiteDatabase db = this.getWritableDatabase();

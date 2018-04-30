@@ -12,10 +12,14 @@ import android.widget.Button;
 
 public class AddResourcesMainActivity extends AppCompatActivity {
 
+    Event e;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_caterer_add_resources_main);
+
+        e = (Event)getIntent().getSerializableExtra("EVENT");
 
         // Resources Main -> Choose Venue
         final Button choose_venue_Button = (Button)findViewById(R.id.arm_choose_venue_id);
@@ -23,7 +27,9 @@ public class AddResourcesMainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent choose_venue_Intent = new Intent(AddResourcesMainActivity.this, ChooseVenueActivity.class);
+                choose_venue_Intent.putExtra("EVENT", e);
                 AddResourcesMainActivity.this.startActivity(choose_venue_Intent);
+
             }
         });
 
@@ -34,6 +40,7 @@ public class AddResourcesMainActivity extends AppCompatActivity {
             public void onClick(View v) {
 
                 Intent add_drink_Intent = new Intent(AddResourcesMainActivity.this, AddDrinkActivity.class);
+                add_drink_Intent.putExtra("EVENT", e);
                 AddResourcesMainActivity.this.startActivity(add_drink_Intent);
 
             }
@@ -45,6 +52,7 @@ public class AddResourcesMainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent add_et_Intent = new Intent(AddResourcesMainActivity.this, AddEntertainmentItemsActivity.class);
+                add_et_Intent.putExtra("EVENT", e);
                 AddResourcesMainActivity.this.startActivity(add_et_Intent);
             }
         });
