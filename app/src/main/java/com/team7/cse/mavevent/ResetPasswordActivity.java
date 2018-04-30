@@ -8,6 +8,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Toast;
 
 public class ResetPasswordActivity extends AppCompatActivity {
 
@@ -21,7 +22,9 @@ public class ResetPasswordActivity extends AppCompatActivity {
         reset_password_Button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent reset_password_Intent = new Intent(ResetPasswordActivity.this, NewPasswordActivity.class);
+              //  Intent reset_password_Intent = new Intent(ResetPasswordActivity.this, NewPasswordActivity.class);
+                Intent reset_password_Intent = new Intent(ResetPasswordActivity.this, MainActivity.class);
+                Toast.makeText(ResetPasswordActivity.this, "Password reset has been sent to your Mail!", Toast.LENGTH_LONG).show();
                 ResetPasswordActivity.this.startActivity(reset_password_Intent);
             }
         });
