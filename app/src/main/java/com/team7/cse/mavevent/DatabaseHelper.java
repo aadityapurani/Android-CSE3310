@@ -903,7 +903,7 @@ public class DatabaseHelper extends SQLiteOpenHelper{
     /* Final Summary for Caterer */
     public String[] viewFinalSumm(int eventId){
         SQLiteDatabase db = DatabaseManager.getInstance().openDatabase();
-        String query ="select * from Events_tbl INNER JOIN Hall_tbl ON Events_tbl.hall_id=Hall_tbl.hall_id INNER JOIN Users_tbl ON Events_tbl.user_id=Users_tbl.user_id INNER JOIN event_resources ON Events_tbl.event_id=event_resources.event_id="+eventId+";";
+        String query ="select * from Events_tbl INNER JOIN Hall_tbl ON Events_tbl.hall_id=Hall_tbl.hall_id INNER JOIN Users_tbl ON Events_tbl.user_id=Users_tbl.user_id INNER JOIN event_resources ON Events_tbl.event_id=event_resources.event_id AND Events_tbl.event_id="+eventId+";";
         String[] resEvents = new String[7];
         Cursor cursor = db.rawQuery(query, null);
         if(cursor.moveToFirst()){
@@ -931,7 +931,7 @@ public class DatabaseHelper extends SQLiteOpenHelper{
 
     public String[] viewFinalSumm2(int eventId){
         SQLiteDatabase db = DatabaseManager.getInstance().openDatabase();
-        String query ="SELECT * from Events_tbl INNER JOIN staffass_tbl ON Events_tbl.event_id=staffass_tbl.event_id="+eventId+" INNER JOIN users_tbl ON staffass_tbl.staff_id=users_tbl.user_id;";
+        String query ="SELECT * from Events_tbl INNER JOIN staffass_tbl ON Events_tbl.event_id=staffass_tbl.event_id AND Events_tbl.event_id="+eventId+" INNER JOIN users_tbl ON staffass_tbl.staff_id=users_tbl.user_id;";
         String[] resEvents = new String[1];
         Cursor cursor = db.rawQuery(query, null);
         if(cursor.moveToFirst()){
