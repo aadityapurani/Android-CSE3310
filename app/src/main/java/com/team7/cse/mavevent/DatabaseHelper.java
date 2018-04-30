@@ -963,5 +963,47 @@ public class DatabaseHelper extends SQLiteOpenHelper{
 
     }
 
+    public ArrayList<Event> getAcceptedCatererEvents(int staff_id){
+        ArrayList<Event> acceptedEvents = new ArrayList<Event>();
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        String query = "SELECT * from " + TABLE_EVENTS + " WHERE " + KEY_EVENTCID + " = \""
+                + staff_id + "\"" + KEY_EVENTSTATUS + "\"=1\";";
+        Cursor cursor = db.rawQuery(query,null);
+        Event event;
+        int event_id;
+        if(cursor.moveToFirst()) {
+            event_id = cursor.getInt(cursor.getColumnIndex(KEY_EVENTSID));
+            event = getEvent(event_id);
+            acceptedEvents.add(event);
+        }
+        while(cursor.moveToNext()){
+            event_id = cursor.getInt(cursor.getColumnIndex(KEY_EVENTSID));
+            event = getEvent(event_id);
+            acceptedEvents.add(event);
+        }
+        return acceptedEvents;
+    }
+/*
+    0-caterer
+    1-user
+    2-staff
+
+    ERROR
+    -1 for unfound
+
+ */
+    public int getUserType(int userId){
+        SQLiteDatabase db = this.getWritableDatabase();
+        int userType;
+        String query = "SELECT * from " + TABLE_USERS + " WHERE " + KEY_USERID + " = \""
+                + userId + "\";";
+        Cursor cursor = db.rawQuery(query,null);
+        if(cursor.moveToFirst()){
+            return cursor.getInt(cursor.getColumnIndex(KEY_UTYPE));
+        }
+        return -1;
+    }
+
 }
     
