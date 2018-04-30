@@ -77,9 +77,9 @@ public class DatabaseHelper extends SQLiteOpenHelper{
     private static final String KEY_EVENTALCOHOL = "alco_or_not";
     private static final String KEY_EVENTHID = "hall_id";
     private static final String KEY_EVENTUID = "user_id";
-    private static final String KEY_EVENTCID = "caterer_id";
     private static final String KEY_EVENTFORMALITY = "formality";
     private static final String KEY_EVENTSTATUS = "status";
+    private static final String KEY_EVENTCID = "caterer_id";
 
     // Specific Columns for Event Resource Table
     private static final String KEY_RECOURSEID = "event_recourse_id";
@@ -170,6 +170,7 @@ public class DatabaseHelper extends SQLiteOpenHelper{
             + KEY_EVENTHID + " INTEGER,"
             + KEY_EVENTUID + " INTEGER,"
             + KEY_EVENTFORMALITY + " INTEGER,"
+            + KEY_EVENTCID + " INTEGER,"
             + KEY_EVENTSTATUS + " INTEGER,"
             + "CONSTRAINT fk_hall FOREIGN KEY ("+KEY_EVENTHID+") REFERENCES "+TABLE_HALL+"("+KEY_HALLID+"),"//+ KEY_EVENTHID + "INTEGER,"//+ "CONSTRAINT fk_hall FOREIGN KEY ("+KEY_EVENTHID+") REFERENCES "+TABLE_HALL+"("+KEY_HALLID+"),"
             +"CONSTRAINT fk_user FOREIGN KEY ("+KEY_EVENTUID+") REFERENCES "+TABLE_HALL+"("+KEY_USERID+"))";//+ KEY_EVENTUID + "INTEGER"//"CONSTRAINT fk_user FOREIGN KEY ("+KEY_EVENTUID+") REFERENCES "+TABLE_HALL+"("+KEY_USERID+"))";
@@ -451,11 +452,15 @@ public class DatabaseHelper extends SQLiteOpenHelper{
 
 
     /* Accept */
-    public ArrayList<PendingEventBean> acceptPendingEvents(int id){
+    public ArrayList<PendingEventBean> acceptPendingEvents(int id, int cid){
         SQLiteDatabase db = DatabaseManager.getInstance().openDatabase();
         String query = "UPDATE "+TABLE_EVENTS+" SET "+KEY_EVENTSTATUS+"=1 WHERE "+KEY_EVENTSID+"="+id;
         Cursor cursor=db.rawQuery(query,null);
         cursor.moveToFirst();
+        String query1 = "UPDATE "+TABLE_EVENTS+" SET "+KEY_EVENTCID+"="+cid+" WHERE "+KEY_EVENTSID+"="+id;
+        Cursor cursor1 =db.rawQuery(query,null);
+        cursor1.moveToFirst();
+
         DatabaseManager.getInstance().closeDatabase();
         return getPendingEvents();
 

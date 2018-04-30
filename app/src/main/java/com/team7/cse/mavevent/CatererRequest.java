@@ -1,6 +1,7 @@
 package com.team7.cse.mavevent;
 
 import android.content.DialogInterface;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
@@ -15,6 +16,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import com.google.gson.Gson;
 import com.team7.cse.mavevent.DatabaseHelper;
 
 /**
@@ -33,6 +35,14 @@ public class CatererRequest extends AppCompatActivity {
         setContentView(R.layout.activity_pending_request);
 
         final DatabaseHelper db = new DatabaseHelper(CatererRequest.this);
+
+
+        // SharedPreferences called just because I want to use the User-ID
+        SharedPreferences mPrefs = getSharedPreferences("GLOBAL",MODE_PRIVATE);
+        Gson gson = new Gson();
+        String json = mPrefs.getString("User", "");
+        UserBaseModel user = gson.fromJson(json, UserBaseModel.class);
+        final int cID=user.getId();
 
         listView = (ListView) findViewById(R.id.pendingList);
         pb=db.getPendingEvents();
@@ -71,7 +81,7 @@ public class CatererRequest extends AppCompatActivity {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         PendingEventBean p=pb.get(position);
-                        db.acceptPendingEvents(p.getId());
+                        db.acceptPendingEvents(p.getId(), cID);
 
                         Toast.makeText(getApplicationContext(),"Event Approved",Toast.LENGTH_LONG).show();
                         finish();

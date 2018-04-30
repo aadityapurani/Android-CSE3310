@@ -103,7 +103,7 @@ public class ViewEventCalendarActivity extends AppCompatActivity {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         Event p = pb.get(position);
-                        db.acceptPendingEvents(p.getId());
+                        //db.acceptPendingEvents(p.getId(), );
 
                         Toast.makeText(getApplicationContext(), "Event Approved", Toast.LENGTH_LONG).show();
                         finish();
