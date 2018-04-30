@@ -20,7 +20,7 @@ public class GetStaffBean {
         return firstName;
     }
 
-    public void setFirstName(String eventName) {
+    public void setFirstName(String firstName) {
         this.firstName= firstName;
     }
 }

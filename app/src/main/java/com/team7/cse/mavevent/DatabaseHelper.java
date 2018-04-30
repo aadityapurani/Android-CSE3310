@@ -37,6 +37,7 @@ public class DatabaseHelper extends SQLiteOpenHelper{
     private static final String TABLE_MEAL = "meal_tbl";
     private static final String TABLE_VENUE = "venue_tbl";
     private static final String TABLE_DRINK = "drinks_tbl";
+    private static final String TABLE_STAFFASSIGNMENT = "staffass_tbl";
 
     // Common column names
     private static final String KEY_USERID = "user_id";
@@ -98,6 +99,10 @@ public class DatabaseHelper extends SQLiteOpenHelper{
     // Specific Columns for Drinks Table
     private static final String KEY_DRINKNAME = "name_drink";
 
+    // Specific Columns for Staff Ass table
+    private static final String KEY_STAFFASSEID = "event_id";
+    private static final String KEY_STAFFASSID  = "staff_id";
+
 
     // Just a database creator
     public DatabaseHelper(Context context){
@@ -128,6 +133,13 @@ public class DatabaseHelper extends SQLiteOpenHelper{
             + KEY_HALLPRICE + " INTEGER,"
             + KEY_HALLCAPACITY + " INTEGER," + KEY_HALLADDRESS
             + " TEXT" + ")";
+
+    // Staff Assignment
+
+    private static final String CREATE_TABLE_STAFFASS = "CREATE TABLE "
+            + TABLE_STAFFASSIGNMENT + "(" + KEY_STAFFASSEID+ " INTEGER, "
+            + KEY_STAFFASSID + " INTEGER, "
+            + "CONSTRAINT fk_staffass FOREIGN KEY ("+KEY_STAFFASSEID+") REFERENCES "+TABLE_EVENTS+"("+KEY_EVENTSID+"))";
 
     // Create Table Event
     /**
@@ -182,6 +194,7 @@ public class DatabaseHelper extends SQLiteOpenHelper{
         db.execSQL(CREATE_TABLE_HALL);
         db.execSQL(CREATE_TABLE_EVENT);
         db.execSQL(CREATE_TABLE_RECOURSE);
+        db.execSQL(CREATE_TABLE_STAFFASS);
 
 
     }
@@ -201,6 +214,7 @@ public class DatabaseHelper extends SQLiteOpenHelper{
         sqLiteDatabase.execSQL("DROP TABLE IF EXISTS " + TABLE_HALL);
         sqLiteDatabase.execSQL("DROP TABLE IF EXISTS " + TABLE_EVENTS);
         sqLiteDatabase.execSQL("DROP TABLE IF EXISTS " + TABLE_RECOURSE);
+        sqLiteDatabase.execSQL("DROP TABLE IF EXISTS " + TABLE_STAFFASSIGNMENT);
         onCreate(sqLiteDatabase);
     }
 
@@ -899,26 +913,42 @@ public class DatabaseHelper extends SQLiteOpenHelper{
     {
         SQLiteDatabase db = DatabaseManager.getInstance().openDatabase();
         ContentValues values = new ContentValues();
-        String query = "CREATE VIEW staff_view AS SELECT "+KEY_USERID+","+KEY_FNAME+" FROM "+TABLE_USERS+" WHERE "+KEY_UTYPE+"= 2;";
-        Cursor cursor = db.rawQuery(query, null);
-        cursor.moveToFirst();
-        String query1 = "SELECT * FROM staff_view;";
-        Cursor cursor1 = db.rawQuery(query1,null);
+        String query = "SELECT * FROM "+TABLE_USERS+" WHERE "+KEY_UTYPE+"=2;";
+      //  Cursor cursor = db.rawQuery(query, null);
+      //  cursor.moveToFirst();
+    //    String query1 = "SELECT * FROM staff_view;";
+        Cursor cursor1 = db.rawQuery(query,null);
 
         ArrayList<GetStaffBean> eventObj=new ArrayList<GetStaffBean>();
         cursor1.moveToFirst();
         int i=0;
         while (!cursor1.isAfterLast()) {
             GetStaffBean peb=new GetStaffBean();
-            peb.setId(cursor.getInt(cursor1.getColumnIndex(KEY_USERID)));
-            peb.setFirstName(cursor.getString(cursor.getColumnIndex(KEY_FNAME)));
+            peb.setId(cursor1.getInt(cursor1.getColumnIndex(KEY_USERID)));
+            peb.setFirstName(cursor1.getString(cursor1.getColumnIndex(KEY_FNAME)));
             eventObj.add(peb);
             i++;
-            cursor.moveToNext();
+            cursor1.moveToNext();
         }
 
         DatabaseManager.getInstance().closeDatabase();
         return eventObj;
     }
+
+    public boolean assignStaffdB(ArrayList<Integer> assignedStaff,int eventID){
+        SQLiteDatabase db = DatabaseManager.getInstance().openDatabase();
+        ContentValues values = new ContentValues();
+        for(int i=0; i< assignedStaff.size(); i++)
+        {
+            values.put(KEY_STAFFASSID, assignedStaff.get(i));
+            values.put(KEY_STAFFASSEID, eventID);
+            db.insert(TABLE_STAFFASSIGNMENT, null, values);
+        }
+
+        DatabaseManager.getInstance().closeDatabase();
+        return true;
+
+    }
+
 }
     

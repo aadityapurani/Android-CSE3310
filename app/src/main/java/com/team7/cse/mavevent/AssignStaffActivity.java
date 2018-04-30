@@ -31,7 +31,7 @@ public class AssignStaffActivity extends AppCompatActivity  {
     SparseBooleanArray sparseBooleanArray=new SparseBooleanArray(100);
 
     ArrayList<String> staff_pretty = new ArrayList<String>();
-    ArrayList<Integer> staff_id = new ArrayList<Integer>();
+   // ArrayList<Integer> staff_id = new ArrayList<Integer>();
 
     ArrayList<Integer> assigned_staff = new ArrayList<Integer>();
 
@@ -66,11 +66,13 @@ public class AssignStaffActivity extends AppCompatActivity  {
         }
 
         List<String> testList = Arrays.asList(testArray1);
+        final List<Integer> testList1 = Arrays.asList(testArray2);
 
         listview = (ListView)findViewById(R.id.assign_staff_list_view);
 
         //////////////////////////////////////////////////////////////////////////////////populate staff_pretty and staff_id here
 
+        /*
         staff_id.add(1);
         staff_id.add(2);
         staff_id.add(3);
@@ -79,6 +81,7 @@ public class AssignStaffActivity extends AppCompatActivity  {
         staff_id.add(6);
         staff_id.add(7);
         staff_id.add(8);
+        */
 
         final ArrayAdapter<String> adapter = new ArrayAdapter<String>
                 (AssignStaffActivity.this,
@@ -121,21 +124,21 @@ public class AssignStaffActivity extends AppCompatActivity  {
 
                     if (listview.isItemChecked(i))
                     {
-                     assigned_staff.add(staff_id.get(i));
+                     assigned_staff.add(testList1.get(i));
                     }
 
                 }
 
                 /////////////////////////////////////////////////////////////////////for loop to add staffs to assignment table
 
-                boolean wasAccepted = assignStaffdB(assigned_staff, e.getId());
+                boolean wasAccepted = db.assignStaffdB(assigned_staff, e.getId());
 
                 if (wasAccepted)
                 {
                     finish();
                 }
 
-                finish();
+                //finish();
             }
         });
 
