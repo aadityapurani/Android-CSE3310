@@ -1,6 +1,7 @@
 package com.team7.cse.mavevent;
 
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.SparseBooleanArray;
@@ -12,24 +13,20 @@ import android.widget.ListView;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import com.google.gson.Gson;
+
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 public class AssignStaffActivity extends AppCompatActivity  {
-    Event e;
+    Event e = new Event();
     ListView listview ;
-    String[] ListViewItems = new String[] {
-            "ListView ITEM-1",
-            "ListView ITEM-2",
-            "ListView ITEM-3",
-            "ListView ITEM-4",
-            "ListView ITEM-5",
-            "ListView ITEM-6",
-            "ListView ITEM-7",
-            "ListView ITEM-8",
-            "ListView ITEM-9",
-            "ListView ITEM-10"
+    ArrayList<GetStaffBean> pb;
+    // Handler
+    DatabaseHelper handler = new DatabaseHelper(this);
 
-    };
+    final DatabaseHelper db = new DatabaseHelper(AssignStaffActivity.this);
 
     SparseBooleanArray sparseBooleanArray=new SparseBooleanArray(100);
 
@@ -42,6 +39,33 @@ public class AssignStaffActivity extends AppCompatActivity  {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_caterer_assign_staff);
+
+
+        //make db call
+        // SharedPreferences called just because I want to use the User-ID
+        SharedPreferences mPrefs = getSharedPreferences("GLOBAL",MODE_PRIVATE);
+        Gson gson = new Gson();
+        String json = mPrefs.getString("User", "");
+        UserBaseModel user = gson.fromJson(json, UserBaseModel.class);
+        int userID=user.getId();
+
+        e = (Event)getIntent().getSerializableExtra("EVENT");
+
+        int eventID = e.getId();
+
+
+        pb=db.getAllStaff();
+        final String[] testArray1 =new String[pb.size()];
+        final Integer[] testArray2 =new Integer[pb.size()];
+
+        int i=0;
+        for(GetStaffBean p : pb ){
+            testArray1[i]= p.getFirstName();
+            testArray2[i] = p.getId();
+            i++;
+        }
+
+        List<String> testList = Arrays.asList(testArray1);
 
         listview = (ListView)findViewById(R.id.assign_staff_list_view);
 
@@ -59,7 +83,7 @@ public class AssignStaffActivity extends AppCompatActivity  {
         final ArrayAdapter<String> adapter = new ArrayAdapter<String>
                 (AssignStaffActivity.this,
                         R.layout.custom_list_view,
-                         ListViewItems );
+                         testList );
 
 
 

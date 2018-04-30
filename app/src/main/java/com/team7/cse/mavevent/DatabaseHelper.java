@@ -858,6 +858,7 @@ public class DatabaseHelper extends SQLiteOpenHelper{
     }   //NEED TO CREATE
 
 
+
     public boolean getEventRecourses(Event event){
         if(getEvent(event.getId())==null){
             return false;
@@ -891,5 +892,33 @@ public class DatabaseHelper extends SQLiteOpenHelper{
             return false;
         return true;
     }   //NEED TO CREATE
+
+    /* GetStaff as well as it's uid */
+
+    public ArrayList<GetStaffBean> getAllStaff()
+    {
+        SQLiteDatabase db = DatabaseManager.getInstance().openDatabase();
+        ContentValues values = new ContentValues();
+        String query = "CREATE VIEW staff_view AS SELECT "+KEY_USERID+","+KEY_FNAME+" FROM "+TABLE_USERS+" WHERE "+KEY_UTYPE+"= 2;";
+        Cursor cursor = db.rawQuery(query, null);
+        cursor.moveToFirst();
+        String query1 = "SELECT * FROM staff_view;";
+        Cursor cursor1 = db.rawQuery(query1,null);
+
+        ArrayList<GetStaffBean> eventObj=new ArrayList<GetStaffBean>();
+        cursor1.moveToFirst();
+        int i=0;
+        while (!cursor1.isAfterLast()) {
+            GetStaffBean peb=new GetStaffBean();
+            peb.setId(cursor.getInt(cursor1.getColumnIndex(KEY_USERID)));
+            peb.setFirstName(cursor.getString(cursor.getColumnIndex(KEY_FNAME)));
+            eventObj.add(peb);
+            i++;
+            cursor.moveToNext();
+        }
+
+        DatabaseManager.getInstance().closeDatabase();
+        return eventObj;
+    }
 }
     
