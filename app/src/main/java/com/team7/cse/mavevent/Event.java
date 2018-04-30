@@ -214,6 +214,10 @@ public class Event implements Serializable{
 	}
 
 	public boolean setHall(Hall hall){
+		if(hall==null){
+			this.hall = null;
+			return true;
+		}
 		if(time==-1 || date.length()==0 || duration == -1){
 			return false;
 		}

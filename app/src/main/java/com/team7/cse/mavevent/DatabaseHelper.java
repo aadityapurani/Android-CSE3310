@@ -6,6 +6,7 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.provider.ContactsContract;
+import android.util.Log;
 
 import com.team7.cse.mavevent.App;
 
@@ -671,29 +672,34 @@ public class DatabaseHelper extends SQLiteOpenHelper{
 
         if(cursor.moveToFirst()){
             event.setId(cursor.getInt(cursor.getColumnIndex(KEY_EVENTSID)));
+            Log.i("DatabaseHelper","*********************************************************************************************************************");
             event.setName(cursor.getString(cursor.getColumnIndex(KEY_EVENTNAME)));
             String date = cursor.getString(cursor.getColumnIndex(KEY_EVENTSTARTDATE));
-            int mid=0;
-            for(int i=0;i<date.length();i++){
-                if(date.substring(i,i)==" ") {
-                    mid = i;
-                    break;
-                }
-            }
+            int mid=date.indexOf(" ");
             event.setDate(date.substring(0,mid-1));
-            int start = Integer.parseInt(date.substring(mid+1));
+            String test = date.substring(mid+1,mid+3);
+            Log.i("DatabaseHelper","BEFORE****************************************" + test);
+            if(test.substring(1).equals(":")){
+                Log.i("DatabaseHelper","INSIDE");
+                test = test.substring(0,1);
+            }
+            Log.i("DatabaseHelper","RESULT: " + test);
+            int start = Integer.parseInt(test);
             event.setTime(start);
             date = cursor.getString(cursor.getColumnIndex(KEY_EVENTENDDATE));
-            mid=0;
-            for(int i=0;i<date.length();i++){
-                if(date.substring(i,i)==" ") {
-                    mid = i;
-                    break;
-                }
+
+            mid=date.indexOf(" ");
+            test = date.substring(mid+1,mid+3);
+            Log.i("DatabaseHelper","BEFORE" + test);
+            if(test.substring(1).equals(":")){
+                Log.i("DatabaseHelper","INSIDE");
+                test = test.substring(0,1);
             }
-            int end = Integer.parseInt(date.substring(mid+1));
+            Log.i("DatabaseHelper","RESULT: " + test);
+            int end = Integer.parseInt(test);
             event.setDuration(end-start);
             event.setCapacity(cursor.getInt(cursor.getColumnIndex(KEY_EVENTATTENDEES)));
+
             event.setHall(getHall(cursor.getInt(cursor.getColumnIndex(KEY_EVENTHID))));
             if(cursor.getInt(cursor.getColumnIndex(KEY_EVENTFORMALITY))==1)
                 event.isFormal = true;
@@ -854,10 +860,17 @@ public class DatabaseHelper extends SQLiteOpenHelper{
 
         String query = "SELECT * from " + TABLE_EVENTS + ";";
         Cursor cursor = db.rawQuery(query,null);
-        if(cursor.moveToFirst())
-            events.add(getEvent(cursor.getInt(cursor.getColumnIndex(KEY_EVENTSID))));
+        Event event;
+        int event_id;
+        if(cursor.moveToFirst()) {
+            event_id = cursor.getInt(cursor.getColumnIndex(KEY_EVENTSID));
+            event = getEvent(event_id);
+            events.add(event);
+        }
         while(cursor.moveToNext()){
-            events.add(getEvent(cursor.getInt(cursor.getColumnIndex(KEY_EVENTSID))));
+            event_id = cursor.getInt(cursor.getColumnIndex(KEY_EVENTSID));
+            event = getEvent(event_id);
+            events.add(event);
         }
 
         return events;

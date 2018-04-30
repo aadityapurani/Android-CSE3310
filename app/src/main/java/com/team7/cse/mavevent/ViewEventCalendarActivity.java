@@ -35,7 +35,7 @@ public class ViewEventCalendarActivity extends AppCompatActivity {
         listView = (ListView) findViewById(R.id.vec_calendar_id);
         pb = db.getAllEvents();
 
-        String[] testArray1 = new String[5];
+        String[] testArray1 = new String[pb.size()];
         int i = 0;
         for (Event p : pb) {
             testArray1[i] = p.getName();
@@ -56,6 +56,13 @@ public class ViewEventCalendarActivity extends AppCompatActivity {
         });
 
         listView.setAdapter(adapter);
+        Button cep_submit_button = (Button) findViewById(R.id.vec_exit_id);
+        cep_submit_button.setOnClickListener(new View.OnClickListener() {
+                                                 @Override
+                                                 public void onClick(View v) {
+                                                     finish();
+                                                 }
+                                             });
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view,

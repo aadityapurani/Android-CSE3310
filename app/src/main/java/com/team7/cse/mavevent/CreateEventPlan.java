@@ -310,6 +310,7 @@ public class CreateEventPlan extends AppCompatActivity implements AdapterView.On
         boolean wasAccepted = false;
         final DatabaseHelper db = new DatabaseHelper(CreateEventPlan.this);
         wasAccepted = db.requestEvent(attendees, mealType, comboDate, comboDate2, isAlcohol, formal, userID, eventName, eventCategory);
+
 //        wasAccepted =
 
         return wasAccepted;
