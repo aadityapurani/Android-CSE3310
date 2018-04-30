@@ -54,6 +54,8 @@ public class ViewReservedEventsActivity extends AppCompatActivity {
                 updatedView[3] = "Pending";
             }else if(somenum == 2){
                 updatedView[3] = "No";
+            }else if(somenum == 3){
+                updatedView[3] = "Deleted";
             }
 
         }

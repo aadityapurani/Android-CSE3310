@@ -21,9 +21,11 @@ public class CatererActivity extends AppCompatActivity {
 
         e = (Event)getIntent().getSerializableExtra("EVENT");
         t=(TextView)findViewById(R.id.textViewEventName);
+        final DatabaseHelper db = new DatabaseHelper(CatererActivity.this);
 
       //  t.setText(e.getId()+"");
        t.setText(e.getName());
+        final int eid = e.getId();
 
 
         // Caterer Homepage - > Add Resources Page
@@ -90,8 +92,10 @@ public class CatererActivity extends AppCompatActivity {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         //code to delete the event from the DB goes here
-
+                        db.dropEventCaterer(eid);
                         Toast.makeText(getApplicationContext(),"Event Deleted",Toast.LENGTH_LONG).show();
+                        Intent redir_Intent = new Intent(CatererActivity.this, CatererHomeScreenActivity.class);
+                        CatererActivity.this.startActivity(redir_Intent);
                         finish();
 
                     }
@@ -103,8 +107,10 @@ public class CatererActivity extends AppCompatActivity {
                     public void onClick(DialogInterface dialog, int which) {
 
                         //code to move event back to unapproved column goes here
-
-                        Toast.makeText(getApplicationContext(),"Event Dropped",Toast.LENGTH_LONG).show();
+                        db.deleteEventCaterer(eid);
+                        Toast.makeText(getApplicationContext(),"Event Deleted",Toast.LENGTH_LONG).show();
+                        Intent redir_Intent1 = new Intent(CatererActivity.this, CatererHomeScreenActivity.class);
+                        CatererActivity.this.startActivity(redir_Intent1);
                         dialog.dismiss();
                         finish();
                     }

@@ -148,7 +148,7 @@ public class DatabaseHelper extends SQLiteOpenHelper{
      * 0 - Pending
      * 1 - Accepted
      * 2 - Rejected
-     *
+     * 3 - Deleted
      */
 
     /**
@@ -471,6 +471,29 @@ public class DatabaseHelper extends SQLiteOpenHelper{
         return getPendingEvents();
 
     }
+
+    /* Delete */
+
+    public void deleteEventCaterer(int eid){
+        SQLiteDatabase db = DatabaseManager.getInstance().openDatabase();
+        String query = "UPDATE "+TABLE_EVENTS+" SET "+KEY_EVENTSTATUS+"=3 WHERE "+KEY_EVENTSID+"="+eid;
+        Cursor cursor=db.rawQuery(query,null);
+        cursor.moveToFirst();
+        DatabaseManager.getInstance().closeDatabase();
+
+    }
+
+    /* Drop */
+
+    public void dropEventCaterer(int eid){
+        SQLiteDatabase db = DatabaseManager.getInstance().openDatabase();
+        String query = "UPDATE "+TABLE_EVENTS+" SET "+KEY_EVENTSTATUS+"=0 WHERE "+KEY_EVENTSID+"="+eid;
+        Cursor cursor=db.rawQuery(query,null);
+        cursor.moveToFirst();
+        DatabaseManager.getInstance().closeDatabase();
+
+    }
+
 
 
     /* View Reserved Events at the end of User */
