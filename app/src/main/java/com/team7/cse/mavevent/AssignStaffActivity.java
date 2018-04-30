@@ -1,5 +1,6 @@
 package com.team7.cse.mavevent;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.SparseBooleanArray;
@@ -30,7 +31,7 @@ public class AssignStaffActivity extends AppCompatActivity  {
 
     };
 
-    SparseBooleanArray sparseBooleanArray ;
+    SparseBooleanArray sparseBooleanArray=new SparseBooleanArray(100);
 
     ArrayList<String> staff_pretty = new ArrayList<String>();
     ArrayList<Integer> staff_id = new ArrayList<Integer>();
@@ -46,7 +47,14 @@ public class AssignStaffActivity extends AppCompatActivity  {
 
         //////////////////////////////////////////////////////////////////////////////////populate staff_pretty and staff_id here
 
-
+        staff_id.add(1);
+        staff_id.add(2);
+        staff_id.add(3);
+        staff_id.add(4);
+        staff_id.add(5);
+        staff_id.add(6);
+        staff_id.add(7);
+        staff_id.add(8);
 
         final ArrayAdapter<String> adapter = new ArrayAdapter<String>
                 (AssignStaffActivity.this,
@@ -63,11 +71,17 @@ public class AssignStaffActivity extends AppCompatActivity  {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 // TODO Auto-generated method stub
 
-                sparseBooleanArray = listview.getCheckedItemPositions();
+                //listview.getChildAt(position).setBackgroundResource(R.drawable.rectangle_selected);
 
+                for(int i = 0;i<listview.getChildCount();i++)
+                {
 
-                listview.getChildAt(position).setBackgroundResource(R.drawable.rectangle_selected);
-
+                    if (listview.isItemChecked(position))
+                    {
+                        listview.getChildAt(position).setBackgroundResource(R.drawable.rectangle_selected);
+                    }
+                    else listview.getChildAt(position).setBackgroundResource(R.drawable.rectangle);
+                }
 
             }
         });
@@ -78,16 +92,14 @@ public class AssignStaffActivity extends AppCompatActivity  {
             @Override
             public void onClick(View v) {
 
-                int i = 0 ;
+                for(int i = 0;i<listview.getChildCount();i++)
+                {
 
-                while (i < sparseBooleanArray.size()) {
-
-                    if (sparseBooleanArray.valueAt(i))
+                    if (listview.isItemChecked(i))
                     {
-                        assigned_staff.add(staff_id.get(i));
+                     assigned_staff.add(staff_id.get(i));
                     }
 
-                    i++ ;
                 }
 
                 /////////////////////////////////////////////////////////////////////for loop to add staffs to assignment table
