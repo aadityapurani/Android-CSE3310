@@ -1046,5 +1046,28 @@ public class DatabaseHelper extends SQLiteOpenHelper{
         return -1;
     }
 
+
+    public ArrayList<PendingEventBean> getStaffAssignedEvents(int sid){
+        SQLiteDatabase db = DatabaseManager.getInstance().openDatabase();
+
+
+        String query = "select distinct * from staffass_tbl INNER JOIN Events_tbl ON Events_tbl.event_id=staffass_tbl.event_id where staff_id="+sid+";";
+        Cursor cursor = db.rawQuery(query, null);
+        ArrayList<PendingEventBean> eventObj=new ArrayList<PendingEventBean>();
+        cursor.moveToFirst();
+        int i=0;
+        while (!cursor.isAfterLast()) {
+            PendingEventBean peb=new PendingEventBean();
+            peb.setId(cursor.getInt(cursor.getColumnIndex(KEY_EVENTSID)));
+            peb.setEventName(cursor.getString(cursor.getColumnIndex(KEY_EVENTNAME)));
+            eventObj.add(peb);
+            i++;
+            cursor.moveToNext();
+        }
+        DatabaseManager.getInstance().closeDatabase();
+        return eventObj;
+    }
+
+
 }
     
