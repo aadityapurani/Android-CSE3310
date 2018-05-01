@@ -48,8 +48,10 @@ public class ViewEventCalendarActivity extends AppCompatActivity {
         int type = db.getUserType(user.getId());
         if(type == 0)
             pb = db.getAcceptedCatererEvents(user.getId());
-        else
+        else {
             pb = db.getUserEvents(user.getId());
+            //pb = db.getAllEvents();
+        }
         //caterer ID
         final int cID=user.getId();
 
@@ -73,7 +75,7 @@ public class ViewEventCalendarActivity extends AppCompatActivity {
 
         // setting adapter on listview
         listView.setAdapter(adapter);
-
+        /*
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener()
         {
             @Override
@@ -137,6 +139,7 @@ public class ViewEventCalendarActivity extends AppCompatActivity {
                 // Toast.makeText(CatererRequest.this, testArray1[position], Toast.LENGTH_SHORT).show();
             }
         });
+        */
 
 
     }

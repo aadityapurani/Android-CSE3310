@@ -764,13 +764,13 @@ public class DatabaseHelper extends SQLiteOpenHelper{
     public ArrayList<Event> getUserEvents(int uId){
         SQLiteDatabase db = this.getWritableDatabase();
 
-        String query = "SELECT * from " + TABLE_EVENTS + " WHERE " + KEY_EVENTUID+ " = \""
-                + uId+ "\";";
+        String query = "SELECT * from " + TABLE_EVENTS + " WHERE " + KEY_EVENTUID+ " = "
+                + uId+ ";";
         Cursor cursor = db.rawQuery(query,null);
         ArrayList<Event> events = new ArrayList<Event>();
         int type;
         if(cursor.moveToFirst()) {
-            type = cursor.getInt(cursor.getColumnIndex(KEY_EVENTTYPE));
+            type = cursor.getInt(cursor.getColumnIndex(KEY_EVENTSTATUS));
             if(type == 1)
                 events.add(getEvent(cursor.getInt(cursor.getColumnIndex(KEY_EVENTSID))));
         }

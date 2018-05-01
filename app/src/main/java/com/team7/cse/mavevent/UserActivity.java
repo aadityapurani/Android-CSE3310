@@ -51,7 +51,7 @@ public class UserActivity extends AppCompatActivity {
         view_event_schedule_Button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent view_event_schedule_Intent = new Intent(UserActivity.this, ViewEventScheduleActivity.class);
+                Intent view_event_schedule_Intent = new Intent(UserActivity.this, ViewEventCalendarActivity.class);
                 UserActivity.this.startActivity(view_event_schedule_Intent);
             }
         });
