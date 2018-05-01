@@ -23,8 +23,7 @@ public class ResetPasswordActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
               //  Intent reset_password_Intent = new Intent(ResetPasswordActivity.this, NewPasswordActivity.class);
-                Intent reset_password_Intent = new Intent(ResetPasswordActivity.this, MainActivity.class);
-                Toast.makeText(ResetPasswordActivity.this, "Password reset has been sent to your Mail!", Toast.LENGTH_LONG).show();
+                Intent reset_password_Intent = new Intent(ResetPasswordActivity.this, NewPasswordActivity.class);
                 ResetPasswordActivity.this.startActivity(reset_password_Intent);
             }
         });
