@@ -19,8 +19,12 @@ import android.widget.Toast;
 
 import com.google.gson.Gson;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
+import java.util.TimeZone;
 
 public class ViewEventDetailsActivity extends AppCompatActivity {
 
@@ -90,8 +94,33 @@ public class ViewEventDetailsActivity extends AppCompatActivity {
         textViewf.setText(updatedView[5]);
         textViewg.setText(updatedView[6]);
         textViewh.setText(updatedView1[0]);
-        textViewi.setText("20");    //Just for sake of testing
+        ArrayList<Integer> lol = parseTime(updatedView[6]);
+        int capacity = Integer.parseInt(updatedView[7]);
+        int duration = parseTime(updatedView[6]).get(3) - parseTime(updatedView[5]).get(3);
+        textViewi.setText(Double.toString((duration * 2 * capacity)));    //Just for sake of testing
 
 
     }
+    ArrayList<Integer> parseTime (String time)
+    {
+        ArrayList<Integer> list = new ArrayList<Integer>();
+        String PATTERN = "yyyy-MM-dd' 'hh:mm";
+        SimpleDateFormat sdf = new SimpleDateFormat(PATTERN);
+        sdf.setTimeZone(TimeZone.getTimeZone("UTC"));
+        try {
+            Date date = sdf.parse(time);
+            list.add(date.getYear());
+            list.add(date.getMonth());
+            list.add(date.getDay());
+            list.add(date.getHours());
+            list.add(date.getMinutes());
+            return list;
+        } catch (ParseException e1) {
+            //
+        }
+
+        return list;
+
+    }
+
 }
