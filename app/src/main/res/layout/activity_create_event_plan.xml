@@ -28,7 +28,7 @@
             android:gravity="center_horizontal"
             android:text="Create an Event Request"
             android:textColor="#ffffffff"
-            android:textSize="25sp" />
+            android:textSize="18sp" />
 
         <EditText
             android:id="@+id/cep_event_name_id"
@@ -43,7 +43,8 @@
             android:imeOptions="actionDone"
             android:inputType="text"
             android:textColor="#ffffffff"
-            android:textColorHint="#FFFFFFFF" />
+            android:textColorHint="#FFFFFFFF"
+            android:textSize="14sp" />
 
         <EditText
             android:id="@+id/cep_event_category_id"
@@ -58,7 +59,8 @@
             android:imeOptions="actionDone"
             android:inputType="text"
             android:textColor="#ffffffff"
-            android:textColorHint="#FFFFFFFF" />
+            android:textColorHint="#FFFFFFFF"
+            android:textSize="14sp" />
 
         <EditText
             android:id="@+id/cep_attendees_id"
@@ -72,7 +74,8 @@
             android:imeOptions="actionDone"
             android:inputType="number"
             android:textColor="#ffffffff"
-            android:textColorHint="#FFFFFFFF" />
+            android:textColorHint="#FFFFFFFF"
+            android:textSize="14sp" />
 
         <Spinner
             android:id="@+id/cep_meal_id"
@@ -125,7 +128,8 @@
             android:imeOptions="actionDone"
             android:inputType="number"
             android:textColor="#ffffffff"
-            android:textColorHint="#FFFFFFFF" />
+            android:textColorHint="#FFFFFFFF"
+            android:textSize="14sp" />
 
         <Switch
             android:id="@+id/cep_alcohol_id"
@@ -139,7 +143,7 @@
             android:imeOptions="actionDone"
             android:text="Alcohol"
             android:textColor="#ffffffff"
-            android:textSize="18sp"
+            android:textSize="14sp"
             android:thumbTint="#3a7ce8"
             android:trackTint="#ffffffff" />
 
@@ -155,7 +159,7 @@
             android:imeOptions="actionDone"
             android:text="Formal"
             android:textColor="#ffffffff"
-            android:textSize="18sp"
+            android:textSize="14sp"
             android:thumbTint="#3a7ce8"
             android:trackTint="#ffffffff" />
 
