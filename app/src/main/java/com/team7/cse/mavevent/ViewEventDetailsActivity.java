@@ -89,6 +89,15 @@ public class ViewEventDetailsActivity extends AppCompatActivity {
         int duration = parseTime(updatedView[6]).get(3) - parseTime(updatedView[5]).get(3);
         //8 is alcohol
         int alcoholCost = Integer.parseInt(updatedView[8]) * Integer.parseInt(updatedView[0]);
+        int mealCost=0;
+        switch(Integer.parseInt(updatedView[9]))
+        {
+            case 1: mealCost = 8; break;
+            case 2: mealCost = 12; break;
+            case 3: mealCost = 18; break;
+        }
+        mealCost *= Integer.parseInt(updatedView[0]);
+        int formalCost = Integer.parseInt(updatedView[2]) * Integer.parseInt(updatedView[0]);
 
         textViewa.setText(updatedView[0]);
         textViewb.setText(updatedView[1]);
@@ -97,7 +106,7 @@ public class ViewEventDetailsActivity extends AppCompatActivity {
         textViewe.setText(updatedView[4]);
         textViewf.setText(updatedView[5]);
         textViewg.setText(Integer.toString(duration));
-        textViewi.setText(Double.toString((duration * 2 * capacity)));    //Just for sake of testing
+        textViewi.setText(Double.toString((duration * 2 * capacity + alcoholCost + mealCost + formalCost)));    //Just for sake of testing
         textViewh.setText(updatedView1[0]);
 
 

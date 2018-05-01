@@ -929,7 +929,7 @@ public class DatabaseHelper extends SQLiteOpenHelper{
             resEvents[6] = cursor.getString(cursor.getColumnIndex(KEY_EVENTENDDATE)); // End Date
             resEvents[7] = cursor.getString(cursor.getColumnIndex(KEY_HALLCAPACITY)); // Capacity of Hall
             resEvents[8] = cursor.getString(cursor.getColumnIndex(KEY_EVENTALCOHOL));//whether theres alcohol
-            resEvents[9] = cursor.getString(cursor.getColumnIndex(KEY_MEALID));//whether theres alcohol
+            resEvents[9] = cursor.getString(cursor.getColumnIndex(KEY_EVENTMEAL));//whether theres alcohol
 
         }else{
             resEvents[0] = "N/A";
