@@ -458,7 +458,7 @@ public class DatabaseHelper extends SQLiteOpenHelper{
         Cursor cursor=db.rawQuery(query,null);
         cursor.moveToFirst();
         String query1 = "UPDATE "+TABLE_EVENTS+" SET "+KEY_EVENTCID+"="+cid+" WHERE "+KEY_EVENTSID+"="+id;
-        Cursor cursor1 =db.rawQuery(query,null);
+        Cursor cursor1 =db.rawQuery(query1,null);
         cursor1.moveToFirst();
 
         DatabaseManager.getInstance().closeDatabase();
@@ -761,17 +761,25 @@ public class DatabaseHelper extends SQLiteOpenHelper{
         return null;
     }
 
-    public void getUserEvents(User user){
+    public ArrayList<Event> getUserEvents(int uId){
         SQLiteDatabase db = this.getWritableDatabase();
 
         String query = "SELECT * from " + TABLE_EVENTS + " WHERE " + KEY_EVENTUID+ " = \""
-                + user.getId()+ "\";";
+                + uId+ "\";";
         Cursor cursor = db.rawQuery(query,null);
-        if(cursor.moveToFirst())
-            user.addEvent(getEvent(cursor.getInt(cursor.getColumnIndex(KEY_EVENTSID))));
-        while(cursor.moveToNext()){
-            user.addEvent(getEvent(cursor.getInt(cursor.getColumnIndex(KEY_EVENTSID))));
+        ArrayList<Event> events = new ArrayList<Event>();
+        int type;
+        if(cursor.moveToFirst()) {
+            type = cursor.getInt(cursor.getColumnIndex(KEY_EVENTTYPE));
+            if(type == 1)
+                events.add(getEvent(cursor.getInt(cursor.getColumnIndex(KEY_EVENTSID))));
         }
+        while(cursor.moveToNext()){
+            type = cursor.getInt(cursor.getColumnIndex(KEY_EVENTTYPE));
+            if(type == 1)
+                events.add(getEvent(cursor.getInt(cursor.getColumnIndex(KEY_EVENTSID))));
+        }
+        return events;
     }           //NEED TO CREATE    ***
 
     public void getCatererEvents(Caterer caterer){
@@ -982,8 +990,7 @@ public class DatabaseHelper extends SQLiteOpenHelper{
     public boolean assignStaffdB(ArrayList<Integer> assignedStaff,int eventID){
         SQLiteDatabase db = DatabaseManager.getInstance().openDatabase();
         ContentValues values = new ContentValues();
-        for(int i=0; i< assignedStaff.size(); i++)
-        {
+        for(int i=0; i< assignedStaff.size(); i++) {
             values.put(KEY_STAFFASSID, assignedStaff.get(i));
             values.put(KEY_STAFFASSEID, eventID);
             db.insert(TABLE_STAFFASSIGNMENT, null, values);
@@ -994,12 +1001,12 @@ public class DatabaseHelper extends SQLiteOpenHelper{
 
     }
 
-    public ArrayList<Event> getAcceptedCatererEvents(int staff_id){
+    public ArrayList<Event> getAcceptedCatererEvents(int caterer_id){
         ArrayList<Event> acceptedEvents = new ArrayList<Event>();
         SQLiteDatabase db = this.getWritableDatabase();
 
-        String query = "SELECT * from " + TABLE_EVENTS + " WHERE " + KEY_EVENTCID + " = \""
-                + staff_id + "\"" + KEY_EVENTSTATUS + "\"=1\";";
+        String query = "SELECT * from " + TABLE_EVENTS + " WHERE " + KEY_EVENTCID + "="
+                + caterer_id + ";";// AND " + KEY_EVENTSTATUS + "=1;";
         Cursor cursor = db.rawQuery(query,null);
         Event event;
         int event_id;

@@ -31,9 +31,12 @@ public class CatererRequest extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        //initialize
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_pending_request);
 
+
+        //date base
         final DatabaseHelper db = new DatabaseHelper(CatererRequest.this);
 
 
@@ -42,17 +45,24 @@ public class CatererRequest extends AppCompatActivity {
         Gson gson = new Gson();
         String json = mPrefs.getString("User", "");
         UserBaseModel user = gson.fromJson(json, UserBaseModel.class);
+
+        //caterer ID
         final int cID=user.getId();
 
         listView = (ListView) findViewById(R.id.pendingList);
+        // get data
         pb=db.getPendingEvents();
+        //populate String array
         String[] testArray1 =new String[pb.size()];
         int i=0;
         for(PendingEventBean p : pb ){
             testArray1[i]=p.getEventName();
             i++;
         }
+
+        //convert to list
         List<String> testList = Arrays.asList(testArray1);
+
         // Instanciating Adapter
         ArrayAdapter<String> adapter = new ArrayAdapter<>(getBaseContext(),
                 R.layout.custom_list_view, testList);
