@@ -92,11 +92,12 @@ public class ViewEventDetailsActivity extends AppCompatActivity {
         textViewd.setText(updatedView[3]);
         textViewe.setText(updatedView[4]);
         textViewf.setText(updatedView[5]);
-        textViewg.setText(updatedView[6]);
+
         textViewh.setText(updatedView1[0]);
         ArrayList<Integer> lol = parseTime(updatedView[6]);
         int capacity = Integer.parseInt(updatedView[7]);
         int duration = parseTime(updatedView[6]).get(3) - parseTime(updatedView[5]).get(3);
+        textViewg.setText(Integer.toString(duration));
         textViewi.setText(Double.toString((duration * 2 * capacity)));    //Just for sake of testing
 
 
