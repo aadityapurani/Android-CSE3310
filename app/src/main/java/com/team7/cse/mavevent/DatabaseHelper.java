@@ -1062,6 +1062,15 @@ public class DatabaseHelper extends SQLiteOpenHelper{
         return eventObj;
     }
 
+    public void deleteEventAtUserEnd(int eid){
+        SQLiteDatabase db = DatabaseManager.getInstance().openDatabase();
+        String query = "UPDATE "+TABLE_EVENTS+" SET "+KEY_EVENTSTATUS+"=3 WHERE "+KEY_EVENTSID+"="+eid;
+        Cursor cursor=db.rawQuery(query,null);
+        cursor.moveToFirst();
+        DatabaseManager.getInstance().closeDatabase();
+
+    }
+
 
 }
     
