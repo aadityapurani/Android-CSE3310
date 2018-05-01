@@ -784,6 +784,62 @@ public class DatabaseHelper extends SQLiteOpenHelper{
         return null;
     }   //NEED TO CREATE **** NEED TO PUT IN DATABASE
 
+    public void resetPassword(String username, String password){
+        SQLiteDatabase db = DatabaseManager.getInstance().openDatabase();
+        String query = "UPDATE "+TABLE_USERS+" SET "+KEY_PASSWORD+"=\"" + password + "\" WHERE "+KEY_USERNAME+"="+"\"" + username + "\"";
+        Cursor cursor=db.rawQuery(query,null);
+        cursor.moveToFirst();
+        DatabaseManager.getInstance().closeDatabase();
+    }
+
+    public Venue getVenue(int venueId,int eventRecourseId){
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        String queryDrink = "SELECT * from " + TABLE_VENUE + " WHERE " + KEY_VENUEID+ " = \""
+                + venueId+ "\";";
+        Cursor cursorDrink = db.rawQuery(queryDrink, null);
+        String queryRecourse = "SELECT * from " + TABLE_RECOURSE+ " WHERE " + KEY_RECOURSEID + " = \""
+                + eventRecourseId+ "\";";
+        Cursor cursorRecourse = db.rawQuery(queryRecourse, null);
+        Venue venue = new Venue();
+        if(cursorDrink.moveToFirst() && cursorRecourse.moveToFirst()) {
+            venue.name = cursorRecourse.getString(cursorRecourse.getColumnIndex(KEY_RECOURSENAME));
+            venue.price = cursorRecourse.getInt(cursorRecourse.getColumnIndex(KEY_RECOURSEPRICE));
+            venue.quantity = cursorRecourse.getInt(cursorRecourse.getColumnIndex(KEY_RECOURSEQUANTITY));
+            String test = cursorDrink.getString(cursorDrink.getColumnIndex(KEY_VENUENAME));
+            if(test.equals("Pizza")){
+                venue.venue = Venue.VENUE.PIZZA;
+            }
+            else if(test.equals("French")){
+                venue.venue = Venue.VENUE.FRENCH;
+            }
+            else if(test.equals("Chinese")){
+                venue.venue = Venue.VENUE.CHINESE;
+            }
+            else if(test.equals("MEXICAN")){
+                venue.venue = Venue.VENUE.MEXICAN;
+            }
+            else if(test.equals("Italian")){
+                venue.venue = Venue.VENUE.ITALIAN;
+            }
+            else if(test.equals("American")){
+                venue.venue = Venue.VENUE.AMERICAN;
+            }
+            else if(test.equals("Greek")){
+                venue.venue = Venue.VENUE.GREEK;
+            }
+            else if(test.equals("Indian")){
+                venue.venue = Venue.VENUE.INDIAN;
+            }
+            else{
+                venue.venue = Venue.VENUE.JAPANESE;
+            }
+            return venue;
+
+        }
+        return null;
+    }
+
     public Drink getDrinks(int drinkId,int eventRecourseId){
         SQLiteDatabase db = this.getWritableDatabase();
 
@@ -834,54 +890,6 @@ public class DatabaseHelper extends SQLiteOpenHelper{
         }
         return null;
 
-    }
-
-    public Venue getVenue(int venueId,int eventRecourseId){
-        SQLiteDatabase db = this.getWritableDatabase();
-
-        String queryDrink = "SELECT * from " + TABLE_VENUE + " WHERE " + KEY_VENUEID+ " = \""
-                + venueId+ "\";";
-        Cursor cursorDrink = db.rawQuery(queryDrink, null);
-        String queryRecourse = "SELECT * from " + TABLE_RECOURSE+ " WHERE " + KEY_RECOURSEID + " = \""
-                + eventRecourseId+ "\";";
-        Cursor cursorRecourse = db.rawQuery(queryRecourse, null);
-        Venue venue = new Venue();
-        if(cursorDrink.moveToFirst() && cursorRecourse.moveToFirst()) {
-            venue.name = cursorRecourse.getString(cursorRecourse.getColumnIndex(KEY_RECOURSENAME));
-            venue.price = cursorRecourse.getInt(cursorRecourse.getColumnIndex(KEY_RECOURSEPRICE));
-            venue.quantity = cursorRecourse.getInt(cursorRecourse.getColumnIndex(KEY_RECOURSEQUANTITY));
-            String test = cursorDrink.getString(cursorDrink.getColumnIndex(KEY_VENUENAME));
-            if(test.equals("Pizza")){
-                venue.venue = Venue.VENUE.PIZZA;
-            }
-            else if(test.equals("French")){
-                venue.venue = Venue.VENUE.FRENCH;
-            }
-            else if(test.equals("Chinese")){
-                venue.venue = Venue.VENUE.CHINESE;
-            }
-            else if(test.equals("MEXICAN")){
-                venue.venue = Venue.VENUE.MEXICAN;
-            }
-            else if(test.equals("Italian")){
-                venue.venue = Venue.VENUE.ITALIAN;
-            }
-            else if(test.equals("American")){
-                venue.venue = Venue.VENUE.AMERICAN;
-            }
-            else if(test.equals("Greek")){
-                venue.venue = Venue.VENUE.GREEK;
-            }
-            else if(test.equals("Indian")){
-                venue.venue = Venue.VENUE.INDIAN;
-            }
-            else{
-                venue.venue = Venue.VENUE.JAPANESE;
-            }
-            return venue;
-
-        }
-        return null;
     }
 
     public ArrayList<Event> getAllEvents(){
