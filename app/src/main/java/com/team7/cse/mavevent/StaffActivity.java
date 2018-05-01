@@ -11,10 +11,13 @@ import android.widget.Button;
 
 public class StaffActivity extends AppCompatActivity {
 
+    Event e;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_staff);
+
+        e = (Event)getIntent().getSerializableExtra("EVENT");
 
         // Staff Homepage - > View Events
         final Button view_events_Button = (Button) findViewById(R.id.staff_view_events_id);
@@ -22,6 +25,7 @@ public class StaffActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent view_events_Intent = new Intent(StaffActivity.this, ViewEventsActivity.class);
+                view_events_Intent.putExtra("EVENT", e);
                 StaffActivity.this.startActivity(view_events_Intent);
             }
         });
