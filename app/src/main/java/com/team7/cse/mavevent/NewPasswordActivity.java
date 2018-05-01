@@ -1,7 +1,9 @@
 package com.team7.cse.mavevent;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
@@ -24,14 +26,18 @@ public class NewPasswordActivity extends AppCompatActivity {
         new_password_Button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                //get password
                 String new_pass = pass_field.getText().toString();
-                String username="";
-                db.resetPassword(username,new_pass);
+
+                //get username
+                SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(NewPasswordActivity.this);
+                String userName = sharedPref.getString("userName", "Not Available");
+
+                //reset password
+                db.resetPassword(userName, new_pass);
+
+                //silly message
                 Toast.makeText(NewPasswordActivity.this, "Password reset has been sent to your Mail!", Toast.LENGTH_LONG).show();
-
-
-
-
 
 
                 Intent new_password_Intent = new Intent(NewPasswordActivity.this, MainActivity.class);
