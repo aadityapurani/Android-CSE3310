@@ -917,7 +917,7 @@ public class DatabaseHelper extends SQLiteOpenHelper{
     public String[] viewFinalSumm(int eventId){
         SQLiteDatabase db = DatabaseManager.getInstance().openDatabase();
         String query ="select * from Events_tbl INNER JOIN Hall_tbl ON Events_tbl.hall_id=Hall_tbl.hall_id INNER JOIN Users_tbl ON Events_tbl.user_id=Users_tbl.user_id INNER JOIN event_resources ON Events_tbl.event_id=event_resources.event_id AND Events_tbl.event_id="+eventId+";";
-        String[] resEvents = new String[9];
+        String[] resEvents = new String[10];
         Cursor cursor = db.rawQuery(query, null);
         if(cursor.moveToFirst()){
             resEvents[0] = cursor.getInt(cursor.getColumnIndex(KEY_EVENTATTENDEES))+""; //Desired Attendees casted
@@ -929,6 +929,7 @@ public class DatabaseHelper extends SQLiteOpenHelper{
             resEvents[6] = cursor.getString(cursor.getColumnIndex(KEY_EVENTENDDATE)); // End Date
             resEvents[7] = cursor.getString(cursor.getColumnIndex(KEY_HALLCAPACITY)); // Capacity of Hall
             resEvents[8] = cursor.getString(cursor.getColumnIndex(KEY_EVENTALCOHOL));//whether theres alcohol
+            resEvents[9] = cursor.getString(cursor.getColumnIndex(KEY_MEALID));//whether theres alcohol
 
         }else{
             resEvents[0] = "N/A";
