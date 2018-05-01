@@ -73,7 +73,8 @@ public class ViewEventDetailsActivity extends AppCompatActivity {
         TextView textViewg = (TextView) findViewById(R.id.detail_duration1); // Just Hour
         TextView textViewh = (TextView) findViewById(R.id.detail_staffass1);
         TextView textViewi = (TextView) findViewById(R.id.detail_price1);
-
+        TextView textViewj = (TextView) findViewById(R.id.detail_meal_type1);
+        TextView textViewk = (TextView) findViewById(R.id.detail_alcohol1);
 
 
         /**
@@ -88,27 +89,59 @@ public class ViewEventDetailsActivity extends AppCompatActivity {
         int capacity = Integer.parseInt(updatedView[7]);
         int duration = parseTime(updatedView[6]).get(3) - parseTime(updatedView[5]).get(3);
         //8 is alcohol
+        //9 is meal type
         int alcoholCost = Integer.parseInt(updatedView[8]) * Integer.parseInt(updatedView[0]);
         int mealCost=0;
+        String mealType="";
         switch(Integer.parseInt(updatedView[9]))
         {
-            case 1: mealCost = 8; break;
-            case 2: mealCost = 12; break;
-            case 3: mealCost = 18; break;
+            case 1:
+                {
+                    mealCost = 8;
+                    mealType = "Breakfast";
+                } break;
+            case 2:
+                {
+                    mealCost = 12;
+                    mealType = "Lunch";
+                } break;
+            case 3:
+            {
+                mealCost = 18;
+                mealType = "Dinner";
+            } break;
         }
         mealCost *= Integer.parseInt(updatedView[0]);
         int formalCost = Integer.parseInt(updatedView[2]) * Integer.parseInt(updatedView[0]);
-
+        String hasAlcohol="";
+        if (Integer.parseInt(updatedView[8])==1)
+        {
+            hasAlcohol = "Has Alcohol";
+        }
+        else
+        {
+            hasAlcohol = "Doesn't Have Alcohol";
+        }
+        String isFormal = "";
+        if (Integer.parseInt(updatedView[2])==1)
+        {
+            isFormal = "Formal";
+        }
+        else
+        {
+            isFormal = "Informal";
+        }
         textViewa.setText(updatedView[0]);
         textViewb.setText(updatedView[1]);
-        textViewc.setText(updatedView[2]);
+        textViewc.setText(isFormal);
         textViewd.setText(updatedView[3]);
         textViewe.setText(updatedView[4]);
         textViewf.setText(updatedView[5]);
         textViewg.setText(Integer.toString(duration));
-        textViewi.setText(Double.toString((duration * 2 * capacity + alcoholCost + mealCost + formalCost)));    //Just for sake of testing
         textViewh.setText(updatedView1[0]);
-
+        textViewi.setText(Double.toString((duration * 2 * capacity + alcoholCost + mealCost + formalCost)));    //Just for sake of testing
+        textViewj.setText(mealType);
+        textViewk.setText(hasAlcohol);
 
 
     }
