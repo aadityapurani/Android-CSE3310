@@ -1,3 +1,4 @@
+[![MIT License](https://img.shields.io/badge/license-MIT-blue.svg)](http://choosealicense.com/licenses/mit/)
 # MavsEvent App - UTA Catering System (CSE 3310)
 #### Brandon Hanner, Jonathon Kirkpatrick, David Jaime, Aaditya Purani and Mark Ramirez (Team 7) 
 ---------------------------------------------------------
